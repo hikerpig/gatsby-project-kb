@@ -30,14 +30,19 @@
 //   ],
 // }
 
-module.exports = options => {
-  console.log("options", options)
-  const { contentRoot } = options
+module.exports = ({
+  contentRoot = 'content',
+  notesFileExtensions = ['.md', '.mdx'], // File extensions that will be used to generate pages
+  noteTemplate = './templates/brain.js', // Template to use for note rendering
+  additionalNoteTypes = {}, // Mapping object from note type keys to template paths
+  baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
+}) => {
+  console.log('options', arguments[0])
 
   return {
     plugins: [
       `gatsby-plugin-react-helmet`,
-      "gatsby-transformer-remark",
+      'gatsby-transformer-remark',
       {
         resolve: 'gatsby-source-filesystem',
         options: {

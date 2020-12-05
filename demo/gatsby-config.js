@@ -7,10 +7,18 @@ module.exports = {
     author: `@hikerpig`,
   },
   plugins: [
+    // {
+    //   resolve: 'gatsby-theme-kb',
+    //   options: {
+    //     contentRoot: path.resolve(__dirname, 'content'),
+    //   },
+    // },
     {
-      resolve: 'gatsby-theme-kb',
+      resolve: '@aengusm/gatsby-theme-brain',
       options: {
-        contentRoot: path.resolve(__dirname, 'content'),
+        notesDirectory: path.join(__dirname, 'content/'),
+        rootPath: '/',
+        rootNote: 'index',
       },
     },
   ],

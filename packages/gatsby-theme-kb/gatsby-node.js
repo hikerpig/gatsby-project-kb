@@ -1,10 +1,10 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const { sourceNodes } = require('./gatsby-node-utils/source-nodes')
-const { createSchemaCustomization } = require('./gatsby-node-utils/create-schema-customization')
+// const { sourceNodes } = require('./gatsby-node-utils/source-nodes')
+// const { createSchemaCustomization } = require('./gatsby-node-utils/create-schema-customization')
 
-exports.sourceNodes = sourceNodes
+// exports.sourceNodes = sourceNodes
 
-exports.createSchemaCustomization = createSchemaCustomization
+// exports.createSchemaCustomization = createSchemaCustomization
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions

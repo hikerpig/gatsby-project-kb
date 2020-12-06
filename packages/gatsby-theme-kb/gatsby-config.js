@@ -31,11 +31,11 @@
 // }
 
 module.exports = ({
-  contentRoot = 'content',
+  contentPath = 'content',
   notesFileExtensions = ['.md', '.mdx'], // File extensions that will be used to generate pages
-  noteTemplate = './templates/brain.js', // Template to use for note rendering
   additionalNoteTypes = {}, // Mapping object from note type keys to template paths
   baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
+  mdxOtherwiseConfigured = false,
 }) => {
   console.log('options', arguments[0])
 
@@ -46,7 +46,31 @@ module.exports = ({
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          path: contentRoot,
+          path: contentPath,
+          name: contentPath,
+        },
+      },
+      !mdxOtherwiseConfigured && {
+        resolve: `gatsby-plugin-mdx`,
+        options: {
+          extensions: [`.md`, `.mdx`],
+          gatsbyRemarkPlugins: [
+            "gatsby-remark-double-brackets-link",
+            "gatsby-remark-double-parenthesis-link",
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                maxWidth: 561,
+              },
+            },
+            // `gatsby-remark-copy-linked-files`,
+            // {
+            //   resolve: `gatsby-remark-autolink-headers`,
+            //   options: {
+            //     icon: false,
+            //   },
+            // },
+          ],
         },
       },
       // {

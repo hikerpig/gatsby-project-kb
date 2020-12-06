@@ -1,5 +1,6 @@
 import React from 'react'
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
+// import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 type Note = {
   title: string
@@ -27,7 +28,7 @@ type Props = {
 }
 
 const BrainNote = ({ note }: Props) => {
-  let references = []
+  let references
   let referenceBlock
   if (note.inboundReferencePreviews != null) {
     references = note.inboundReferencePreviews.map(ref => (

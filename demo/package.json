@@ -10,7 +10,6 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@aengusm/gatsby-theme-brain": "^1.0.13",
     "gatsby": "^2.28.0",
     "gatsby-theme-kb": "^0.1.0",
     "react": "16",

@@ -17,6 +17,7 @@ module.exports = {
       resolve: '@aengusm/gatsby-theme-brain',
       options: {
         notesDirectory: path.join(__dirname, 'content/'),
+        noteTemplate: path.join(__dirname, 'src/templates/note.js'),
         rootPath: '/',
         rootNote: 'index',
       },

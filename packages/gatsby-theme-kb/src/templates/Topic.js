@@ -3,15 +3,19 @@ import { graphql } from 'gatsby'
 
 import Topic from '../components/Topic'
 import Seo from '../components/seo'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
+
+import GraphButton from '../components/GraphButton'
+
 
 export default (props) => {
   console.log('props', props)
 
   const file = props.data.file
 
+  const headerAddons = <GraphButton graphState="maximized" currentFileId={props.pageContext.id}></GraphButton>
   return (
-    <Layout>
+    <Layout headerAddons={headerAddons}>
       <Seo title={file.fields.title}></Seo>
       <Topic file={file}></Topic>
     </Layout>

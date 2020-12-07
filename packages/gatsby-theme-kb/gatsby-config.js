@@ -1,34 +1,4 @@
-// module.exports = {
-//   siteMetadata: {
-//     title: `gatsby-theme-kb`,
-//     description: `Your personal knowledge base`,
-//     author: `@gatsbyjs`,
-//   },
-//   plugins: [
-//     `gatsby-plugin-react-helmet`,
-//     {
-//       resolve: `gatsby-source-filesystem`,
-//       options: {
-//         name: `images`,
-//         path: `${__dirname}/src/images`,
-//       },
-//     },
-//     `gatsby-transformer-sharp`,
-//     `gatsby-plugin-sharp`,
-//     {
-//       resolve: `gatsby-plugin-manifest`,
-//       options: {
-//         name: `gatsby-starter-default`,
-//         short_name: `starter`,
-//         start_url: `/`,
-//         background_color: `#663399`,
-//         theme_color: `#663399`,
-//         display: `minimal-ui`,
-//         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-//       },
-//     },
-//   ],
-// }
+const path = require('path')
 
 module.exports = function ({
   contentPath = 'content',
@@ -37,12 +7,21 @@ module.exports = function ({
   baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
   mdxOtherwiseConfigured = false,
 }) {
-  console.log('options', arguments)
+  // console.log('options', arguments)
 
   return {
     plugins: [
       `gatsby-plugin-react-helmet`,
       'gatsby-transformer-remark',
+      {
+        resolve: 'gatsby-plugin-alias-imports',
+        options: {
+          // alias: {
+          //   "note-graph": path.join(__dirname, '../../node_modules/note-graph/dist/note-graph.js'),
+          // },
+          extensions: ['js']
+        }
+      },
       {
         resolve: 'gatsby-source-filesystem',
         options: {

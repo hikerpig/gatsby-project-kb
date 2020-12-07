@@ -1,9 +1,7 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
 // const { sourceNodes } = require('./gatsby-node-utils/source-nodes')
-// const { createSchemaCustomization } = require('./gatsby-node-utils/create-schema-customization')
 
 // exports.sourceNodes = sourceNodes
-// exports.createSchemaCustomization = createSchemaCustomization
 
 const fs = require(`fs`)
 const path = require(`path`)
@@ -111,24 +109,6 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
     })
   }
 }
-
-// exports.createResolvers = ({ createResolvers }) => {
-//   const resolvers = {
-//     MdxFrontmatter: {
-//       private: {
-//         type: `Boolean`,
-//         resolve(source, args, context, info) {
-//           const { private } = source;
-//           if (private == null) {
-//             return false;
-//           }
-//           return private;
-//         },
-//       },
-//     },
-//   };
-//   createResolvers(resolvers);
-// };
 
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions

@@ -1,42 +1,43 @@
 import React from 'react'
-// import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-type Note = {
-  title: string
-  slug: string
-  childMdx: {
-    body: () => string
+type Reference = {
+  __typename: string
+  body: string
+  parent: Omit<TopicFlie, 'childMax'> | null
+}
+
+type TopicFlie = {
+  fields: {
+    slug: string
+    title: string
   }
-  inboundReferencePreviews: {
-    source: string
-    previewHtml: string
-  }[]
-  outboundReferencePreviews: {
-    previewHtml: string
-  }[]
-  externalInboundReferences: {
-    sourceUrl: string
-    sourcePage: string
-    siteName: string
-    previewHtml: string
-  }[]
+  childMdx: {
+    body: string
+    inboundReferences: Reference[]
+    outboundReferences: Reference[]
+    frontmatter: {
+      title: string
+    }
+  }
 }
 
 type Props = {
-  note: Note
+  file: TopicFlie
 }
 
-const BrainNote = ({ note }: Props) => {
-  let references
+const Topic = ({ file }: Props) => {
   let referenceBlock
-  if (note.inboundReferencePreviews != null) {
-    references = note.inboundReferencePreviews.map(ref => (
-      <li key={ref.source}>
-        <div><a href={ref.source} className="topic__reference">{ref.source}</a></div>
-        <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} />
+  const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
+  const { title, slug } = file.fields
+  if (inboundReferences) {
+    const references = inboundReferences.map(ref => {
+      const { slug, title } = ref.parent?.fields!
+      return <li key={slug}>
+        <a href={slug} className="topic__reference">{title}</a>
+        {/* <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} /> */}
       </li>
-    ))
+    })
 
     if (references.length > 0) {
       referenceBlock = (
@@ -48,37 +49,15 @@ const BrainNote = ({ note }: Props) => {
     }
   }
 
-  let externalRefBlock
-  if (note.externalInboundReferences) {
-    let refs = note.externalInboundReferences.map(ref => (
-      <li key={ref.sourceUrl}>
-        <a href={ref.sourceUrl} className="topic__reference">
-          {ref.siteName}/{ref.sourcePage}
-        </a>
-        <br />
-        <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} />
-      </li>
-    ))
-    if (refs.length > 0) {
-      externalRefBlock = (
-        <>
-          <h2>External References</h2>
-          <ul>{refs}</ul>
-        </>
-      )
-    }
-  }
-
-  const shouldRenderTitle = note.title !== note.slug
+  const shouldRenderTitle = !!frontmatter.title
 
   return (
     <div className="topic">
-      {shouldRenderTitle ? <h1>{note.title}</h1>: null}
-      <MDXRenderer scope="">{note.childMdx.body}</MDXRenderer>
+      {shouldRenderTitle ? <h1>{title}</h1>: null}
+      <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
       {referenceBlock}
-      {externalRefBlock}
     </div>
   )
 }
 
-export default BrainNote
+export default Topic

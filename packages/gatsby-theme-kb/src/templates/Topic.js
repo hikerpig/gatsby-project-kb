@@ -3,7 +3,8 @@ import { graphql } from 'gatsby'
 
 import Topic from '../components/Topic'
 import Seo from '../components/seo'
-import Layout from '../components/layout'
+// import Layout from '../components/layout'
+import TopicLayout from '../components/TopicLayout'
 
 import GraphButton from '../components/GraphButton'
 
@@ -15,10 +16,10 @@ export default (props) => {
 
   const headerAddons = <GraphButton graphState="maximized" currentFileId={props.pageContext.id}></GraphButton>
   return (
-    <Layout headerAddons={headerAddons}>
+    <TopicLayout headerAddons={headerAddons}>
       <Seo title={file.fields.title}></Seo>
       <Topic file={file}></Topic>
-    </Layout>
+    </TopicLayout>
   )
 }
 

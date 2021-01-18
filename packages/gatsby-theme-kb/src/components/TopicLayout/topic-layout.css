@@ -1,4 +1,13 @@
+.topic-layout {
+  @apply bg-gray-50;
+}
+
 .topic-layout__content {
-  margin: auto;
   max-width: 960px;
+  @apply p-5;
+}
+
+.topic-layout__left {
+  width: 280px;
+  @apply bg-gray-100;
 }

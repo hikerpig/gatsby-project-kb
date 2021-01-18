@@ -18,19 +18,19 @@ export default function TopicLayout(props: Props) {
   `)
 
   return (
-    <div className="topic-layout">
+    <div className="topic-layout flex min-h-screen">
       <div className="topic-layout__left">
         Left
       </div>
       <div className="topic-layout__content">
         <main>{children}</main>
-        <footer style={{
+        {/* <footer style={{
           marginTop: `2rem`
         }}>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        </footer> */}
       </div>
     </div>
   )

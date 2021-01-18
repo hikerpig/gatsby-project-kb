@@ -53,6 +53,7 @@ module.exports = function ({
         },
       },
       'gatsby-transformer-markdown-references',
+      'gatsby-plugin-postcss',
       // {
       //   resolve: `gatsby-source-filesystem`,
       //   options: {

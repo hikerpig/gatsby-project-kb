@@ -2,7 +2,7 @@
   @apply bg-gray-50;
 }
 
-.topic-layout__content {
+.topic-layout__main {
   max-width: 960px;
   @apply p-5;
 }

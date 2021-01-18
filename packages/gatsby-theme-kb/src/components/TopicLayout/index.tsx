@@ -1,12 +1,15 @@
-import * as React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
-import './topic-layout.css';
+import * as React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import './topic-layout.css'
+
+import GraphButton from '../GraphButton'
 
 export type Props = React.PropsWithChildren<{
+  pageContext: any
 }>
 
 export default function TopicLayout(props: Props) {
-  const { children } = props;
+  const { children, pageContext } = props
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -17,20 +20,18 @@ export default function TopicLayout(props: Props) {
     }
   `)
 
+  const title = data.site!.siteMetadata.title
+
   return (
     <div className="topic-layout flex min-h-screen">
       <div className="topic-layout__left">
-        Left
+        <b>{title}</b>
       </div>
-      <div className="topic-layout__content">
-        <main>{children}</main>
-        {/* <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer> */}
+      <main className="topic-layout__main flex-grow">
+        <div className="topic-layout__content">{children}</div>
+      </main>
+      <div className="topic-layout__right p-5">
+        <GraphButton graphState="maximized" currentFileId={pageContext.id}></GraphButton>
       </div>
     </div>
   )

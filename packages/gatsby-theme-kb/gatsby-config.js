@@ -34,7 +34,13 @@ module.exports = function ({
         options: {
           extensions: [`.md`, `.mdx`],
           gatsbyRemarkPlugins: [
-            'gatsby-remark-double-brackets-link',
+            // 'gatsby-remark-double-brackets-link',
+            {
+              resolve: 'gatsby-remark-double-brackets-link',
+              options: {
+                stripBrackets: false,
+              }
+            },
             'gatsby-remark-double-parenthesis-link',
             // {
             //   resolve: `gatsby-remark-images`,

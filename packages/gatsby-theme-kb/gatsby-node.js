@@ -21,7 +21,7 @@ let mediaTypes
 exports.onPreBootstrap = async ({ store }, themeOptions) => {
   basePath = themeOptions.basePath || `/`
   contentPath = themeOptions.contentPath
-  rootNote = themeOptions.rootNote
+  rootNote = themeOptions.rootNote || '/readme'
   extensions = themeOptions.extensions || ['.md', '.mdx']
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
 }

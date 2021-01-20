@@ -1,31 +1,21 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+// import { useStaticQuery, graphql } from 'gatsby'
 import './topic-layout.css'
 
 import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
+import { PageContext } from '../../type'
 
 export type Props = React.PropsWithChildren<{
-  pageContext: any
+  pageContext: PageContext
 }>
 
 export default function TopicLayout(props: Props) {
   const { children, pageContext } = props
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  const title = data.site!.siteMetadata.title
 
   return (
     <div className="topic-layout flex min-h-screen">
-      <div className="topic-layout__left flex-shrink-0">
+      <div className="topic-layout__left flex-shrink-0 py-5 px-2">
         <SiteSidebar pageContext={pageContext}></SiteSidebar>
       </div>
       <main className="topic-layout__main flex-grow">

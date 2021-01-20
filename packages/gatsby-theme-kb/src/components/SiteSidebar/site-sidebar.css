@@ -1,0 +1,17 @@
+.site-sidebar__title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: large;
+}
+
+.site-sidebar__link {
+  color: black;
+}
+
+.site-sidebar__link:hover {
+  color: var(--kb-link-color);
+}
+
+.site-sidebar__link--cur {
+  background-color: var(--kb-tree-cur-color);
+}

@@ -11,3 +11,14 @@
   width: 280px;
   @apply bg-gray-100;
 }
+
+.topic-layout__right {
+  overflow-x: hidden;
+  width: 280px;
+}
+
+.topic-layout__left,
+.topic-layout__right {
+  height: 100vh;
+  overflow-y: auto;
+}

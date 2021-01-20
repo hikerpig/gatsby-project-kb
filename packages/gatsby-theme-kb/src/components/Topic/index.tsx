@@ -1,5 +1,6 @@
 import React from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import './topic.css'
 
 type Reference = {
   __typename: string

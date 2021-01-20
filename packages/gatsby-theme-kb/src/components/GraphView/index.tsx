@@ -91,7 +91,7 @@ export default function GraphView({
       <div
         className={`graph-view__modal modal-${graphState}`}
         onClick={(ev) => ev.preventDefault()}
-        style={{ display: shouldShowGraph ? 'block' : 'none' }}
+        style={{ display: shouldShowGraph ? 'flex' : 'none' }}
       >
         <div
           style={{

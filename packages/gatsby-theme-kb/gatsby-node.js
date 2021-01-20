@@ -1,7 +1,4 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
-// const { sourceNodes } = require('./gatsby-node-utils/source-nodes')
-
-// exports.sourceNodes = sourceNodes
 
 const fs = require(`fs`)
 const path = require(`path`)

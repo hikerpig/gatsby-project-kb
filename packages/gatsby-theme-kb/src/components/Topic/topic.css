@@ -1,0 +1,4 @@
+.topic ul,
+.topic ol {
+  list-style: inherit;
+}

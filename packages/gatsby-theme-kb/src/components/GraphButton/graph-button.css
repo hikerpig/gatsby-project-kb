@@ -5,9 +5,9 @@
 }
 
 .graph-button:hover {
-  fill: var(--link-color);
+  fill: var(--kb-link-color);
 }
 
 /* .graph-button svg {
-  fill: var(--link-color);
+  fill: var(--kb-link-color);
 } */

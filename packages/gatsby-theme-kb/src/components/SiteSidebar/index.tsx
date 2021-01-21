@@ -42,7 +42,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
           title
         }
       }
-      allMarkdownRemark {
+      allMdx {
         nodes {
           parent {
             id
@@ -63,7 +63,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
   `)
 
   const title = data.site!.siteMetadata.title
-  const nodes = data.allMarkdownRemark!.nodes as RemarkNode[]
+  const nodes = data.allMdx!.nodes as RemarkNode[]
 
   // console.log('data', data, pageContext)
   const treeNodes: TreeNodeRawData[] = []

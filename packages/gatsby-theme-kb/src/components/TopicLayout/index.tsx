@@ -21,8 +21,9 @@ export default function TopicLayout(props: Props) {
       <main className="topic-layout__main flex-grow">
         <div className="topic-layout__content">{children}</div>
       </main>
-      <div className="topic-layout__right p-5">
+      <div className="topic-layout__right flex-shrink-0 p-5">
         <GraphButton graphState="maximized" currentFileId={pageContext.id}></GraphButton>
+        <div id="toc" className="toc tocbot" />
       </div>
     </div>
   )

@@ -22,3 +22,7 @@
   height: 100vh;
   overflow-y: auto;
 }
+
+.topic-layout .tocbot {
+  margin-top: 10px;
+}

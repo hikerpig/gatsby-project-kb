@@ -12,7 +12,6 @@ module.exports = function ({
   return {
     plugins: [
       `gatsby-plugin-react-helmet`,
-      'gatsby-transformer-remark',
       {
         resolve: 'gatsby-plugin-alias-imports',
         options: {
@@ -33,6 +32,8 @@ module.exports = function ({
         resolve: `gatsby-plugin-mdx`,
         options: {
           extensions: [`.md`, `.mdx`],
+          remarkPlugins: [
+          ],
           gatsbyRemarkPlugins: [
             // 'gatsby-remark-double-brackets-link',
             {
@@ -67,6 +68,15 @@ module.exports = function ({
       //     path: `${__dirname}/src/images`,
       //   },
       // },
+      {
+        resolve: 'gatsby-plugin-tocbot',
+        options: {
+          tocbotOptions: {
+            contentSelector: '.topic-layout__main',
+            collapseDepth: 5,
+          }
+        },
+      }
     ],
   }
 }

@@ -1,0 +1,7 @@
+:root {
+  --toc-hover-color: #c45612;
+}
+
+.tocbot li {
+  margin-bottom: 0;
+}

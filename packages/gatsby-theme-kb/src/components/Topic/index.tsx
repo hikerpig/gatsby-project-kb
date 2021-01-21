@@ -1,27 +1,11 @@
 import React from 'react'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+// import { MDXRenderer } from 'gatsby-plugin-mdx'
+import MDXRenderer from '../mdx-components/MDXRenderer'
+import { TopicFlie } from '../../type'
+import AnchorTag from '../mdx-components/AnchorTag'
+import { MDXProvider } from "@mdx-js/react";
 import './topic.css'
 
-type Reference = {
-  __typename: string
-  body: string
-  parent: Omit<TopicFlie, 'childMax'> | null
-}
-
-type TopicFlie = {
-  fields: {
-    slug: string
-    title: string
-  }
-  childMdx: {
-    body: string
-    inboundReferences: Reference[]
-    outboundReferences: Reference[]
-    frontmatter: {
-      title: string
-    }
-  }
-}
 
 type Props = {
   file: TopicFlie
@@ -31,6 +15,13 @@ const Topic = ({ file }: Props) => {
   let referenceBlock
   const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
   const { title, slug } = file.fields
+
+  // console.log('outboundReferences', outboundReferences, 'inboundReferences', inboundReferences)
+
+  const ProvidedAnchorTag = (anchorProps) => {
+    return <AnchorTag {...anchorProps} references={outboundReferences}></AnchorTag>
+  }
+
   if (inboundReferences) {
     const references = inboundReferences.map(ref => {
       const { slug, title } = ref.parent?.fields!
@@ -55,7 +46,9 @@ const Topic = ({ file }: Props) => {
   return (
     <div className="topic">
       {shouldRenderTitle ? <h1>{title}</h1>: null}
-      <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
+      <MDXProvider components={{ a: ProvidedAnchorTag }}>
+        <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
+      </MDXProvider>
       {referenceBlock}
     </div>
   )

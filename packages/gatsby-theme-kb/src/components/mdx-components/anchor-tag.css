@@ -1,0 +1,62 @@
+.anchor-tag__popover {
+  position: relative;
+  max-width: 26rem;
+  box-shadow: 0 1px 3px var(--kb-shadow-bg);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--kb-references-bg);
+  max-height: 26rem;
+  overflow: overlay;
+}
+
+.anchor-tag__popover.no-max-width {
+  max-width: 90vw;
+}
+
+.anchor-tag__popover.with-markdown {
+  font-size: 0.875rem;
+}
+
+.anchor-tag__popover h1,
+.anchor-tag__popover h2,
+.anchor-tag__popover h3,
+.anchor-tag__popover h4,
+.anchor-tag__popover h5,
+.anchor-tag__popover h6 {
+  margin-bottom: 5px;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.anchor-tag__popover blockquote {
+  margin-left: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.anchor-tag__popover ul {
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.anchor-tag__popover li {
+  margin-bottom: 0;
+}
+
+/* copied from tippy.js/animations/shift-away.css */
+.tippy-box[data-animation='shift-away'][data-state='hidden'] {
+  opacity: 0;
+}
+.tippy-box[data-animation='shift-away'][data-state='hidden'][data-placement^='top'] {
+  transform: translateY(10px);
+}
+.tippy-box[data-animation='shift-away'][data-state='hidden'][data-placement^='bottom'] {
+  transform: translateY(-10px);
+}
+.tippy-box[data-animation='shift-away'][data-state='hidden'][data-placement^='left'] {
+  transform: translateX(10px);
+}
+.tippy-box[data-animation='shift-away'][data-state='hidden'][data-placement^='right'] {
+  transform: translateX(-10px);
+}

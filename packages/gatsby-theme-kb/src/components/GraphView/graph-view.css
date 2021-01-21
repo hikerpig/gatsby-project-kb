@@ -36,6 +36,11 @@
   justify-content: center;
 }
 
+.graph-view__modal-hint {
+  color: var(--kb-text-inverse-color);
+  font-size: 1.5em;
+}
+
 .modal-close,
 .modal-scale {
   position: absolute;
@@ -44,7 +49,7 @@
   padding: 5px;
   border: 0;
   background: none;
-  color: var(--text);
+  color: var(--kb-text-color);
   cursor: pointer;
 }
 

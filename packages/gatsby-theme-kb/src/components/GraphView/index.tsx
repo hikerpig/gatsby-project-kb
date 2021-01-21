@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { NoteGraphView, NoteGraphModel } from 'note-graph/dist/note-graph.esm'
 import { navigate } from 'gatsby'
 import { createPortal } from 'react-dom'
 import { useGraphData } from '../..//use-graph-data'
 import { useWindowSize } from '../../use-window-size'
-import { NoteGraphView, NoteGraphModel } from 'note-graph/dist/note-graph.esm'
+import useHotkeys from '@reecelucas/react-use-hotkeys'
 
 import './graph-view.css'
 
@@ -12,9 +13,11 @@ import './graph-view.css'
 //   height: 177,
 // }
 
+type GraphState = 'show' | 'hidden'
+
 type Props = {
   graphState: string
-  setGraphState: (state: string) => void
+  setGraphState: (state: GraphState) => void
   currentFileId: string
 }
 
@@ -76,6 +79,10 @@ export default function GraphView({
     }
   }, [notes, graphState, graphContainer])
 
+  useHotkeys('Escape Escape', () => {
+    setGraphState('hidden')
+  })
+
   return createPortal(
     <div>
       <div
@@ -111,11 +118,10 @@ export default function GraphView({
               <path d="M11.997 9.90045L20.9 1L23 3.09955L14.097 12L23 20.9005L20.9 23L11.997 14.0995L3.10001 22.994L1 20.8944L9.89699 12L1 3.10558L3.10001 1.00603L11.997 9.90045Z" />
             </svg>
           </button>
-          <div
-            className="modal-body"
-            ref={graphContainer}
-            id="graph-container"
-          ></div>
+          <div className="modal-body">
+            <div ref={graphContainer} id="graph-container"></div>
+            <div className="graph-view__modal-hint">Press Esc twice to close this modal.</div>
+          </div>
         </div>
       </div>
     </div>,

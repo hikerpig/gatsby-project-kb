@@ -1,6 +1,7 @@
 import React from 'react'
-import { withPrefix } from 'gatsby'
+import { withPrefix, Link } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
+import * as path from 'path'
 import MDXRenderer from './MDXRenderer'
 import Tippy from '@tippyjs/react'
 import { Reference } from '../../type'
@@ -13,7 +14,29 @@ type Props = React.PropsWithChildren<{
   withoutLink: boolean
   withoutPopup: boolean
   references: Reference[]
+  currentSlug: string
+  currentLocation: Location
 }>
+
+function genHrefInfo(opts: { currentSlug: string, href: string}) {
+  const {href, currentSlug } = opts
+  let isLocalHash = false
+  const isExternalLink = /\/\//.test(href)
+  let anchorSlug = href
+  if (!isExternalLink) {
+    if (href.startsWith('#')) {
+      anchorSlug = currentSlug
+      isLocalHash = true
+    } else if (href.startsWith('..') || !href.startsWith('/')) {
+      anchorSlug = path.resolve(path.dirname(currentSlug), href)
+    }
+  }
+  return {
+    anchorSlug,
+    isExternalLink,
+    isLocalHash,
+  }
+}
 
 const AnchorTag = ({
   title,
@@ -21,11 +44,17 @@ const AnchorTag = ({
   references = [],
   withoutLink,
   withoutPopup,
+  currentSlug,
+  currentLocation,
   ...restProps
 }: Props) => {
+  // prettier-ignore
+  const { anchorSlug } = genHrefInfo({ currentSlug, href })
+
   const ref = references.find((x) => {
-    return withPrefix(x.parent?.fields.slug || '') === withPrefix(href)
+    return withPrefix(x.parent?.fields.slug || '') === anchorSlug
   })
+  // console.log('ref', ref, 'anchorSlug', anchorSlug, references)
 
   let content
   let popupContent
@@ -37,7 +66,8 @@ const AnchorTag = ({
     const mdxBody = ref.body
     const nestedComponents = {
       a(props) {
-        return <AnchorTag {...props} references={references} withoutLink />
+        const { anchorSlug: nestedAnchorSlug } = genHrefInfo({ currentSlug, href: props.href })
+        return <Link to={nestedAnchorSlug}>{props.children}</Link>
       },
       p(props) {
         return <span {...props} />
@@ -60,13 +90,14 @@ const AnchorTag = ({
       </div>
     )
     child = (
-      <a {...restProps} href={fileds.slug} title={title}>
+      <Link {...restProps} to={fileds.slug} title={title}>
         {content}
-      </a>
+      </Link>
     )
   } else {
     content = restProps.children
     popupContent = <div className="popover no-max-width">{href}</div>
+    // console.log('no ref', anchorSlug)
     child = (
       <a
         {...restProps}

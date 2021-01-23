@@ -13,7 +13,7 @@ export default (props) => {
   return (
     <TopicLayout pageContext={props.pageContext}>
       <Seo title={file.fields.title}></Seo>
-      <Topic file={file}></Topic>
+      <Topic file={file} currentLocation={props.location}></Topic>
     </TopicLayout>
   )
 }

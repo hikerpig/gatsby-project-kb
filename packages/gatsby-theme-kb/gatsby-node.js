@@ -75,29 +75,12 @@ exports.createResolvers = ({ createResolvers }) => {
 
 exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   const { createNodeField } = actions
-
-  if (node.internal.type === `RoamPage` && node.sourceUrl === roamUrl) {
-    createNodeField({
-      node,
-      name: `slug`,
-      value: urlResolve(basePath, slugify(node.title)),
-    })
-  }
-  if (node.internal.type === `RoamBlock` && node.sourceUrl === roamUrl) {
-    if (!node.uid) {
-      return
-    }
-    createNodeField({
-      node,
-      name: `slug`,
-      value: urlResolve(basePath, slugify(node.uid)),
-    })
-  }
   if (node.internal.type === `File` && shouldHandleFile(node, options)) {
+    const slug = urlResolve(basePath, path.parse(node.relativePath).dir, node.name)
     createNodeField({
       node,
       name: `slug`,
-      value: urlResolve(basePath, path.parse(node.relativePath).dir, node.name),
+      value: slug,
     })
     createNodeField({
       node,

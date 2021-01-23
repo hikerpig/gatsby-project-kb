@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
+import * as HEADER_COMPONENTS from '../mdx-components/header-components'
 import { MDXProvider } from '@mdx-js/react'
 import './topic.css'
 
@@ -64,7 +65,7 @@ const Topic = ({ file, currentLocation }: Props) => {
   return (
     <div className="topic">
       {shouldRenderTitle ? <h1>{frontmatter.title || title}</h1> : null}
-      <MDXProvider components={{ a: ProvidedAnchorTag }}>
+      <MDXProvider components={{ a: ProvidedAnchorTag, ...HEADER_COMPONENTS }}>
         <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
       </MDXProvider>
       {referenceBlock}

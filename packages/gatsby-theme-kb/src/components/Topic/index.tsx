@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link} from 'gatsby'
 // import { MDXRenderer } from 'gatsby-plugin-mdx'
 import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie } from '../../type'
@@ -26,7 +27,7 @@ const Topic = ({ file }: Props) => {
     const references = inboundReferences.map(ref => {
       const { slug, title } = ref.parent?.fields!
       return <li key={slug}>
-        <a href={slug} className="topic__reference">{title}</a>
+        <Link to={slug} className="topic__reference">{title}</Link>
         {/* <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} /> */}
       </li>
     })

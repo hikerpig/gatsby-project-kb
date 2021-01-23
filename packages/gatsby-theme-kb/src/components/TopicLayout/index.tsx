@@ -23,7 +23,7 @@ export default function TopicLayout(props: Props) {
       </main>
       <div className="topic-layout__right flex-shrink-0 p-5">
         <GraphButton graphState="maximized" currentFileId={pageContext.id}></GraphButton>
-        <div id="toc" className="toc tocbot" />
+        <div id="toc" className="toc tocbot js-toc" />
       </div>
     </div>
   )

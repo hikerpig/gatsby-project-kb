@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useStaticQuery, graphql, navigate } from 'gatsby'
+import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import { PageContext } from '../../type'
 import './site-sidebar.css'
@@ -128,9 +128,9 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     }
     if (data.isLeaf) {
       return (
-        <a className={`site-sidebar__link ${labelClassName}`} onClick={onNodeSelect} href={slug}>
+        <Link className={`site-sidebar__link ${labelClassName}`} onClick={onNodeSelect} to={slug}>
           {data.label}
-        </a>
+        </Link>
       )
     } else {
       return (

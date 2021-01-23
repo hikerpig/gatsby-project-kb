@@ -2,9 +2,10 @@ import * as React from 'react'
 // import { useStaticQuery, graphql } from 'gatsby'
 import './topic-layout.css'
 
+import { PageContext } from '../../type'
 import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
-import { PageContext } from '../../type'
+import Search from '../Search'
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
@@ -22,7 +23,10 @@ export default function TopicLayout(props: Props) {
         <div className="topic-layout__content">{children}</div>
       </main>
       <div className="topic-layout__right flex-shrink-0 p-5">
-        <GraphButton graphState="maximized" currentFileId={pageContext.id}></GraphButton>
+        <div className="flex">
+          <GraphButton graphState="maximized" currentFileId={pageContext.id}></GraphButton>
+          <Search></Search>
+        </div>
         <div id="toc" className="toc tocbot js-toc" />
       </div>
     </div>

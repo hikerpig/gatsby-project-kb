@@ -1,12 +1,14 @@
 const path = require('path')
+const makeSearchPlugins = require('./gatsby-node-utils/makeSearchPlugins')
 
-module.exports = function ({
-  contentPath = 'content',
-  notesFileExtensions = ['.md', '.mdx'], // File extensions that will be used to generate pages
-  additionalNoteTypes = {}, // Mapping object from note type keys to template paths
-  baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
-  mdxOtherwiseConfigured = false,
-}) {
+module.exports = function (options) {
+  const {
+    contentPath = 'content',
+    notesFileExtensions = ['.md', '.mdx'], // File extensions that will be used to generate pages
+    additionalNoteTypes = {}, // Mapping object from note type keys to template paths
+    baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
+    mdxOtherwiseConfigured = false,
+  } = options
   // console.log('options', arguments)
 
   return {
@@ -15,9 +17,6 @@ module.exports = function ({
       {
         resolve: 'gatsby-plugin-alias-imports',
         options: {
-          // alias: {
-          //   "note-graph": path.join(__dirname, '../../node_modules/note-graph/dist/note-graph.js'),
-          // },
           extensions: ['js']
         }
       },
@@ -76,7 +75,8 @@ module.exports = function ({
             collapseDepth: 5,
           }
         },
-      }
+      },
+      ...makeSearchPlugins(options),
     ],
   }
 }

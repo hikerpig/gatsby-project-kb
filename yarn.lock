@@ -5536,6 +5536,11 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
+compute-scroll-into-view@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.npm.taobao.org/compute-scroll-into-view/download/compute-scroll-into-view-1.0.16.tgz#5b7bf4f7127ea2c19b750353d7ce6776a90ee088"
+  integrity sha1-W3v09xJ+osGbdQNT185ndqkO4Ig=
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -7174,6 +7179,16 @@ download@^7.1.0:
     p-event "^2.1.0"
     pify "^3.0.0"
 
+downshift@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.npm.taobao.org/downshift/download/downshift-6.1.0.tgz#f008063d9b63935910d9db12ead07979ab51ce66"
+  integrity sha1-8AgGPZtjk1kQ2dsS6tB5eatRzmY=
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    compute-scroll-into-view "^1.0.16"
+    prop-types "^15.7.2"
+    react-is "^17.0.1"
+
 duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.npmjs.org/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
@@ -8344,6 +8359,11 @@ flatted@^2.0.0:
   resolved "https://registry.npmjs.org/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
+flexsearch@^0.6.32:
+  version "0.6.32"
+  resolved "https://registry.npm.taobao.org/flexsearch/download/flexsearch-0.6.32.tgz#1e20684d317af65baa445cdd9864a5f5b320f510"
+  integrity sha1-HiBoTTF69luqRFzdmGSl9bMg9RA=
+
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -8662,6 +8682,16 @@ gatsby-plugin-alias-imports@^1.0.5:
   integrity sha512-q58JrSjuVNh4NApamqElR0zqwm55FOb9vFAVb2i2ftPRu0uYzWJkbOz2IN3vSw7a+5PmGzX7VL8XDFXlNHrMNA==
   dependencies:
     "@babel/runtime" "^7.2.0"
+
+gatsby-plugin-local-search@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/gatsby-plugin-local-search/download/gatsby-plugin-local-search-2.0.0.tgz#05d0c2a6e1855fec6d3d0a19508c0f0e35c5514b"
+  integrity sha1-BdDCpuGFX+xtPQoZUIwPDjXFUUs=
+  dependencies:
+    flexsearch "^0.6.32"
+    lodash "^4.17.19"
+    lunr "^2.3.8"
+    pascal-case "^3.1.1"
 
 gatsby-plugin-manifest@^2.6.1:
   version "2.10.0"
@@ -12424,6 +12454,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lunr@^2.3.8:
+  version "2.3.9"
+  resolved "https://registry.npm.taobao.org/lunr/download/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
+  integrity sha1-GLEjFCgyM33W6WTfGlp3B7JdNeE=
+
 macos-release@^2.2.0:
   version "2.4.1"
   resolved "https://registry.npmjs.org/macos-release/-/macos-release-2.4.1.tgz#64033d0ec6a5e6375155a74b1a1eba8e509820ac"
@@ -15430,6 +15465,11 @@ react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-is@^17.0.1:
+  version "17.0.1"
+  resolved "https://registry.npm.taobao.org/react-is/download/react-is-17.0.1.tgz?cache=0&sync_timestamp=1610380868622&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
+  integrity sha1-WzUxvXamRaTJ+25pPtNkGeMwEzk=
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -18971,10 +19011,8 @@ watchpack@^1.7.4:
   resolved "https://registry.npmjs.org/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

@@ -3,6 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const fs = require(`fs`)
 const path = require(`path`)
 const { urlResolve, createContentDigest } = require(`gatsby-core-utils`)
+const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
 const slugify = require(`slugify`)
 const {
   findTopLevelHeading,
@@ -42,16 +43,6 @@ function getTitle(node, content) {
     (typeof node.absolutePath === 'string'
       ? path.basename(node.absolutePath, path.extname(node.absolutePath))
       : '')
-  )
-}
-
-function shouldHandleFile(node, options = {}) {
-  return (
-    ((options.extensions || ['.md', '.mdx']).includes(node.ext) ||
-      (options.mediaTypes || ['text/markdown', 'text/x-markdown']).includes(
-        node.internal.mediaType
-      )) &&
-    node.sourceInstanceName === options.contentPath
   )
 }
 

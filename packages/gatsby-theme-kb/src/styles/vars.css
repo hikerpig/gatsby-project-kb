@@ -1,9 +1,11 @@
 :scope {
   --kb-link-color: #ff6156;
-  --kb-tree-cur-color: #E7E5E4;
+  --kb-tree-cur-color: #e7e5e4;
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
   --kb-text-color: #111;
   --kb-text-inverse-color: white;
-  --kb-references-bg: #fafafa;
+  --kb-references-bg: #eaeaea;
+  --kb-note-bg: #f9fafb;
+  --kb-separator-color: #ddd;
 }

@@ -21,6 +21,9 @@ export interface ISiteSidebarProps {
 }
 
 type RemarkNode = {
+  frontmatter?: {
+    title: string
+  }
   parent: {
     id: string
     relativeDirectory: string
@@ -44,6 +47,9 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       }
       allMdx {
         nodes {
+          frontmatter {
+            title
+          }
           parent {
             id
             ... on File {
@@ -100,7 +106,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     const parentNode = file.relativeDirectory ? treeDataMap[file.relativeDirectory]: null
     const treeNode: TreeNodeRawData = {
       id: file.id,
-      label: file.fields.title,
+      label: node.frontmatter?.title || file.fields.title,
       parentId: parentNode ? parentNode.id: null,
       isLeaf: true,
     }
@@ -144,11 +150,13 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       <div className="site-sidebar__title">
         {title}
       </div>
-      <TreeView
-        nodes={treeNodes}
-        onSelect={onNodeSelect}
-        renderLabel={renderLabel}
-      ></TreeView>
+      <div className="site-sidebar__files">
+        <TreeView
+          nodes={treeNodes}
+          onSelect={onNodeSelect}
+          renderLabel={renderLabel}
+        ></TreeView>
+      </div>
     </div>
   )
 }

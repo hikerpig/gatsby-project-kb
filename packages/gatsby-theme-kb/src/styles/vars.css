@@ -5,7 +5,8 @@
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
   --kb-text-color: #111;
   --kb-text-inverse-color: white;
-  --kb-references-bg: #eaeaea;
+  --kb-references-bg:  #fafafa;
+  --kb-search-highlight-bg: #eaeaea;
   --kb-note-bg: #f9fafb;
   --kb-separator-color: #ddd;
 }

@@ -4,9 +4,6 @@ const makeSearchPlugins = require('./gatsby-node-utils/makeSearchPlugins')
 module.exports = function (options) {
   const {
     contentPath = 'content',
-    notesFileExtensions = ['.md', '.mdx'], // File extensions that will be used to generate pages
-    additionalNoteTypes = {}, // Mapping object from note type keys to template paths
-    baseUrl = '', // Set the base url for your site (e.g. in this case https://example.com/brain)
     mdxOtherwiseConfigured = false,
   } = options
   // console.log('options', arguments)
@@ -49,24 +46,11 @@ module.exports = function (options) {
             //   },
             // },
             // `gatsby-remark-copy-linked-files`,
-            // {
-            //   resolve: `gatsby-remark-autolink-headers`,
-            //   options: {
-            //     icon: false,
-            //   },
-            // },
           ],
         },
       },
       'gatsby-transformer-markdown-references',
       'gatsby-plugin-postcss',
-      // {
-      //   resolve: `gatsby-source-filesystem`,
-      //   options: {
-      //     name: `images`,
-      //     path: `${__dirname}/src/images`,
-      //   },
-      // },
       {
         resolve: 'gatsby-plugin-tocbot',
         options: {

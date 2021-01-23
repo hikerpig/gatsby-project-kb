@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { navigate } from 'gatsby'
 import Downshift from 'downshift'
@@ -104,7 +104,7 @@ function Results({
             style: {
               background:
                 highlightedIndex === index
-                  ? 'var(--kb-references-bg)'
+                  ? 'var(--kb-search-highlight-bg)'
                   : 'var(--kb-note-bg)',
             },
           })}

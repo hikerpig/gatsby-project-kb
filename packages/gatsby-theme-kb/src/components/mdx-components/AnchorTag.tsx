@@ -18,8 +18,8 @@ type Props = React.PropsWithChildren<{
   currentLocation: Location
 }>
 
-function genHrefInfo(opts: { currentSlug: string, href: string}) {
-  const {href, currentSlug } = opts
+function genHrefInfo(opts: { currentSlug: string; href: string }) {
+  const { href, currentSlug } = opts
   let isLocalHash = false
   const isExternalLink = /\/\//.test(href)
   let anchorSlug = href
@@ -66,19 +66,20 @@ const AnchorTag = ({
     const mdxBody = ref.body
     const nestedComponents = {
       a(props) {
-        const { anchorSlug: nestedAnchorSlug } = genHrefInfo({ currentSlug, href: props.href })
-        return <Link to={nestedAnchorSlug}>{props.children}</Link>
+        const {
+          anchorSlug: nestedAnchorSlug,
+          isExternalLink: nestedIsExternalLink,
+        } = genHrefInfo({ currentSlug, href: props.href })
+        return nestedIsExternalLink ? (
+          <a href={props.href}>{props.children}</a>
+        ) : (
+          <Link to={nestedAnchorSlug}>{props.children}</Link>
+        )
       },
       p(props) {
         return <span {...props} />
       },
     }
-    // content =
-    //   (
-    //     <MDXProvider components={nestedComponents}>
-    //       <MDXRenderer>{mdxBody}</MDXRenderer>
-    //     </MDXProvider>
-    //   )
     content = restProps.children
     popupContent = (
       <div id={ref.parent.id} className="anchor-tag__popover with-markdown">

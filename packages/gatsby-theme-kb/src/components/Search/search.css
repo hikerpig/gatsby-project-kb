@@ -60,7 +60,7 @@
 }
 
 .results li:hover {
-  background: var(--kb-references-bg);
+  background: var(--kb-search-highlight-bg);
 }
 
 .results li .title {

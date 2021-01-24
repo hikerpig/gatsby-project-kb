@@ -4,9 +4,12 @@ import { graphql } from 'gatsby'
 import Topic from '../components/Topic'
 import Seo from '../components/seo'
 import TopicLayout from '../components/TopicLayout'
+import { isServer } from '../env'
 
 export default (props) => {
-  console.log('props', props)
+  if (!isServer) {
+    console.debug('Topic props', props)
+  }
 
   const file = props.data.file
 

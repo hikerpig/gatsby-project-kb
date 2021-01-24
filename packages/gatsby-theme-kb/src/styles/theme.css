@@ -1,6 +1,4 @@
 .dark-mode {
-  --light-1: #3b4252;
-  --light-2: #2e3440;
   --kb-link-color: #ff776d;
   --kb-tree-cur-color: var(--dark-3);
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
@@ -9,5 +7,9 @@
   --kb-text-inverse-color: white;
   --kb-references-bg:  #fafafa;
   --kb-search-highlight-bg: #eaeaea;
-  --kb-separator-color: #ddd;
+  --kb-separator-color: #999;
+  --kb-scrollbar-thumb: var(--dark-4);
+
+  --bg-color-1: var(--dark-2);
+  --bg-color-2: var(--dark-1);
 }

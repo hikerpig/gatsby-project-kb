@@ -1,5 +1,5 @@
 body {
-  --toc-hover-color: #c45612;
+  --toc-text-hover-color: var(--kb-link-color);
   --toc-cur-highlight-color: var(--kb-text-color);
 }
 
@@ -8,9 +8,10 @@ body {
 }
 
 .toc-link::before {
-  line-height: 1.4em;
+  height: 1.4em;
+  background-color: transparent;
 }
 
-/* .is-active-link::before {
-  background-color: red;
-} */
+.toc-link.is-active-link::before {
+  background-color: var(--toc-cur-highlight-color);
+}

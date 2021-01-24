@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useScrollRestoration } from 'gatsby-react-router-scroll'
 // import { useStaticQuery, graphql } from 'gatsby'
 import './topic-layout.css'
 
@@ -11,8 +12,10 @@ export type Props = React.PropsWithChildren<{
   pageContext: PageContext
 }>
 
+
 export default function TopicLayout(props: Props) {
   const { children, pageContext } = props
+  const tocRestoration = useScrollRestoration('toc')
 
   return (
     <div className="topic-layout flex min-h-screen">
@@ -25,7 +28,10 @@ export default function TopicLayout(props: Props) {
       <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block">
         <GraphButton currentFileId={pageContext.id}></GraphButton>
         <DarkModeToggle></DarkModeToggle>
-        <div id="toc" className="toc tocbot js-toc" />
+
+        <div {...tocRestoration}>
+          <div id="toc" className="toc tocbot js-toc" />
+        </div>
       </div>
     </div>
   )

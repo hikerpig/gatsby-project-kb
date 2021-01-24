@@ -1,6 +1,7 @@
 .site-sidebar {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .site-sidebar__title {

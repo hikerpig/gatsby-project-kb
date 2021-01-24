@@ -2,11 +2,18 @@
 :scope {
   --light-1: #F9FAFB;
   --light-2: #F3F4F6;
+  --light-3: #E7E5E4;
+  --light-4: #ffffff;
 
-  --dark-0:  #2e3440;
-  --dark-1:  #3b4252;
-  --dark-2:  #434c5e;
-  --dark-3:  #4c566a;
+  --dark-1:  #2e3440;
+  --dark-2:  #3b4252;
+  --dark-3:  #434c5e;
+  --dark-4:  #4c566a;
+
+  --frost0: #8fbcbb;
+  --frost1: #88c0d0;
+  --frost2: #81a1c1;
+  --frost3: #5e81ac;
 
   --red:    #bf616a;
   --orange: #d08770;
@@ -25,6 +32,10 @@ body {
   --kb-text-inverse-color: white;
   --kb-references-bg:  #fafafa;
   --kb-search-highlight-bg: #eaeaea;
-  --kb-note-bg: var(--light-1);
+  --kb-note-bg: var(--bg-color-1);
   --kb-separator-color: #ddd;
+  --kb-scrollbar-thumb: #ddd;
+
+  --bg-color-1: #F9FAFB;
+  --bg-color-2: #F3F4F6;
 }

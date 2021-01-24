@@ -57,6 +57,7 @@ module.exports = function (options) {
           tocbotOptions: {
             contentSelector: '.topic-layout__main',
             collapseDepth: 5,
+            scrollContainer: '.topic-layout__main',
           }
         },
       },

@@ -8,7 +8,7 @@
 
 .topic-layout__left {
   width: 280px;
-  background-color: var(--light-2);
+  background-color: var(--bg-color-2);
 }
 
 .topic-layout__right {

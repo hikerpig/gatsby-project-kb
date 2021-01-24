@@ -5,6 +5,7 @@ import { TopicFlie } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
 import * as HEADER_COMPONENTS from '../mdx-components/header-components'
 import { MDXProvider } from '@mdx-js/react'
+import slugify from 'slugify'
 import './topic.css'
 
 type Props = {
@@ -61,10 +62,11 @@ const Topic = ({ file, currentLocation }: Props) => {
   }
 
   const shouldRenderTitle = !!frontmatter.title
+  const realTitle = frontmatter.title || title
 
   return (
     <div className="topic">
-      {shouldRenderTitle ? <h1>{frontmatter.title || title}</h1> : null}
+      {shouldRenderTitle ? <h1 id={slugify(realTitle)}>{realTitle}</h1> : null}
       <MDXProvider components={{ a: ProvidedAnchorTag, ...HEADER_COMPONENTS }}>
         <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
       </MDXProvider>

@@ -18,10 +18,10 @@
   "scripts": {
     "lerna": "lerna",
     "dev": "yarn workspace demo develop",
-    "demo:build": "yarn workspace demo build",
+    "demo:build": "NODE_ENV=production yarn workspace demo build",
     "test": "lerna run test --",
     "lint": "lerna run lint -- --fix",
-    "build": "lerna run build",
+    "build": "yarn demo:build",
     "prepublish": "lerna run prepublish",
     "start:app": "yarn run build && yarn --cwd example && yarn --cwd example start"
   }

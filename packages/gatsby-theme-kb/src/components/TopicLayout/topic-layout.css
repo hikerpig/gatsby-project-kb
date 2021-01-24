@@ -1,14 +1,15 @@
 .topic-layout {
-  background-color: var(--kb-note-bg);
+  max-width: 1380px;
+  margin: auto;
 }
 
 .topic-layout__main {
   max-width: 960px;
+  background-color: var(--kb-note-bg);
 }
 
 .topic-layout__left {
   width: 280px;
-  background-color: var(--bg-color-2);
 }
 
 .topic-layout__right {

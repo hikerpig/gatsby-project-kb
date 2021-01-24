@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--kb-text-color);
+  background-color: var(--bg-color-2);
   font-family: var(--kb-font-family);
   font-weight: normal;
   word-wrap: break-word;
@@ -436,7 +437,7 @@ blockquote {
   padding-top: 0;
   padding: 1.45rem;
   margin-bottom: 1.45rem;
-  background-color: var(--bg-color-2);
+  background-color: var(--kb-blockquote-bg);
   border-left: 2px solid var(--kb-text-color);
 }
 form {

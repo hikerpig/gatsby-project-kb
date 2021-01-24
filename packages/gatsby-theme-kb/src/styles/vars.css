@@ -35,6 +35,7 @@ body {
   --kb-note-bg: var(--bg-color-1);
   --kb-separator-color: #ddd;
   --kb-scrollbar-thumb: #ddd;
+  --kb-blockquote-bg: #f9f9f9;
 
   --bg-color-1: #F9FAFB;
   --bg-color-2: #F3F4F6;

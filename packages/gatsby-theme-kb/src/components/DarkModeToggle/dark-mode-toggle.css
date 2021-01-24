@@ -28,16 +28,16 @@
 }
 .dark-mode-toggle input + div:after {
   content: "";
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   margin: -2px 0 0 -2px;
   position: absolute;
   top: 50%;
   left: 50%;
-  box-shadow: 0 -13px 0 var(--kb-text-color), 0 13px 0 var(--kb-text-color), 13px 0 0 var(--kb-text-color),
-    -13px 0 0 var(--kb-text-color), 10px 10px 0 var(--kb-text-color), -10px 10px 0 var(--kb-text-color),
-    10px -10px 0 var(--kb-text-color), -10px -10px 0 var(--kb-text-color);
+  box-shadow: 0 -11px 0 var(--kb-text-color), 0 11px 0 var(--kb-text-color), 11px 0 0 var(--kb-text-color),
+    -11px 0 0 var(--kb-text-color), 8px 8px 0 var(--kb-text-color), -8px 8px 0 var(--kb-text-color),
+    8px -8px 0 var(--kb-text-color), -8px -8px 0 var(--kb-text-color);
   transform: scale(0);
   transition: all 0.3s ease;
 }

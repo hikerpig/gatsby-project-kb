@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
+import Search from '../Search'
 import { PageContext } from '../../type'
 import './site-sidebar.css'
 
@@ -146,9 +147,12 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
   }
 
   return (
-    <div className="site-sidebar">
+    <div className="site-sidebar py-5 px-2">
       <div className="site-sidebar__title">
         {title}
+      </div>
+      <div className="site-sidebar__search">
+        <Search></Search>
       </div>
       <div className="site-sidebar__files">
         <TreeView

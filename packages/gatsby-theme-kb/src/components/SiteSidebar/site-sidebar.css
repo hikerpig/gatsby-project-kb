@@ -1,7 +1,6 @@
 .site-sidebar {
   display: flex;
   flex-direction: column;
-  height: 90vh;
 }
 
 .site-sidebar__title {
@@ -23,5 +22,9 @@
 }
 
 .site-sidebar__files {
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.site-sidebar__search {
+  margin: 5px 15px 15px 0;
 }

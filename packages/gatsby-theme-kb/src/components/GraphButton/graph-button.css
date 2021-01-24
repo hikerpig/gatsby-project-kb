@@ -2,12 +2,15 @@
   border: 0;
   background: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .graph-button:hover {
   fill: var(--kb-link-color);
+  color: var(--kb-link-color);
 }
 
-/* .graph-button svg {
-  fill: var(--kb-link-color);
-} */
+.graph-button__hint {
+  margin-left: 5px;
+}

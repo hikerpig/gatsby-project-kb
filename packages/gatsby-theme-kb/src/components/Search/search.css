@@ -11,7 +11,7 @@
 .inputWrapper .searchIcon {
   position: absolute;
   left: 2px;
-  height: 34px;
+  width: 22px;
   padding: 2px;
   padding-bottom: 0px;
   pointer-events: none;
@@ -23,18 +23,17 @@
 
 .inputWrapper input {
   color: var(--kb-text-color);
-  font-size: 1rem;
-  border: none;
-  height: 36px;
+  border: 1px solid transparent;
+  height: 26px;
+  width: 100%;
+  outline: none;
   padding-left: 28px;
   background-color: var(--kb-note-bg);
   transition: all 0.3s ease-in-out;
-  width: 28px;
 }
 
 .inputWrapper input:focus {
-  outline: none;
-  width: 100%;
+  border-color: inherit;
 }
 
 .results {

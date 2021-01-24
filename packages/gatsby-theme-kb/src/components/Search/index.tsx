@@ -89,7 +89,7 @@ function Results({
       const searchBarBox = sRef.current.getBoundingClientRect()
       return {
         top: searchBarBox.top + searchBarBox.height + 10,
-        right: 20,
+        left: searchBarBox.left,
       }
     })()
     : {}

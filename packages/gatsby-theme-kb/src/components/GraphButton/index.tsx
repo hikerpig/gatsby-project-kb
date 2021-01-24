@@ -4,7 +4,7 @@ import './graph-button.css'
 
 const Graph = lazy(() => import('../GraphView'))
 
-const svgIconContent =`
+const svgIconContent = `
 <svg
   t="1607341341241"
   class="icon"
@@ -25,17 +25,19 @@ const svgIconContent =`
 
 const GraphButton = ({ currentFileId }) => {
   const [graphState, setGraphState] = useState('hidden')
+  const hint = 'Show Graph visualisation'
 
   return (
     <React.Fragment>
-      <button
-        title="Show Graph visualisation"
-        aria-label="Show Graph visualisation"
+      <div
+        title={hint}
+        aria-label={hint}
         className="graph-button"
         onClick={() => setGraphState('maximized')}
-        dangerouslySetInnerHTML={{__html: svgIconContent}}
       >
-      </button>
+        <span dangerouslySetInnerHTML={{ __html: svgIconContent }}></span>
+        <span className="graph-button__hint">{hint}</span>
+      </div>
       {typeof window !== 'undefined' ? (
         <Suspense fallback={null}>
           <Graph

@@ -1,12 +1,20 @@
+/* default theme light */
 :scope {
-  --kb-link-color: #ff6156;
+  --kb-link-color: #ff5449;
   --kb-tree-cur-color: #e7e5e4;
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
-  --kb-text-color: #111;
+  --kb-text-color: #000;
   --kb-text-inverse-color: white;
   --kb-references-bg:  #fafafa;
   --kb-search-highlight-bg: #eaeaea;
   --kb-note-bg: #f9fafb;
   --kb-separator-color: #ddd;
 }
+
+/*
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+*/

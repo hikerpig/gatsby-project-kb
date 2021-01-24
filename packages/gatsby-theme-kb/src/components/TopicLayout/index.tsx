@@ -5,6 +5,7 @@ import './topic-layout.css'
 import { PageContext } from '../../type'
 import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
+import DarkModeToggle from '../DarkModeToggle'
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
@@ -18,11 +19,12 @@ export default function TopicLayout(props: Props) {
       <div className="topic-layout__left flex-shrink-0 hidden md:flex">
         <SiteSidebar pageContext={pageContext}></SiteSidebar>
       </div>
-      <main className="topic-layout__main flex-grow md:h-screen md:overflow-y-auto">
+      <main className="topic-layout__main flex-grow p-5 md:h-screen md:overflow-y-auto">
         <div className="topic-layout__content">{children}</div>
       </main>
       <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block">
         <GraphButton currentFileId={pageContext.id}></GraphButton>
+        <DarkModeToggle></DarkModeToggle>
         <div id="toc" className="toc tocbot js-toc" />
       </div>
     </div>

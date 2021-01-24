@@ -14,3 +14,7 @@
 .graph-button__hint {
   margin-left: 5px;
 }
+
+.graph-button svg {
+  fill: var(--kb-text-color);
+}

@@ -1,15 +1,14 @@
 .topic-layout {
-  @apply bg-gray-50;
+  background-color: var(--kb-note-bg);
 }
 
 .topic-layout__main {
   max-width: 960px;
-  @apply p-5;
 }
 
 .topic-layout__left {
   width: 280px;
-  @apply bg-gray-100;
+  background-color: var(--light-2);
 }
 
 .topic-layout__right {

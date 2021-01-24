@@ -1,7 +1,16 @@
-:root {
+body {
   --toc-hover-color: #c45612;
+  --toc-cur-highlight-color: var(--kb-text-color);
 }
 
 .tocbot li {
   margin-bottom: 0;
 }
+
+.toc-link::before {
+  line-height: 1.4em;
+}
+
+/* .is-active-link::before {
+  background-color: red;
+} */

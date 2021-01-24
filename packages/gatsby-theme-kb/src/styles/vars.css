@@ -1,5 +1,22 @@
-/* default theme light */
+/* obsidian  */
 :scope {
+  --light-1: #F9FAFB;
+  --light-2: #F3F4F6;
+
+  --dark-0:  #2e3440;
+  --dark-1:  #3b4252;
+  --dark-2:  #434c5e;
+  --dark-3:  #4c566a;
+
+  --red:    #bf616a;
+  --orange: #d08770;
+  --yellow: #ebcb8b;
+  --green:  #a3be8c;
+  --purple: #b48ead;
+}
+
+/* default theme light */
+body {
   --kb-link-color: #ff5449;
   --kb-tree-cur-color: #e7e5e4;
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
@@ -8,13 +25,6 @@
   --kb-text-inverse-color: white;
   --kb-references-bg:  #fafafa;
   --kb-search-highlight-bg: #eaeaea;
-  --kb-note-bg: #f9fafb;
+  --kb-note-bg: var(--light-1);
   --kb-separator-color: #ddd;
 }
-
-/*
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-*/

@@ -29,7 +29,7 @@
   outline: none;
   padding-left: 28px;
   background-color: var(--kb-note-bg);
-  transition: all 0.3s ease-in-out;
+  /* transition: all 0.3s ease-in-out; */
 }
 
 .inputWrapper input:focus {

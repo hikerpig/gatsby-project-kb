@@ -10,7 +10,7 @@
 }
 
 .site-sidebar__link {
-  color: black;
+  color: var(--kb-text-color);
 }
 
 .site-sidebar__link:hover {

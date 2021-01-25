@@ -55,9 +55,9 @@ module.exports = function (options) {
         resolve: 'gatsby-plugin-tocbot',
         options: {
           tocbotOptions: {
-            contentSelector: '.topic-layout__main',
+            contentSelector: '.topic-layout__content',
             collapseDepth: 5,
-            scrollContainer: '.topic-layout__main',
+            scrollContainer: '.topic-layout__content',
           }
         },
       },

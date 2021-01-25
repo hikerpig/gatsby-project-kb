@@ -19,6 +19,8 @@ function getDirectoriesByPath(dir: string) {
 
 export interface ISiteSidebarProps {
   pageContext: PageContext
+  title: string
+  isMobileMode?: boolean
 }
 
 type RemarkNode = {
@@ -38,14 +40,9 @@ type RemarkNode = {
 }
 
 export default function SiteSidebar(props: ISiteSidebarProps) {
-  const { pageContext } = props
+  const { pageContext, title, isMobileMode } = props
   const data = useStaticQuery(graphql`
     query SiteSidebarQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
       allMdx {
         nodes {
           frontmatter {
@@ -69,7 +66,6 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     }
   `)
 
-  const title = data.site!.siteMetadata.title
   const nodes = data.allMdx!.nodes as RemarkNode[]
 
   // console.log('data', data, pageContext)
@@ -152,7 +148,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
         {title}
       </div>
       <div className="site-sidebar__search">
-        <Search></Search>
+        <Search isMobileMode={isMobileMode} />
       </div>
       <div className="site-sidebar__files">
         <TreeView

@@ -6,7 +6,8 @@ import useSearch from '../../use-search'
 
 import './search.css'
 
-export default function Search() {
+export default function Search(props: { isMobileMode?: boolean } = {}) {
+  const { isMobileMode } = props
   const [query, setQuery] = useState('')
   const searchBarRef = useRef<HTMLDivElement>(null)
 
@@ -27,25 +28,28 @@ export default function Search() {
         highlightedIndex,
         getRootProps,
       }) => {
-        return<div
-          className="searchWrapper"
-          {...getRootProps({} as any, { suppressRefError: true })}
-        >
-          <SearchBar
-            onChange={handleChange}
-            getInputProps={getInputProps}
-            ref={searchBarRef}
-          />
-          {isOpen && (
-            <Results
-              getMenuProps={getMenuProps}
-              getItemProps={getItemProps}
-              results={results}
-              highlightedIndex={highlightedIndex}
-              searchBarRef={searchBarRef}
+        return (
+          <div
+            className="searchWrapper"
+            {...getRootProps({} as any, { suppressRefError: true })}
+          >
+            <SearchBar
+              onChange={handleChange}
+              getInputProps={getInputProps}
+              ref={searchBarRef}
             />
-          )}
-        </div>
+            {isOpen && (
+              <Results
+                getMenuProps={getMenuProps}
+                getItemProps={getItemProps}
+                results={results}
+                highlightedIndex={highlightedIndex}
+                searchBarRef={searchBarRef}
+                isMobileMode={isMobileMode}
+              />
+            )}
+          </div>
+        )
       }}
     </Downshift>
   )
@@ -82,19 +86,22 @@ function Results({
   getMenuProps,
   highlightedIndex,
   searchBarRef,
+  isMobileMode = false,
 }) {
   const sRef: React.RefObject<HTMLDivElement> = searchBarRef
   const styles: React.CSSProperties = sRef.current
-    ? (function() {
-      const searchBarBox = sRef.current.getBoundingClientRect()
-      return {
-        top: searchBarBox.top + searchBarBox.height + 10,
-        left: searchBarBox.left,
-      }
-    })()
+    ? (function () {
+        const searchBarBox = sRef.current.getBoundingClientRect()
+        console.log('isMobileMode in search', isMobileMode)
+        return {
+          top: searchBarBox.top + searchBarBox.height + 10,
+          left: isMobileMode ? 10 : searchBarBox.left,
+        }
+      })()
     : {}
+
   return ReactDOM.createPortal(
-    <ul className="results" {...getMenuProps()} style={styles}>
+    <ul className="results z-20" {...getMenuProps()} style={styles}>
       {results.map((r, index) => (
         <li
           key={r.id}

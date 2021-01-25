@@ -3,7 +3,7 @@ import useDarkMode from 'use-dark-mode'
 
 import './dark-mode-toggle.css'
 
-const DarkModeToggle = () => {
+const DarkModeToggle = (props: { showHint?: boolean}) => {
   const { value: isDark, toggle: toggleDarkMode } = useDarkMode(false)
   const hint = isDark ? 'Activate light mode' : 'Activate dark mode'
 
@@ -15,7 +15,7 @@ const DarkModeToggle = () => {
     >
       <input type="checkbox" checked={!isDark} onChange={toggleDarkMode} />
       <div />
-      <span className="dark-mode-toggle__hint">{hint}</span>
+      {props.showHint && <span className="dark-mode-toggle__hint">{hint}</span>}
     </label>
   )
 }

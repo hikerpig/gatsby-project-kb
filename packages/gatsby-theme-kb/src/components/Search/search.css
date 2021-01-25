@@ -44,6 +44,8 @@
   right: 0;
   top: 0;
   width: 500px;
+  margin-left: 0;
+  max-width: calc(100vw - 20px);
   max-height: 50vh;
   background: var(--kb-note-bg);
   box-shadow: -5px -5px 15px -3px var(--kb-shadow-bg);

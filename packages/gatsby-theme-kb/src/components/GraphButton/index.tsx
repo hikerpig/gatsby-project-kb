@@ -23,7 +23,8 @@ const svgIconContent = `
 </svg>
 `
 
-const GraphButton = ({ currentFileId }) => {
+const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
+  const { currentFileId, showHint } = props
   const [graphState, setGraphState] = useState('hidden')
   const hint = 'Show Graph visualisation'
 
@@ -36,7 +37,7 @@ const GraphButton = ({ currentFileId }) => {
         onClick={() => setGraphState('maximized')}
       >
         <span dangerouslySetInnerHTML={{ __html: svgIconContent }}></span>
-        <span className="graph-button__hint">{hint}</span>
+        {showHint && <span className="graph-button__hint">{hint}</span>}
       </div>
       {typeof window !== 'undefined' ? (
         <Suspense fallback={null}>

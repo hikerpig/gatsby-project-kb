@@ -1,9 +1,12 @@
 .topic-layout {
-  max-width: 1380px;
-  margin: auto;
 }
 
 .topic-layout__main {
+  width: 1380px;
+  max-width: 100%;
+}
+
+.topic-layout__content {
   max-width: 960px;
   background-color: var(--kb-note-bg);
 }
@@ -11,6 +14,18 @@
 .topic-layout__left {
   width: 280px;
   position: relative;
+  background-color: var(--bg-color-2);
+}
+
+.topic-layout__left--mobile {
+  top: 0;
+  left: 0;
+  position: fixed;
+  transform: translateX(-280px);
+}
+
+.topic-layout__left--mobile.topic-layout__left--show {
+  transform: translateX(0px);
 }
 
 .topic-layout__right {
@@ -26,4 +41,16 @@
 
 .topic-layout .tocbot {
   margin-top: 20px;
+}
+
+.topic-layout__header {
+  background-color: var(--bg-color-2);
+}
+
+.topic-layout__right .dark-mode-toggle {
+  margin-top: 5px;
+}
+
+.topic-layout__mask {
+  background-color: rgba(0, 0, 0, 0.1);
 }

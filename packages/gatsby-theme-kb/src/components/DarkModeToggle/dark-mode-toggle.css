@@ -2,7 +2,6 @@
 .dark-mode-toggle {
   cursor: pointer;
   display: flex;
-  margin-top: 5px;
 }
 .dark-mode-toggle input {
   display: none;

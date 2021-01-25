@@ -10,6 +10,7 @@
 
 .topic-layout__left {
   width: 280px;
+  position: relative;
 }
 
 .topic-layout__right {

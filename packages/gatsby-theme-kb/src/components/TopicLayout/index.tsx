@@ -19,13 +19,13 @@ export default function TopicLayout(props: Props) {
 
   return (
     <div className="topic-layout flex min-h-screen">
-      <div className="topic-layout__left flex-shrink-0 hidden md:flex">
+      <div className="topic-layout__left flex-shrink-0 hidden md:flex hover:shadow-md">
         <SiteSidebar pageContext={pageContext}></SiteSidebar>
       </div>
       <main className="topic-layout__main flex-grow p-5 md:h-screen md:overflow-y-auto">
         <div className="topic-layout__content">{children}</div>
       </main>
-      <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block">
+      <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block hover:shadow-md">
         <GraphButton currentFileId={pageContext.id}></GraphButton>
         <DarkModeToggle></DarkModeToggle>
 

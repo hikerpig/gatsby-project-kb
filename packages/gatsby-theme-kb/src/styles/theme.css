@@ -1,5 +1,5 @@
 .dark-mode {
-  --kb-link-color: #ff776d;
+  --kb-link-color: var(--frost3);
   --kb-tree-cur-color: var(--dark-3);
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);

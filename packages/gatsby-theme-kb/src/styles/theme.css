@@ -9,8 +9,8 @@
   --kb-search-highlight-bg: #eaeaea;
   --kb-separator-color: #999;
   --kb-scrollbar-thumb: var(--dark-4);
-  --kb-blockquote-bg: #434c5f;
+  --kb-blockquote-bg: #353c48;
 
-  --bg-color-1: var(--dark-2);
-  --bg-color-2: var(--dark-1);
+  --bg-color-1: var(--dark-1);
+  --bg-color-2: var(--dark-2);
 }

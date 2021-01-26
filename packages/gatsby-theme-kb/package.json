@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-kb",
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A Gatsby theme for publishing Knowledge Base.",
   "version": "0.1.0",
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -43,9 +43,15 @@
     "typescript": "^4.1.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "bidirectional-link",
+    "note-graph"
   ],
-  "license": "0BSD",
+  "author": {
+    "name": "hikerpig",
+    "url": "https://github.com/hikerpig"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -57,9 +63,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/hikerpig/gatsby-project-kb.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hikerpig/gatsby-project-kb/issues"
   }
 }

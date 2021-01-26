@@ -52,6 +52,19 @@ module.exports = function (options) {
       'gatsby-transformer-markdown-references',
       'gatsby-plugin-postcss',
       {
+        resolve: 'gatsby-plugin-purgecss',
+        options: {
+          printRejected: true,
+          tailwind: true,
+          purgeOnly: [
+            path.join(__dirname, 'src/styles/global.css')
+          ],
+          content: [
+            path.join(__dirname, 'src/**/*.{ts,js,jsx,tsx}')
+          ],
+        }
+      },
+      {
         resolve: 'gatsby-plugin-tocbot',
         options: {
           tocbotOptions: {

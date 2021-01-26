@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useScrollRestoration } from 'gatsby-react-router-scroll'
 import useBreakpoint from 'use-breakpoint'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -9,12 +9,14 @@ import { PageContext } from '../../type'
 import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
 import DarkModeToggle from '../DarkModeToggle'
+import { isServer } from '../../env'
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
 }>
 
 const BREAKPOINTS = {
+  sm: 0,
   md: 768,
   lg: 1024,
   xl: 1280,
@@ -50,10 +52,11 @@ export default function TopicLayout(props: Props) {
 
   const [menuOpened, setMenuOpened] = useState(false)
 
-  const { breakpoint } = useBreakpoint(BREAKPOINTS, 'md')
+  const defaultBreakPoint: BreakpointName = isServer ? 'md': (window.innerWidth > BREAKPOINTS.md ? 'md': 'sm')
+  const { breakpoint } = useBreakpoint(BREAKPOINTS, defaultBreakPoint)
 
   const isMobileMode = useMemo(() => {
-    return cmpBreakpoint(breakpoint, 'lg') === CmpResult.Less
+    return cmpBreakpoint(breakpoint, 'md') === CmpResult.Less
   }, [breakpoint])
 
   const title = data.site.siteMetadata!.title
@@ -87,14 +90,14 @@ export default function TopicLayout(props: Props) {
   const leftClass = classnames({
     'topic-layout__left--mobile': isMobileMode,
     'topic-layout__left--show': isMobileMode && menuOpened,
-    'shadow:md': isMobileMode,
+    'shadow-md': isMobileMode,
     'transition-all': isMobileMode,
     'z-10': isMobileMode,
   })
 
   const sideBar = useMemo(() => {
     return <SiteSidebar pageContext={pageContext} title={title} isMobileMode={isMobileMode}></SiteSidebar>
-  }, [isMobileMode])
+  }, [isMobileMode, breakpoint])
 
   return (
     <div

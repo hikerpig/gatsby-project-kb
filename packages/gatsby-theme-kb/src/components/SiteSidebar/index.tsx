@@ -130,6 +130,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       slug = node.parent.fields.slug
     }
     if (data.isLeaf) {
+      // console.log('slug is', slug, node.parent.fields)
       return (
         <Link className={`site-sidebar__link ${labelClassName}`} onClick={onNodeSelect} to={slug}>
           {data.label}

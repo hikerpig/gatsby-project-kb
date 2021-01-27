@@ -3,14 +3,12 @@ const makeSearchPlugins = require('./gatsby-node-utils/makeSearchPlugins')
 
 module.exports = function (options) {
   const {
-    basePath = '/',
     contentPath = 'content',
     mdxOtherwiseConfigured = false,
   } = options
   // console.log('options', arguments)
 
   return {
-    pathPrefix: basePath,
     plugins: [
       `gatsby-plugin-react-helmet`,
       {

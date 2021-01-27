@@ -52,7 +52,7 @@ const AnchorTag = ({
   const { anchorSlug } = genHrefInfo({ currentSlug, href })
 
   const ref = references.find((x) => {
-    return withPrefix(x.parent?.fields.slug || '') === anchorSlug
+    return withPrefix(x.parent?.fields.slug || '') === withPrefix(anchorSlug)
   })
   // console.log('ref', ref, 'anchorSlug', anchorSlug, references)
 

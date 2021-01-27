@@ -19,7 +19,6 @@ module.exports = {
     {
       resolve: `gatsby-theme-garden`,
       options: {
-        basePath: `/`,
         contentPath: path.resolve(__dirname, 'content'),
         rootNote: 'readme'
       },
@@ -38,8 +37,7 @@ module.exports = {
 
 |           Key          | Default value |                                  Description                                 |
 |:----------------------:|:-------------:|:----------------------------------------------------------------------------:|
-| basePath               | /             | Root url for the site                                                      |
-| rootNote               | /readme       | Root note's name (without exts)
+| rootNote               |  readme       | Root note's name (without exts)
 | contentPath            |               | Location of local content                                                    |
 | extensions | ['.md', '.mdx']         | Valid content file exts |
 | mdxOtherwiseConfigured | false         | Set it to true if gatsby-plugin-mdx is already configured for your site. |

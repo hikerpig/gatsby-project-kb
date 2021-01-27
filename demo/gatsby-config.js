@@ -1,8 +1,9 @@
 const path = require('path');
 
-const basePath = process.env.KB_BASE_PATH || '/'
+const pathPrefix = process.env.KB_BASE_PATH || '/'
 
 module.exports = {
+  pathPrefix,
   siteMetadata: {
     title: `gatsby-theme-kb`,
     description: `Your personal knowledge base`,

@@ -3,6 +3,8 @@ gatsby-theme-kb
 
 A Gatsby theme for publishing **K**nowledge **B**ase.
 
+See the demo and [documentation](https://hikerpig.github.io/gatsby-project-kb/).
+
 # Setup
 
 1. Install dependency

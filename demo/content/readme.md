@@ -9,6 +9,7 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 ## ✨ Features
 
 - Support bidirectional wiki-links in double brackets `[[]]`.
+- Hover preview for wiki-links.
 - A nice interactive [[graph-view]] visualizing the relationships of your notes.
 - Mobile friendly responsive design.
 - Light and dark mode.

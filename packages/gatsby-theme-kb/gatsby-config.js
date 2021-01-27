@@ -12,12 +12,6 @@ module.exports = function (options) {
     plugins: [
       `gatsby-plugin-react-helmet`,
       {
-        resolve: 'gatsby-plugin-alias-imports',
-        options: {
-          extensions: ['js']
-        }
-      },
-      {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: contentPath,
@@ -31,7 +25,6 @@ module.exports = function (options) {
           remarkPlugins: [
           ],
           gatsbyRemarkPlugins: [
-            // 'gatsby-remark-double-brackets-link',
             {
               resolve: 'gatsby-remark-double-brackets-link',
               options: {
@@ -39,13 +32,6 @@ module.exports = function (options) {
               }
             },
             'gatsby-remark-double-parenthesis-link',
-            // {
-            //   resolve: `gatsby-remark-images`,
-            //   options: {
-            //     maxWidth: 561,
-            //   },
-            // },
-            // `gatsby-remark-copy-linked-files`,
           ],
         },
       },

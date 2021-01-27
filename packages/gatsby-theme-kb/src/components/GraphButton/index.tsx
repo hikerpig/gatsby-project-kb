@@ -26,7 +26,7 @@ const svgIconContent = `
 const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
   const { currentFileId, showHint } = props
   const [graphState, setGraphState] = useState('hidden')
-  const hint = 'Show Graph visualisation'
+  const hint = 'Show Graph Visualisation'
 
   return (
     <React.Fragment>

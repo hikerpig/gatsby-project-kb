@@ -10,8 +10,9 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 
 - Support bidirectional wiki-links in double brackets `[[]]`.
 - A nice interactive [[graph-view]] visualizing the relationships of your notes.
-- Auto-generated table of contents.
+- Mobile friendly responsive design.
 - Light and dark mode.
+- Auto-generated table of contents.
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
 
 ## Working with personal knowle management tools

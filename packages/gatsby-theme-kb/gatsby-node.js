@@ -11,13 +11,19 @@ const {
 
 // These are customizable theme options we only need to check once
 let contentPath
-let rootNote
+let rootNoteSlug
 let extensions
 let mediaTypes
 
+function padSlugLeading(str) {
+  if (typeof str !== 'string') return str
+  if (!str.startsWith('/')) str = '/' + str
+  return str
+}
+
 exports.onPreBootstrap = async ({ store }, themeOptions) => {
   contentPath = themeOptions.contentPath
-  rootNote = themeOptions.rootNote || 'readme'
+  rootNoteSlug = padSlugLeading(themeOptions.rootNote) || '/readme'
   extensions = themeOptions.extensions || ['.md', '.mdx']
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
 }
@@ -132,9 +138,9 @@ exports.createPages = async ({ graphql, actions }, options) => {
       })
     })
 
-    if (rootNote) {
-      const root = localFiles.find((node) => node.fields.slug === rootNote)
-      // console.log('root is', root, 'rootNote', rootNote)
+    if (rootNoteSlug) {
+      const root = localFiles.find((node) => node.fields.slug === rootNoteSlug)
+      // console.log('root is', root, 'rootNoteSlug', rootNoteSlug)
       if (root) {
         createPage({
           path: '/',

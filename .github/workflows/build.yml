@@ -8,10 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: actions/setup-node
-        uses: actions/setup-node@v1.4.1
+      - uses: actions/setup-node@v2
         with:
-          node-version: "14.15.3"
+          node-version: "14"
       - name: yarn install
         uses: jaid/action-npm-install@v1.2.1
       - name: build

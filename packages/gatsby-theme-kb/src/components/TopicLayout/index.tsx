@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useRef, useLayoutEffect } from 'react'
 import { useScrollRestoration } from 'gatsby-react-router-scroll'
 import useBreakpoint from 'use-breakpoint'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -10,6 +10,7 @@ import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
 import DarkModeToggle from '../DarkModeToggle'
 import { isServer } from '../../env'
+
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
@@ -83,26 +84,35 @@ export default function TopicLayout(props: Props) {
     </div>
   )
 
-  const topicLayoutClass = classnames({
-    'topic-layout--mobile': isMobileMode,
-  })
-
-  const leftClass = classnames({
+  // this ref and useLayoutEffect are kind of hack, but I don't know if
+  //   there is a better solution to tweak the hydration of '.topic-layout__left'
+  // so I choose to force some manipulation in browser side
+  const leftEleRef = useRef<HTMLDivElement>(null)
+  const leftClassObject = {
     'topic-layout__left--mobile': isMobileMode,
     'topic-layout__left--show': isMobileMode && menuOpened,
     'shadow-md': isMobileMode,
     'transition-all': isMobileMode,
     'z-10': isMobileMode,
+  }
+  useLayoutEffect(() => {
+    if (!leftEleRef.current) return
+    for (const [key, value] of Object.entries(leftClassObject)) {
+      if (value) {
+        leftEleRef.current.classList.add(key)
+      } else {
+        leftEleRef.current.classList.remove(key)
+      }
+    }
   })
+  const leftClass = classnames(leftClassObject)
 
   const sideBar = useMemo(() => {
     return <SiteSidebar pageContext={pageContext} title={title} isMobileMode={isMobileMode}></SiteSidebar>
   }, [isMobileMode, breakpoint])
 
   return (
-    <div
-      className={`topic-layout flex flex-col min-h-screen ${topicLayoutClass}`}
-    >
+    <div className={`topic-layout flex flex-col min-h-screen`} >
       <div className="topic-layout__header w-screen py-3 px-5 flex justify-between text-lg font-semibold md:hidden">
         <div className="flex items-center">
           {expandIcon}
@@ -115,6 +125,7 @@ export default function TopicLayout(props: Props) {
       <div className="topic-layout__main md:m-auto flex min-h-screen">
         <div
           className={`topic-layout__left flex-shrink-0 ${leftClass} md:flex hover:shadow-md`}
+          ref={leftEleRef}
         >
           {sideBar}
         </div>

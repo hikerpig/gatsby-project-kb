@@ -3,4 +3,5 @@
 - [X] Setup the theme
 - [X] Complete the graph view
 - [X] Add local search
-- [ ] Write better README
+- [X] Write README
+- [ ] Support nested folder without the chore or manually adding link definitions

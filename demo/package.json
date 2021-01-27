@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "develop",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "clean": "gatsby clean"
   },

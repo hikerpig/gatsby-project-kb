@@ -2,7 +2,7 @@
 
 const fs = require(`fs`)
 const path = require(`path`)
-const { urlResolve, createContentDigest } = require(`gatsby-core-utils`)
+const { urlResolve } = require(`gatsby-core-utils`)
 const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
 const slugify = require(`slugify`)
 const {
@@ -10,16 +10,14 @@ const {
 } = require(`gatsby-transformer-markdown-references`)
 
 // These are customizable theme options we only need to check once
-let basePath
 let contentPath
 let rootNote
 let extensions
 let mediaTypes
 
 exports.onPreBootstrap = async ({ store }, themeOptions) => {
-  basePath = themeOptions.basePath || `/`
   contentPath = themeOptions.contentPath
-  rootNote = themeOptions.rootNote || '/readme'
+  rootNote = themeOptions.rootNote || 'readme'
   extensions = themeOptions.extensions || ['.md', '.mdx']
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
 }
@@ -67,7 +65,8 @@ exports.createResolvers = ({ createResolvers }) => {
 exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   const { createNodeField } = actions
   if (node.internal.type === `File` && shouldHandleFile(node, options)) {
-    const slug = urlResolve(basePath, path.parse(node.relativePath).dir, node.name)
+    const slug = '/' + urlResolve(path.parse(node.relativePath).dir, node.name)
+    // console.log('slug is', slug)
     createNodeField({
       node,
       name: `slug`,
@@ -135,9 +134,10 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
     if (rootNote) {
       const root = localFiles.find((node) => node.fields.slug === rootNote)
+      // console.log('root is', root, 'rootNote', rootNote)
       if (root) {
         createPage({
-          path: basePath,
+          path: '/',
           component: TopicTemplate,
           context: {
             id: root.id,

@@ -92,7 +92,6 @@ function Results({
   const styles: React.CSSProperties = sRef.current
     ? (function () {
         const searchBarBox = sRef.current.getBoundingClientRect()
-        console.log('isMobileMode in search', isMobileMode)
         return {
           top: searchBarBox.top + searchBarBox.height + 10,
           left: isMobileMode ? 10 : searchBarBox.left,

@@ -14,7 +14,6 @@ module.exports = {
       resolve: 'gatsby-theme-kb',
       options: {
         contentPath: path.resolve(__dirname, 'content'),
-        basePath,
       },
     },
   ],

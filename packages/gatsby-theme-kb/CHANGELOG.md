@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 0.2.0 (2021-01-27)
+
+
+### Features
+
+* [squashed] add github actions for building and publish through github ([6d61d31](https://github.com/hikerpig/gatsby-project-kb/commit/6d61d31acaf3173786c900c9cd48bdce5bd99b72))
+* add gatsby plugin purgecss and optimize layout ([7fdcf2a](https://github.com/hikerpig/gatsby-project-kb/commit/7fdcf2af0556182b715480bdb76758523762be9d))
+* add gatsby-plugin-tocbot ([9a89a90](https://github.com/hikerpig/gatsby-project-kb/commit/9a89a9027d59bd7d21b1bdcfad69ad58fb5707b6))
+* add search ([8de223d](https://github.com/hikerpig/gatsby-project-kb/commit/8de223d8076542085d7fb5f53963771d310f7e9b))
+* Add tailwindcss ([423f367](https://github.com/hikerpig/gatsby-project-kb/commit/423f36737667b27b14768673d7aa65d0b12bbaac))
+* better layout for mobile ([51c07d6](https://github.com/hikerpig/gatsby-project-kb/commit/51c07d6df662a259a7c19a08e47dd74524448145))
+* dark mode toggle ([611d91a](https://github.com/hikerpig/gatsby-project-kb/commit/611d91ac4b8364d1a45410cef820037accd4db17))
+* graph view ([c3dee54](https://github.com/hikerpig/gatsby-project-kb/commit/c3dee547b258cadffeecb28e96724fe7aa21415e))
+* sticky header and more docs ([92301db](https://github.com/hikerpig/gatsby-project-kb/commit/92301dbb064129d172782533cf74bff00788cb3f))

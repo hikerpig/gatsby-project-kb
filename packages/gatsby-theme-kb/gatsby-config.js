@@ -5,6 +5,7 @@ module.exports = function (options) {
   const {
     contentPath = 'content',
     mdxOtherwiseConfigured = false,
+    ignore = ['.git'],
   } = options
   // console.log('options', arguments)
 
@@ -16,6 +17,7 @@ module.exports = function (options) {
         options: {
           path: contentPath,
           name: contentPath,
+          ignore,
         },
       },
       !mdxOtherwiseConfigured && {

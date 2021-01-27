@@ -4,7 +4,7 @@ const fs = require(`fs`)
 const path = require(`path`)
 const { urlResolve } = require(`gatsby-core-utils`)
 const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
-const slugify = require(`slugify`)
+// const slugify = require(`slugify`)
 const {
   findTopLevelHeading,
 } = require(`gatsby-transformer-markdown-references`)

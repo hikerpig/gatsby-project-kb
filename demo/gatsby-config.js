@@ -16,5 +16,6 @@ module.exports = {
         contentPath: path.resolve(__dirname, 'content'),
       },
     },
+    'gatsby-plugin-no-sourcemaps',
   ],
 };

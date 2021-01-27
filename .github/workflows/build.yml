@@ -1,6 +1,10 @@
 name: 'Build gatsby-project-kb site'
 
-on: push
+on:
+  push:
+    branches:
+      - master
+      - feature/deploy
 
 jobs:
   build:

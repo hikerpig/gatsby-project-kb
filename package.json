@@ -22,6 +22,7 @@
     "test": "lerna run test --",
     "lint": "lerna run lint -- --fix",
     "build": "yarn demo:build",
+    "build-gh-pages": "KB_BASE_PATH='/gatsby-project-kb' yarn demo:build",
     "prepublish": "lerna run prepublish",
     "start:app": "yarn run build && yarn --cwd example && yarn --cwd example start"
   }

@@ -1,0 +1,28 @@
+name: 'Build gatsby-project-kb site'
+
+on: push
+
+jobs:
+  build:
+    name: Build Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: actions/setup-node
+        uses: actions/setup-node@v1.4.1
+        with:
+          node-version: "14.15.3"
+      - name: yarn install
+        uses: jaid/action-npm-install@v1.2.1
+      - name: build
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: build-gh-pages
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: demo/public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

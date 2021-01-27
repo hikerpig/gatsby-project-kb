@@ -13,4 +13,6 @@
 
   --bg-color-1: var(--dark-1);
   --bg-color-2: var(--dark-2);
+  --code-bg-color: var(--dark-2);
+  --code-color: var(--purple);
 }

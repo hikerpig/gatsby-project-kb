@@ -45,6 +45,7 @@
     "gatsby",
     "gatsby-plugin",
     "gatsby-theme",
+    "knowledge-base",
     "bidirectional-link",
     "note-graph"
   ],

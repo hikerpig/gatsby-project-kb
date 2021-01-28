@@ -24,10 +24,28 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 
 [Foam](https://foambubble.github.io/foam/) is a personal knowledge management and sharing system inspired by Roam Research, built on Visual Studio Code and GitHub.
 
+But it doesn't bundled with an offical publishing system (yet).
+
+And `gatsby-theme-kb` is one of the few Foam publishing solutions that supports note graph rendering.
+
 With the help of [Foam for VSCode](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) plugin auto-creating link definitions, you knowledge base can have nested folders. 
+
+I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb/) to help you start.
+
+### Obsidian
+
+Currently this theme is far less versatile than Obsidian's publishing system.
+
+And this doest not support nested folder very well (yet).
+
+But this is free and open, you can extend it as you wish.
 
 ## Extending it in your Gatsby site
 
 Some Gatsby offical tutorials about extending a theme.
 
 - [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/)
+
+## Any Thoughts to make this better?
+
+Welcome to open issues and PRs on [github repo](https://github.com/hikerpig/gatsby-project-kb).

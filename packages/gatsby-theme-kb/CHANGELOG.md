@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/hikerpig/gatsby-project-kb/compare/v0.2.4...v0.2.5) (2021-01-28)
+
+
+### Features
+
+* make tocbot font size smaller ([a6dc332](https://github.com/hikerpig/gatsby-project-kb/commit/a6dc332425832a519849e6aeea1a075659ec8578))
+
 ### [0.2.4](https://github.com/hikerpig/gatsby-project-kb/compare/v0.2.3...v0.2.4) (2021-01-28)
 
 ### [0.2.3](https://github.com/hikerpig/gatsby-project-kb/compare/v0.2.2...v0.2.3) (2021-01-28)

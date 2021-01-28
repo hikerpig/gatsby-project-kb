@@ -3,7 +3,7 @@ gatsby-project-kb
 
 Here is a project developing a gatsby theme for publishing **K**nowledge **B**ase.
 
-You can check out the demo and [documentation](https://project-gatsby-kb.vercel.app/).
+You can check out the demo and [documentation](https://gatsby-project-kb.vercel.app/).
 
 If you are looking for `gatsby-theme-kb`, go to directory [packages/gatsby-theme-kb](https://github.com/hikerpig/gatsby-project-kb/tree/master/packages/gatsby-theme-kb) for more detailed docs.
 

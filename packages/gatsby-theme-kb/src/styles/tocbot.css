@@ -3,6 +3,10 @@ body {
   --toc-cur-highlight-color: var(--kb-text-color);
 }
 
+.tocbot {
+  font-size: 0.9rem;
+}
+
 .tocbot li {
   margin-bottom: 0;
 }

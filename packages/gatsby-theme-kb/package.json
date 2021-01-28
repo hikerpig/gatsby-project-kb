@@ -43,6 +43,8 @@
   },
   "keywords": [
     "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
     "bidirectional-link",
     "note-graph"
   ],

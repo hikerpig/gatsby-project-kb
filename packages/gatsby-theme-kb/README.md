@@ -3,7 +3,7 @@ gatsby-theme-kb
 
 A Gatsby theme for publishing **K**nowledge **B**ase.
 
-See the demo and [documentation](https://hikerpig.github.io/gatsby-project-kb/).
+See the demo and [documentation](https://project-gatsby-kb.vercel.app/).
 
 # Setup
 

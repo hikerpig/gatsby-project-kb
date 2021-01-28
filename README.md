@@ -7,6 +7,8 @@ You can check out the demo and [documentation](https://hikerpig.github.io/gatsby
 
 If you are looking for `gatsby-theme-kb`, go to directory [packages/gatsby-theme-kb](https://github.com/hikerpig/gatsby-project-kb/tree/master/packages/gatsby-theme-kb) for more detailed docs.
 
+![](https://i.loli.net/2021/01/28/cD6QRIZqUoum4Tf.png)
+
 # Development
 
 File structure:

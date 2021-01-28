@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/hikerpig/gatsby-project-kb/compare/v0.2.2...v0.2.3) (2021-01-28)
+
+
+### Bug Fixes
+
+* hover preview bg color in dark mode ([b66379d](https://github.com/hikerpig/gatsby-project-kb/commit/b66379d763927265e8247f9d6c4738e5f840be14))
+
 ### [0.2.2](https://github.com/hikerpig/gatsby-project-kb/compare/v0.2.1...v0.2.2) (2021-01-27)
 
 

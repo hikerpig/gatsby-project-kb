@@ -5,7 +5,7 @@
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
   --kb-text-color: #eceff4;
   --kb-text-inverse-color: white;
-  --kb-references-bg:  #fafafa;
+  --kb-references-bg:  var(--dark-2);
   --kb-search-highlight-bg: #eaeaea;
   --kb-separator-color: #999;
   --kb-scrollbar-thumb: var(--dark-4);

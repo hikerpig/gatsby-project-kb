@@ -42,7 +42,7 @@ module.exports = {
 | rootNote               |  readme       | Root note's name (without exts)
 | contentPath            |               | Location of local content                                                    |
 | extensions | ['.md', '.mdx']         | Valid content file exts |
-| ignore     | `'.git'`         | A list of file globs to ignore |
+| ignore     | `['.git']`         | A list of file globs to ignore |
 | mdxOtherwiseConfigured | false         | Set it to true if gatsby-plugin-mdx is already configured for your site. |
 
 <!-- ## How to override a Component -->

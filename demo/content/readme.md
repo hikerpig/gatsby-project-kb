@@ -1,6 +1,6 @@
 # Gatsby knowledge base theme
 
-This is a Gatsby theme for publishing knowledge base or personal wiki.
+This is a Gatsby theme for publishing knowledge base or personal wiki. Named `gatsby-theme-kb`.
 
 Create your [Second Brain](https://www.buildingasecondbrain.com/) by writing down your thoughts - or as the term used this theme `topics` -  and their relations in markdown.
 
@@ -16,7 +16,7 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 - Auto-generated table of contents.
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
 
-## Working with personal knowle management tools
+## Working with knowledge management tools
 
 ### Foam
 

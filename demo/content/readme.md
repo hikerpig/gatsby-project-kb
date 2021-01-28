@@ -12,7 +12,9 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 - Hover preview for wiki-links.
 - A nice interactive [[graph-view]] visualizing the relationships of your notes.
 - Mobile friendly responsive design.
+- Local search.
 - Light and dark mode.
+- Auto-generated sidebar based on notes directory.
 - Auto-generated table of contents.
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
 
@@ -23,3 +25,9 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 [Foam](https://foambubble.github.io/foam/) is a personal knowledge management and sharing system inspired by Roam Research, built on Visual Studio Code and GitHub.
 
 With the help of [Foam for VSCode](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) plugin auto-creating link definitions, you knowledge base can have nested folders. 
+
+## Extending it in your Gatsby site
+
+Some Gatsby offical tutorials about extending a theme.
+
+- [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/)

@@ -6,6 +6,7 @@ module.exports = function (options) {
     contentPath = 'content',
     mdxOtherwiseConfigured = false,
     ignore = ['.git'],
+    extensions = [`.md`, `.mdx`],
   } = options
   // console.log('options', arguments)
 
@@ -23,14 +24,16 @@ module.exports = function (options) {
       !mdxOtherwiseConfigured && {
         resolve: `gatsby-plugin-mdx`,
         options: {
-          extensions: [`.md`, `.mdx`],
+          extensions,
           remarkPlugins: [
           ],
           gatsbyRemarkPlugins: [
             {
-              resolve: 'gatsby-remark-double-brackets-link',
+              // resolve: 'gatsby-remark-double-brackets-link',
+              resolve: 'gatsby-remark-wiki-link',
               options: {
                 stripBrackets: false,
+                stripDefinitionExts: extensions,
               }
             },
             'gatsby-remark-double-parenthesis-link',

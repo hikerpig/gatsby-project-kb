@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "lerna": "lerna",
+    "demo:clean": "yarn workspace demo clean",
     "dev": "yarn workspace demo develop",
     "demo:build": "NODE_ENV=production yarn workspace demo build",
     "test": "lerna run test --",

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
+import LinkReference from '../LinkReference'
 import * as HEADER_COMPONENTS from '../mdx-components/header-components'
 import { MDXProvider } from '@mdx-js/react'
 import slugify from 'slugify'
@@ -42,12 +42,13 @@ const Topic = ({ file, currentLocation }: Props) => {
     const references = inboundReferences.map((ref) => {
       const { slug, title } = ref.parent?.fields!
       return (
-        <li key={slug}>
-          <Link to={slug} className="topic__reference">
-            {title}
-          </Link>
-          {/* <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} /> */}
-        </li>
+        <LinkReference key={slug} reference={ref}></LinkReference>
+        // <li key={slug}>
+        //   <Link to={slug} className="topic__reference">
+        //     {title}
+        //   </Link>
+        //   {/* <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} /> */}
+        // </li>
       )
     })
 
@@ -55,7 +56,7 @@ const Topic = ({ file, currentLocation }: Props) => {
       referenceBlock = (
         <>
           <h2>Linked References</h2>
-          <ul>{references}</ul>
+          <div>{references}</div>
         </>
       )
     }

@@ -1,0 +1,30 @@
+{
+  "name": "@gatsby-project-kb/transformer-markdown-references",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "hikerpig <hikerpigwinnie@gmail.com>",
+  "homepage": "https://github.com/hikerpig/gatsby-project-kb#readme",
+  "license": "MIT",
+  "main": "lib/gatsby-transformer-markdown-references.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hikerpig/gatsby-project-kb.git"
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/hikerpig/gatsby-project-kb/issues"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.2"
+  }
+}

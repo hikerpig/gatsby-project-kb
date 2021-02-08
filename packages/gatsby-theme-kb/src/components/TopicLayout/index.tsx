@@ -129,7 +129,7 @@ export default function TopicLayout(props: Props) {
         >
           {sideBar}
         </div>
-        <main className="topic-layout__content flex-grow p-5 md:h-screen md:overflow-y-auto">
+        <main className="topic-layout__content flex-grow py-5 px-7 md:h-screen md:overflow-y-auto">
           {children}
         </main>
         <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block hover:shadow-md transition">

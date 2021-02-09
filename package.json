@@ -24,5 +24,6 @@
     "build": "yarn demo:build",
     "prepublish": "lerna run prepublish",
     "start:app": "yarn run build && yarn --cwd example && yarn --cwd example start"
-  }
+  },
+  "version": null
 }

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": null,
+  "version": "1.0.0",
   "name": "demo",
   "license": "MIT",
   "scripts": {

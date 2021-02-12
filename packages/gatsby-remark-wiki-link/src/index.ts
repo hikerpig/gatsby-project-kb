@@ -25,18 +25,22 @@ const processWikiLinks = (
 
   const definitions: { [identifier: string]: Definition } = {}
 
-  const getLinkUrl = (node: Definition) => {
-    if (typeof node.identifier !== 'string') return
-    let linkUrl = node.url
-    const definition = definitions[node.identifier]
-    if (stripDefinitionExts && definition) {
+  const getLinkInfo = (definition: Definition) => {
+    if (typeof definition.identifier !== 'string') return
+    let linkUrl = definition.url
+    const isExternalLink = /\/\//.test(linkUrl)
+    let shouldReplace = !isExternalLink
+    if (shouldReplace && stripDefinitionExts) {
       const extname = path.extname(definition.url || '')
       const matchedExtname = stripDefinitionExts.find((n) => extname === n)
       if (matchedExtname) {
         linkUrl = linkUrl.slice(0, linkUrl.length - matchedExtname.length)
       }
     }
-    return linkUrl
+    return {
+      linkUrl,
+      shouldReplace
+    }
   }
 
   visit(markdownAST, `definition`, (node: Definition) => {
@@ -51,9 +55,10 @@ const processWikiLinks = (
       return
     }
     const definition = definitions[node.identifier]
-    const linkUrl = definition ? getLinkUrl(definition): null
-    if (definition && linkUrl !== definition.url) {
-      // console.log('already in definition', definitions, node.identifier)
+    const linkInfo = definition ? getLinkInfo(definition): null
+    const linkUrl = linkInfo ? linkInfo.linkUrl: definition?.url
+    if ((linkInfo && !linkInfo.shouldReplace)) {
+      // console.log('should not replace', definitions, node.identifier)
       return
     }
 

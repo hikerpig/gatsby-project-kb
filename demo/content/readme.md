@@ -50,4 +50,4 @@ Some Gatsby offical tutorials about extending a theme.
 
 Welcome to open issues and PRs on [github repo](https://github.com/hikerpig/gatsby-project-kb).
 
-[graph-view]: ./features/graph-view
+[graph-view]: ./features/graph-view.md

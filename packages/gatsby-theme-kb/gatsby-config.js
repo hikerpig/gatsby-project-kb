@@ -29,7 +29,6 @@ module.exports = function (options) {
           ],
           gatsbyRemarkPlugins: [
             {
-              // resolve: 'gatsby-remark-double-brackets-link',
               resolve: 'gatsby-remark-wiki-link',
               options: {
                 stripBrackets: false,

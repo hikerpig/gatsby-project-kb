@@ -26,5 +26,8 @@
     "prepublish": "lerna run prepublish",
     "start:app": "yarn run build && yarn --cwd example && yarn --cwd example start"
   },
+  "resolutions": {
+    "gatsby-theme-kb": "./packages/gatsby-theme-kb"
+  },
   "version": null
 }

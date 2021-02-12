@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-kb",
   "description": "A Gatsby theme for publishing Knowledge Base.",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "dependencies": {
     "@gatsby-project-kb/transformer-wiki-references": "^0.1.2",
     "@mdx-js/mdx": "^1.6.22",
@@ -23,7 +23,7 @@
     "gatsby-plugin-tocbot": "^0.1.0",
     "gatsby-react-router-scroll": "^3.6.0",
     "gatsby-remark-double-parenthesis-link": "^0.1.2",
-    "gatsby-remark-wiki-link": "^0.1.0",
+    "gatsby-remark-wiki-link": "^0.2.0",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-remark": "^2.12.0",
     "gatsby-transformer-sharp": "^2.6.0",

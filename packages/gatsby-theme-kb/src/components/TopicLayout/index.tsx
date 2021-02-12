@@ -124,7 +124,7 @@ export default function TopicLayout(props: Props) {
       </div>
       <div className="topic-layout__main md:m-auto flex min-h-screen">
         <div
-          className={`topic-layout__left flex-shrink-0 ${leftClass} md:flex hover:shadow-md transition`}
+          className={`topic-layout__left flex-shrink-0 ${leftClass} md:flex hover:shadow-md`}
           ref={leftEleRef}
         >
           {sideBar}
@@ -132,7 +132,7 @@ export default function TopicLayout(props: Props) {
         <main className="topic-layout__content flex-grow py-5 px-7 md:h-screen md:overflow-y-auto">
           {children}
         </main>
-        <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block hover:shadow-md transition">
+        <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block hover:shadow-md">
           <GraphButton currentFileId={pageContext.id} showHint></GraphButton>
           <DarkModeToggle showHint />
 

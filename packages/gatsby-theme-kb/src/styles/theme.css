@@ -6,8 +6,8 @@
   --kb-text-color: #eceff4;
   --kb-text-inverse-color: white;
   --kb-references-bg:  var(--dark-2);
-  --kb-search-highlight-bg: #eaeaea;
-  --kb-separator-color: #999;
+  --kb-search-highlight-bg: var(--dark-3);
+  --kb-separator-color: #666;
   --kb-scrollbar-thumb: var(--dark-4);
   --kb-blockquote-bg: #353c48;
 

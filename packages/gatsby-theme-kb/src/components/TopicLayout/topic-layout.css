@@ -12,6 +12,7 @@
   width: 280px;
   position: relative;
   background-color: var(--bg-color-2);
+  transition: 0.3s box-shadow ease-in-out;
 }
 
 .topic-layout__left--mobile {
@@ -28,6 +29,7 @@
 .topic-layout__right {
   overflow-x: hidden;
   width: 280px;
+  transition: 0.3s box-shadow ease-in-out;
 }
 
 .topic-layout__left,

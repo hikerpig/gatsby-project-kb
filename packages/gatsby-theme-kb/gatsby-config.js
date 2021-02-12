@@ -8,7 +8,35 @@ module.exports = function (options) {
     ignore = ['.git'],
     extensions = [`.md`, `.mdx`],
   } = options
+
   // console.log('options', arguments)
+  const defaultGetPluginMdx = () => {
+    return {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions,
+        remarkPlugins: [],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-wiki-link',
+            options: {
+              stripBrackets: false,
+              stripDefinitionExts: extensions,
+            },
+          },
+          'gatsby-remark-double-parenthesis-link',
+        ],
+      },
+    }
+  }
+
+  const pluginMdx = mdxOtherwiseConfigured
+    ? null
+    : options.getPluginMdx
+    ? options.getPluginMdx(defaultGetPluginMdx())
+    : defaultGetPluginMdx()
+
+  // console.log('plugin mdx', pluginMdx)
 
   return {
     plugins: [
@@ -21,24 +49,7 @@ module.exports = function (options) {
           ignore,
         },
       },
-      !mdxOtherwiseConfigured && {
-        resolve: `gatsby-plugin-mdx`,
-        options: {
-          extensions,
-          remarkPlugins: [
-          ],
-          gatsbyRemarkPlugins: [
-            {
-              resolve: 'gatsby-remark-wiki-link',
-              options: {
-                stripBrackets: false,
-                stripDefinitionExts: extensions,
-              }
-            },
-            'gatsby-remark-double-parenthesis-link',
-          ],
-        },
-      },
+      pluginMdx,
       {
         resolve: '@gatsby-project-kb/transformer-wiki-references',
       },
@@ -48,13 +59,9 @@ module.exports = function (options) {
         options: {
           printRejected: true,
           tailwind: true,
-          purgeOnly: [
-            path.join(__dirname, 'src/styles/global.css')
-          ],
-          content: [
-            path.join(__dirname, 'src/**/*.{ts,js,jsx,tsx}')
-          ],
-        }
+          purgeOnly: [path.join(__dirname, 'src/styles/global.css')],
+          content: [path.join(__dirname, 'src/**/*.{ts,js,jsx,tsx}')],
+        },
       },
       {
         resolve: 'gatsby-plugin-tocbot',
@@ -63,7 +70,7 @@ module.exports = function (options) {
             contentSelector: '.topic-layout__content',
             collapseDepth: 5,
             scrollContainer: '.topic-layout__content',
-          }
+          },
         },
       },
       ...makeSearchPlugins(options),

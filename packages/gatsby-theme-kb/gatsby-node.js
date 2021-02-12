@@ -7,7 +7,7 @@ const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
 // const slugify = require(`slugify`)
 const {
   findTopLevelHeading,
-} = require(`gatsby-transformer-markdown-references`)
+} = require(`@gatsby-project-kb/transformer-wiki-references`)
 
 // These are customizable theme options we only need to check once
 let contentPath

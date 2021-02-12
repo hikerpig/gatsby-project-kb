@@ -30,7 +30,7 @@ And `gatsby-theme-kb` is one of the few Foam publishing solutions that supports 
 
 With the help of [Foam for VSCode](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) plugin auto-creating link definitions, you knowledge base can have nested folders. 
 
-I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb/) to help you start.
+I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb/) to help you start. There are some detailed instructions in it's readme.
 
 ### Obsidian
 

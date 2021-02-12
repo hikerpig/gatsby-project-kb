@@ -17,14 +17,18 @@ export function rxHashtagLink(): RegExp {
   return new RegExp(pattern, 'ig')
 }
 
+const LINK_DEFINITION_PATTERN = /^\[(.*)\]\s+(.*)/ // [defintion]: target
+
 export const getReferences = (string: string) => {
   const md = cleanupMarkdown(string)
 
   const references: References = {
     blocks: findInMarkdown(md, rxBlockLink()),
-    pages: findInMarkdown(md, rxHashtagLink()).concat(
-      findInMarkdown(md, rxWikiLink())
-    ),
+    pages: [
+      ...findInMarkdown(md, rxHashtagLink()),
+      ...findInMarkdown(md, rxWikiLink()),
+      ...findInMarkdown(md, LINK_DEFINITION_PATTERN),
+    ],
   }
 
   return references

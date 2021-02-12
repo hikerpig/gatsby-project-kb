@@ -40,7 +40,9 @@ module.exports = function (options) {
           ],
         },
       },
-      'gatsby-transformer-markdown-references',
+      {
+        resolve: '@gatsby-project-kb/transformer-wiki-references',
+      },
       'gatsby-plugin-postcss',
       {
         resolve: 'gatsby-plugin-purgecss',

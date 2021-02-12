@@ -52,7 +52,7 @@ const processWikiLinks = (
     }
     const definition = definitions[node.identifier]
     const linkUrl = definition ? getLinkUrl(definition): null
-    if (definition && linkUrl === definition.url) {
+    if (definition && linkUrl !== definition.url) {
       // console.log('already in definition', definitions, node.identifier)
       return
     }

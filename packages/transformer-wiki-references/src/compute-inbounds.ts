@@ -6,12 +6,13 @@ import {
   setCachedNode,
   setInboundReferences,
 } from "./cache";
+import { MdxNode } from './type'
 
 function hasChildInArrayExcept(
-  node: Node,
-  array: Node[],
+  node: MdxNode,
+  array: MdxNode[],
   except: string,
-  getNode: (id: string) => Node | undefined
+  getNode: (id: string) => MdxNode | undefined
 ): boolean {
   return node.children.some((id) => {
     if (id === except) {
@@ -90,8 +91,7 @@ export async function generateData(cache: any, getNode: Function) {
             getNode(node.parent),
             inboundReferences[nodeId],
             node.id,
-            // @ts-ignore
-            getNode
+            getNode as any,
           )
       );
     });

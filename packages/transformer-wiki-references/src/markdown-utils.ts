@@ -5,6 +5,8 @@
 
 export const REGEX_FENCED_CODE_BLOCK = /^( {0,3}|\t)```[^`\r\n]*$[\w\W]+?^( {0,3}|\t)``` *$/gm
 
+const SETTEXT_REGEX = /(.*)\n={3,}/
+
 export function markdownHeadingToPlainText(text: string) {
   // Remove Markdown syntax (bold, italic, links etc.) in a heading
   // For example: `_italic_` -> `italic`
@@ -21,8 +23,13 @@ export function findTopLevelHeading(md: unknown): string | null {
     return null
   }
 
-  const regex = rxMarkdownHeading(1)
-  const match = regex.exec(md)
+  const headingRegex = rxMarkdownHeading(1)
+  const headingMatch = headingRegex.exec(md)
+  const settextMatch = SETTEXT_REGEX.exec(md)
+  let match = headingMatch
+  if (settextMatch && (!headingMatch || settextMatch.index < headingMatch.index)) {
+    match = settextMatch
+  }
   if (match) {
     return markdownHeadingToPlainText(match[1])
   }

@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { Node } from 'gatsby'
+import { Node, GatsbyCache } from 'gatsby'
 import { nonNullable } from './util'
 import { References } from './get-references'
 
@@ -18,7 +18,7 @@ export type CachedNode = {
 export type InboundReferences = { [id: string]: string[] }
 const inboundFile = `___inboundReferences.json`
 
-export const getAllCachedNodes = async (cache: any, getNode: Function) => {
+export const getAllCachedNodes = async (cache: GatsbyCache, getNode: Function) => {
   const dir = cacheDirectory(cache)
   const files = await fs.promises.readdir(dir)
 
@@ -35,7 +35,7 @@ export const getAllCachedNodes = async (cache: any, getNode: Function) => {
   ).filter(nonNullable)
 }
 
-export const setCachedNode = (cache: any, id: string, data: CachedNode) => {
+export const setCachedNode = (cache: GatsbyCache, id: string, data: CachedNode) => {
   return fs.promises.writeFile(
     path.join(cacheDirectory(cache), `${encodeURIComponent(id)}.json`),
     JSON.stringify({
@@ -48,7 +48,7 @@ export const setCachedNode = (cache: any, id: string, data: CachedNode) => {
 }
 
 export const getCachedNode = async (
-  cache: any,
+  cache: GatsbyCache,
   id: string,
   getNode: Function
 ): Promise<CachedNode | undefined> => {

@@ -8867,43 +8867,6 @@ gatsby-telemetry@^1.9.0:
     node-fetch "^2.6.1"
     uuid "3.4.0"
 
-gatsby-theme-kb@./packages/gatsby-theme-kb, "gatsby-theme-kb@file:gatsby-theme-kb":
-  version "0.3.0"
-  dependencies:
-    "@gatsby-project-kb/transformer-wiki-references" "^0.1.2"
-    "@mdx-js/mdx" "^1.6.22"
-    "@mdx-js/react" "^1.6.22"
-    "@reecelucas/react-use-hotkeys" "^1.3.1"
-    "@tippyjs/react" "^4.2.0"
-    autoprefixer "^10.2.1"
-    classnames "^2.2.6"
-    downshift "^6.1.0"
-    flexsearch "^0.6.32"
-    gatsby "^2.26.1"
-    gatsby-plugin-local-search "^2.0.0"
-    gatsby-plugin-manifest "^2.6.1"
-    gatsby-plugin-mdx "^1.6.0"
-    gatsby-plugin-offline "^3.4.0"
-    gatsby-plugin-postcss "^3.5.0"
-    gatsby-plugin-purgecss "^5.0.0"
-    gatsby-plugin-react-helmet "^3.4.0"
-    gatsby-plugin-tocbot "^0.1.0"
-    gatsby-react-router-scroll "^3.6.0"
-    gatsby-remark-double-parenthesis-link "^0.1.2"
-    gatsby-remark-wiki-link "^0.2.0"
-    gatsby-source-filesystem "^2.5.0"
-    gatsby-transformer-remark "^2.12.0"
-    gatsby-transformer-sharp "^2.6.0"
-    note-graph "^0.1.4"
-    postcss "^8.2.4"
-    prop-types "^15.7.2"
-    react "^16.12.0"
-    react-dom "^16.12.0"
-    react-helmet "^6.1.0"
-    tailwindcss "^2.0.2"
-    use-breakpoint "^1.1.5"
-    use-dark-mode "^2.3.1"
-
 gatsby-transformer-remark@^2.12.0:
   version "2.15.0"
   resolved "https://registry.npmjs.org/gatsby-transformer-remark/-/gatsby-transformer-remark-2.15.0.tgz#0e489891e2d3fe19ba61c37652e21f311521b876"
@@ -15147,6 +15110,11 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
+
+prettier@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
+  integrity sha512-16c7K+x4qVlJg9rEbXl7HEGmQyZlG4R9AgP+oHKRMsMsuk8s+ATStlf1NpDqyBI1HpVyfjLOeMhH2LvuNvV5Vg==
 
 prettier@^1.19.1:
   version "1.19.1"

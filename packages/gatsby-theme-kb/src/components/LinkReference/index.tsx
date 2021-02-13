@@ -2,17 +2,18 @@ import { Link } from 'gatsby';
 import { Reference } from '../../type'
 import React from 'react';
 
+import './link-reference.css'
+
 const LinkReference = (props: { reference: Reference}) => {
   const { reference } = props
-  const { slug, title } = reference.parent?.fields!
-  console.log('ref', reference)
+  const { slug, title } = reference.target.parent?.fields!
 
   return (
-    <div>
-      <Link to={slug} className="topic__reference">
+    <div className="link-reference">
+      <Link to={slug}>
         {title}
       </Link>
-      {/* <div dangerouslySetInnerHTML={{ __html: reference.previewHtml }} /> */}
+      <div className="link-refernce__context" dangerouslySetInnerHTML={{ __html: reference.contextLine }} />
     </div>
   );
 }

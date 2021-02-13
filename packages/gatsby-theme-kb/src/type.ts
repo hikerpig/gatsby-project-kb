@@ -3,10 +3,13 @@ export type PageContext = {
 }
 
 export type Reference = {
-  __typename: string
-  body: string
-  // parent: Omit<TopicFlie, 'childMax'> | null
-  parent: SimpleFileNode
+  target: {
+    __typename: string
+    body: string
+    // parent: Omit<TopicFlie, 'childMax'> | null
+    parent: SimpleFileNode
+  }
+  contextLine: string
 }
 
 export type SimpleFileNode = {

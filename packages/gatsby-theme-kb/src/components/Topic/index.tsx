@@ -40,24 +40,18 @@ const Topic = ({ file, currentLocation }: Props) => {
 
   if (inboundReferences) {
     const references = inboundReferences.map((ref) => {
-      const { slug, title } = ref.parent?.fields!
+      const { slug } = ref.target.parent?.fields!
       return (
         <LinkReference key={slug} reference={ref}></LinkReference>
-        // <li key={slug}>
-        //   <Link to={slug} className="topic__reference">
-        //     {title}
-        //   </Link>
-        //   {/* <div dangerouslySetInnerHTML={{ __html: ref.previewHtml }} /> */}
-        // </li>
       )
     })
 
     if (references.length > 0) {
       referenceBlock = (
-        <>
-          <h2>Linked References</h2>
+        <div className="topic__references">
+          <h2>Backlinks</h2>
           <div>{references}</div>
-        </>
+        </div>
       )
     }
   }

@@ -3,6 +3,7 @@ import * as path from 'path'
 import { Node, GatsbyCache } from 'gatsby'
 import { nonNullable } from './util'
 import { References } from './get-references'
+import { NodeReference } from './type'
 
 export const cacheDirectory = (cache: any): string => {
   return cache.directory
@@ -11,11 +12,11 @@ export const cacheDirectory = (cache: any): string => {
 export type CachedNode = {
   node: Node
   outboundReferences: References
-  resolvedOutboundReferences?: string[]
+  resolvedOutboundReferences?: NodeReference[]
   title: string
   aliases: string[]
 }
-export type InboundReferences = { [id: string]: string[] }
+export type InboundReferences = { [id: string]: NodeReference[] }
 const inboundFile = `___inboundReferences.json`
 
 export const getAllCachedNodes = async (cache: GatsbyCache, getNode: Function) => {

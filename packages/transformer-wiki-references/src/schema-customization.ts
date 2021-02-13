@@ -15,6 +15,11 @@ export const createSchemaCustomization = (
   const options = resolveOptions(_options)
   actions.createTypes(`
     union ReferenceTarget = ${options.types.join(' | ')}
+
+    type NodeReference {
+      target: ReferenceTarget
+      contextLine: String
+    }
   `)
 }
 
@@ -31,7 +36,7 @@ export const setFieldsOnGraphQLNodeType = (
 
   return {
     outboundReferences: {
-      type: `[ReferenceTarget!]!`,
+      type: `[NodeReference!]!`,
       resolve: async (node: Node) => {
         let cachedNode = await getCachedNode(cache, node.id, getNode)
 
@@ -42,7 +47,14 @@ export const setFieldsOnGraphQLNodeType = (
 
         if (cachedNode && cachedNode.resolvedOutboundReferences) {
           return cachedNode.resolvedOutboundReferences
-            .map(nodeId => getNode(nodeId))
+            .map(({ node, contextLine }) => {
+              const _node = getNode(node.id)
+              if (!_node) return null
+              return {
+                target: node,
+                contextLine,
+              }
+            })
             .filter(nonNullable)
         }
 
@@ -50,7 +62,7 @@ export const setFieldsOnGraphQLNodeType = (
       },
     },
     inboundReferences: {
-      type: `[ReferenceTarget!]!`,
+      type: `[NodeReference!]!`,
       resolve: async (node: Node) => {
         let data = await getInboundReferences(cache)
 
@@ -61,7 +73,14 @@ export const setFieldsOnGraphQLNodeType = (
 
         if (data) {
           return (data[node.id] || [])
-            .map(nodeId => getNode(nodeId))
+            .map(({ node, contextLine }) => {
+              const _node = getNode(node.id)
+              if (!_node) return null
+              return {
+                target: node,
+                contextLine,
+              }
+            })
             .filter(nonNullable)
         }
 

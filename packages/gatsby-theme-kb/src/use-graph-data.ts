@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import type { Note } from 'note-graph'
+import { Reference } from './type'
 
 // export interface GraphNodeNote extends Note {}
 
@@ -16,16 +17,20 @@ export const useGraphData = () => {
           }
           childMdx {
             inboundReferences {
-              ... on Mdx {
-                parent {
-                  id
+              target {
+                ... on Mdx {
+                  parent {
+                    id
+                  }
                 }
               }
             }
             outboundReferences {
-              ... on Mdx {
-                parent {
-                  id
+              target {
+                ... on Mdx {
+                  parent {
+                    id
+                  }
                 }
               }
             }
@@ -54,11 +59,11 @@ export const useGraphData = () => {
       notes.push(note)
       notesMap.set(node.id, note)
 
-      node.childMdx.inboundReferences.forEach((x) => {
-        note.referencedBy && note.referencedBy.push(x.parent.id)
+      node.childMdx.inboundReferences.forEach((x: Reference) => {
+        note.referencedBy && note.referencedBy.push(x.target.parent.id)
       })
-      node.childMdx.outboundReferences.forEach((x) => {
-        note.linkTo && note.linkTo.push(x.parent.id)
+      node.childMdx.outboundReferences.forEach((x: Reference) => {
+        note.linkTo && note.linkTo.push(x.target.parent.id)
       })
     })
 

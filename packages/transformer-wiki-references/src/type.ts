@@ -6,3 +6,8 @@ export interface MdxNode extends Node {
     aliases?: string[]
   }
 }
+
+export type NodeReference = {
+  node: MdxNode
+  contextLine: string
+}

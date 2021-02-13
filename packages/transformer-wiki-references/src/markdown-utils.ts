@@ -58,3 +58,20 @@ export function findInMarkdown(markdown: string, regex: RegExp): string[] {
 
   return Array.from(unique)
 }
+
+export function findInMarkdownLines(markdown: string, regex: RegExp) {
+  const lines = markdown.split('\n')
+  const result: { matchStr: string, lineContent: string }[] = []
+
+  lines.forEach((lineContent, lineNum) => {
+    let match
+    regex.lastIndex = 0
+    while ((match = regex.exec(lineContent))) {
+      const [, name] = match
+      if (name) {
+        result.push({ matchStr: name, lineContent })
+      }
+    }
+  })
+  return result
+}

@@ -110,8 +110,12 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     const isCurrent = file.id === pageContext.id
     if (isCurrent) {
       treeNode['className'] = 'site-sidebar__link--cur'
+      if (parentNode) {
+        parentNode.isExpanded = true
+      }
     }
     treeNodes.push(treeNode)
+    treeDataMap[file.id] = treeNode
     nodeMap[file.id] = node
   })
 
@@ -143,6 +147,16 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     }
   }
 
+  const onBranchNodeClick: TreeNodeProps['onBranchNodeClick'] = (nodeProps) => {
+    const dataNode = treeDataMap[nodeProps.id]
+    const newDataNode = {...dataNode, isExpanded: !nodeProps.isExpanded}
+    treeDataMap[nodeProps.id] = newDataNode
+    const newTreeNodes = Object.values(treeDataMap)
+    setTreeNodes(newTreeNodes)
+  }
+
+  const [stateTreeNodes, setTreeNodes] = React.useState<TreeNodeRawData[]>(treeNodes)
+
   return (
     <div className="site-sidebar py-5 px-2">
       <div className="site-sidebar__title">
@@ -153,8 +167,9 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       </div>
       <div className="site-sidebar__files">
         <TreeView
-          nodes={treeNodes}
+          nodes={stateTreeNodes}
           onSelect={onNodeSelect}
+          onBranchNodeClick={onBranchNodeClick}
           renderLabel={renderLabel}
         ></TreeView>
       </div>

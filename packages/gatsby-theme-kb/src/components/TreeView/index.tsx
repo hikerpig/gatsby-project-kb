@@ -1,10 +1,12 @@
 import * as React from 'react'
 import './tree-view.css'
+import { IconChevronRight } from '../icons'
 
 export type TreeNodeRawData = {
   id: string
   label: string
   isLeaf: boolean
+  isExpanded?: boolean
   parentId?: string | null
   className?: string
 }
@@ -16,6 +18,7 @@ type TreeNodeData = TreeNodeRawData & {
 
 interface TreeCommonProps {
   onSelect(node: TreeNodeData): void
+  onBranchNodeClick?(node: TreeNodeData): void
   renderLabel?(props: TreeNodeProps, opts: { labelClassName: string }): JSX.Element
 }
 
@@ -26,10 +29,28 @@ export interface ITreeViewProps extends TreeCommonProps {
   nodes: TreeNodeRawData[]
 }
 
+export default function TreeView(props: ITreeViewProps) {
+  const tree = buildTree(props.nodes)
+  return (
+    <ul className="tree-view">
+      {tree.rootNode.children!.map((node) => {
+        return (
+          <TreeNode
+            {...props}
+            key={node.id}
+            data={node}
+          ></TreeNode>
+        )
+      })}
+    </ul>
+  )
+}
+
 function TreeNode(props: TreeNodeProps) {
-  const { data, onSelect } = props
-  const onClick = () => {
+  const { data, onSelect, onBranchNodeClick } = props
+  const onClick = (e: React.MouseEvent) => {
     if (data.isLeaf) onSelect(data)
+    e.stopPropagation()
   }
   const labelClassName = 'tree-view__label'
   const nodeLabel = props.renderLabel ? (
@@ -37,10 +58,16 @@ function TreeNode(props: TreeNodeProps) {
   ) : (
     <span onClick={onClick} className={`${labelClassName} ${data.className}`}>{data.label}</span>
   )
+  const onNodeClick = (e) => {
+    if (!data.isLeaf && onBranchNodeClick) onBranchNodeClick(data)
+  }
   return (
-    <li className={`tree-view__node ${data.className}`} data-depth={data.depth}>
-      {nodeLabel}
-      {data.isLeaf ? null : (
+    <li className={`tree-view__node ${data.className || ''}`} data-depth={data.depth} onClick={onNodeClick}>
+      <span className="tree-view__node-header">
+        {!data.isLeaf && <IconChevronRight className={`tree-view__icon ${data.isExpanded ? 'tree-view__icon--expanded': ''}`} />}
+        {nodeLabel}
+      </span>
+      {(data.isLeaf || !data.isExpanded) ? null : (
         <ul>
           {data.children!.map((childNode) => {
             return (
@@ -94,6 +121,7 @@ function buildTree(nodes: TreeNodeRawData[]) {
             isLeaf: false,
             children: [],
             depth: 1,
+            isExpanded: node.isExpanded,
           }
         }
       }
@@ -103,10 +131,12 @@ function buildTree(nodes: TreeNodeRawData[]) {
     }
 
     const treeNode: TreeNodeData = {
+      isExpanded: false,
       ...node,
       depth: parentNode.depth + 1,
       children: [],
     }
+    // console.log('tree node', treeNode)
     treeMap[node.id] = treeNode
     parentNode.children.push(treeNode)
     treeNodes.push(treeNode)
@@ -114,20 +144,10 @@ function buildTree(nodes: TreeNodeRawData[]) {
   return { rootNode, treeNodes }
 }
 
-export default function TreeView(props: ITreeViewProps) {
-  const tree = buildTree(props.nodes)
-  return (
-    <ul className="tree-view">
-      {tree.rootNode.children!.map((node) => {
-        return (
-          <TreeNode
-            key={node.id}
-            data={node}
-            onSelect={props.onSelect}
-            renderLabel={props.renderLabel}
-          ></TreeNode>
-        )
-      })}
-    </ul>
-  )
-}
+// function recursivelyCallNode<T>(node: T, getNextNode: (node: T) => T, cb: (node: T) => void) {
+//   cb(node)
+//   const nextNode = getNextNode(node)
+//   if (nextNode) {
+//     recursivelyCallNode(nextNode, getNextNode, cb)
+//   }
+// }

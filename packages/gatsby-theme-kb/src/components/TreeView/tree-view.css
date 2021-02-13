@@ -8,3 +8,25 @@ ul.tree-view,
   margin-left: 0;
   margin-bottom: 0;
 }
+
+.tree-view__node-header {
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tree-view__node-header:hover {
+  color: var(--kb-link-color);
+}
+
+.tree-view__icon {
+  transition: transform 0.2s ease;
+  margin-left: -5px;
+  margin-right: 2px;
+  position: relative;
+  top: -1px;
+}
+
+.tree-view__icon--expanded {
+  transform: rotate(90deg);
+}

@@ -1,6 +1,6 @@
 {
   "name": "@gatsby-project-kb/transformer-wiki-references",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A gatsby transformer plugin to extract references between markdown nodes",
   "author": "hikerpig <hikerpigwinnie@gmail.com>",
   "homepage": "https://github.com/hikerpig/gatsby-project-kb#readme",

@@ -18,6 +18,7 @@
     "url": "git+https://github.com/hikerpig/gatsby-project-kb.git"
   },
   "scripts": {
+    "prepublish": "tsc",
     "watch": "tsc --watch",
     "build": "tsc"
   },

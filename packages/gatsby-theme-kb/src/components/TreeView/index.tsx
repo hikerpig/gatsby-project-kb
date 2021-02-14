@@ -58,17 +58,20 @@ function TreeNode(props: TreeNodeProps) {
   ) : (
     <span onClick={onClick} className={`${labelClassName} ${data.className}`}>{data.label}</span>
   )
-  const onNodeClick = () => {
-    if (!data.isLeaf && onBranchNodeClick) onBranchNodeClick(data)
+  const onNodeClick = (e: React.MouseEvent) => {
+    if (!data.isLeaf && onBranchNodeClick) {
+      e.stopPropagation()
+      onBranchNodeClick(data)
+    }
   }
   return (
     <li className={`tree-view__node ${data.className || ''}`} data-depth={data.depth} onClick={onNodeClick}>
-      <span className="tree-view__node-header">
+      <span className="tree-view__node-header" data-id={data.id}>
         {!data.isLeaf && <IconChevronRight className={`tree-view__icon ${data.isExpanded ? 'tree-view__icon--expanded': ''}`} />}
         {nodeLabel}
       </span>
       {(data.isLeaf || !data.isExpanded) ? null : (
-        <ul>
+        <ul className="tree-view__sub-tree">
           {data.children!.map((childNode) => {
             return (
               <TreeNode
@@ -76,6 +79,7 @@ function TreeNode(props: TreeNodeProps) {
                 data={childNode}
                 onSelect={onSelect}
                 renderLabel={props.renderLabel}
+                onBranchNodeClick={onBranchNodeClick}
               ></TreeNode>
             )
           })}
@@ -143,11 +147,3 @@ function buildTree(nodes: TreeNodeRawData[]) {
   }
   return { rootNode, treeNodes }
 }
-
-// function recursivelyCallNode<T>(node: T, getNextNode: (node: T) => T, cb: (node: T) => void) {
-//   cb(node)
-//   const nextNode = getNextNode(node)
-//   if (nextNode) {
-//     recursivelyCallNode(nextNode, getNextNode, cb)
-//   }
-// }

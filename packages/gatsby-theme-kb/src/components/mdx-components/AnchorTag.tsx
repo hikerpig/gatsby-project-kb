@@ -18,6 +18,10 @@ type Props = React.PropsWithChildren<{
   currentLocation: Location
 }>
 
+/**
+ * Infer the target's slug based on an intuitive method.
+ * TODO: this should be done in the transformer-wiki-referrences, based on the directory
+ */
 function genHrefInfo(opts: { currentSlug: string; href: string }) {
   const { href, currentSlug } = opts
   let isLocalHash = false

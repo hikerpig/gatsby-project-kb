@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import Search from '../Search'
 import { PageContext } from '../../type'
+import { recursivelyCallNode } from '../../utils/index'
 import './site-sidebar.css'
 
 function getDirectoriesByPath(dir: string) {
@@ -79,9 +80,10 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     let parentDirId
     directories.forEach((dir) => {
       if (!treeDataMap[dir]) {
+        const dirLabel = dir.split('/').pop() || dir
         const dirNode: TreeNodeRawData = {
           id: dir,
-          label: dir,
+          label: dirLabel,
           parentId: parentDirId,
           isLeaf: false,
         }
@@ -151,6 +153,17 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     const dataNode = treeDataMap[nodeProps.id]
     const newDataNode = {...dataNode, isExpanded: !nodeProps.isExpanded}
     treeDataMap[nodeProps.id] = newDataNode
+
+    // make parent nodes expanded otherwise their state will be lost.
+    //  this logic should be in TreeView rather than here, need to separate it.
+    recursivelyCallNode(newDataNode, (_node) => {
+      const parentNode = _node.parentId ? treeDataMap[_node.parentId]: null
+      return parentNode as any
+    }, (_node) => {
+      if (_node === newDataNode) return
+      _node.isExpanded = true
+    })
+
     const newTreeNodes = Object.values(treeDataMap)
     setTreeNodes(newTreeNodes)
   }

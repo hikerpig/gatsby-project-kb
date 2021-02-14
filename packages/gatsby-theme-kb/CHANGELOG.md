@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.1...gatsby-theme-kb@0.4.2) (2021-02-14)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** sidebar treeview with nested folders ([77c6e2f](https://github.com/hikerpig/gatsby-project-kb/commit/77c6e2f4635010cc5db8037d089a04e346bfcc8d))
+
+
+
+
+
 ## [0.4.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.0...gatsby-theme-kb@0.4.1) (2021-02-14)
 
 

@@ -52,7 +52,7 @@ const AnchorTag = ({
   const { anchorSlug } = genHrefInfo({ currentSlug, href })
 
   const ref = references.find((x) => {
-    return withPrefix(x.parent?.fields.slug || '') === withPrefix(anchorSlug)
+    return withPrefix(x.target.parent?.fields.slug || '') === withPrefix(anchorSlug)
   })
   // console.log('ref', ref, 'anchorSlug', anchorSlug, references)
 
@@ -60,10 +60,11 @@ const AnchorTag = ({
   let popupContent
   let child
 
-  if (ref && ref.parent) {
+  if (ref && ref.target.parent) {
     // console.log('reference is', ref, 'withoutLink', withoutLink)
-    const fileds = ref.parent.fields
-    const mdxBody = ref.body
+    const targetFileNode = ref.target.parent
+    const fileds = ref.target.parent.fields
+    const mdxBody = ref.target.body
     const nestedComponents = {
       a(props) {
         const {
@@ -82,7 +83,7 @@ const AnchorTag = ({
     }
     content = restProps.children
     popupContent = (
-      <div id={ref.parent.id} className="anchor-tag__popover with-markdown">
+      <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>
           <MDXProvider components={nestedComponents}>
             <MDXRenderer>{mdxBody}</MDXRenderer>

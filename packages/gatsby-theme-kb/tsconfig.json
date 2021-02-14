@@ -12,6 +12,7 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "jsx": "react",
     "esModuleInterop": true,
     "baseUrl": ".",

@@ -58,7 +58,7 @@ function TreeNode(props: TreeNodeProps) {
   ) : (
     <span onClick={onClick} className={`${labelClassName} ${data.className}`}>{data.label}</span>
   )
-  const onNodeClick = (e) => {
+  const onNodeClick = () => {
     if (!data.isLeaf && onBranchNodeClick) onBranchNodeClick(data)
   }
   return (

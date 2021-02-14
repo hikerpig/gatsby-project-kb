@@ -6,7 +6,9 @@ export type Reference = {
   target: {
     __typename: string
     body: string
-    // parent: Omit<TopicFlie, 'childMax'> | null
+    parent: SimpleFileNode
+  }
+  referrer: {
     parent: SimpleFileNode
   }
   contextLine: string

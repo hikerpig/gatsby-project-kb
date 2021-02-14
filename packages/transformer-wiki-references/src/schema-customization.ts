@@ -7,6 +7,7 @@ import { PluginOptions, resolveOptions } from './options'
 import { generateData } from './compute-inbounds'
 import { getCachedNode, getInboundReferences } from './cache'
 import { nonNullable } from './util'
+import { NodeReference } from './type'
 
 export const createSchemaCustomization = (
   { actions }: CreateSchemaCustomizationArgs,
@@ -18,6 +19,7 @@ export const createSchemaCustomization = (
 
     type NodeReference {
       target: ReferenceTarget
+      referrer: ReferenceTarget
       contextLine: String
     }
   `)
@@ -47,13 +49,14 @@ export const setFieldsOnGraphQLNodeType = (
 
         if (cachedNode && cachedNode.resolvedOutboundReferences) {
           return cachedNode.resolvedOutboundReferences
-            .map(({ node, contextLine }) => {
-              const _node = getNode(node.id)
-              if (!_node) return null
+            .map(({ target, contextLine, referrer }) => {
+              const targetNode = getNode(target.id)
+              if (!targetNode) return null
               return {
-                target: node,
+                target: targetNode,
                 contextLine,
-              }
+                referrer,
+              } as NodeReference
             })
             .filter(nonNullable)
         }
@@ -73,13 +76,14 @@ export const setFieldsOnGraphQLNodeType = (
 
         if (data) {
           return (data[node.id] || [])
-            .map(({ node, contextLine }) => {
-              const _node = getNode(node.id)
-              if (!_node) return null
+            .map(({ target, referrer, contextLine }) => {
+              const targetNode = getNode(target.id)
+              if (!targetNode) return null
               return {
-                target: node,
+                target: targetNode,
                 contextLine,
-              }
+                referrer,
+              } as NodeReference
             })
             .filter(nonNullable)
         }

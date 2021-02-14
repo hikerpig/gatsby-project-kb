@@ -6,7 +6,7 @@ import './link-reference.css'
 
 const LinkReference = (props: { reference: Reference}) => {
   const { reference } = props
-  const { slug, title } = reference.target.parent?.fields!
+  const { slug, title } = reference.referrer.parent?.fields!
 
   return (
     <div className="link-reference">

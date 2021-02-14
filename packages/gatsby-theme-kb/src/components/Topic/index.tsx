@@ -40,7 +40,7 @@ const Topic = ({ file, currentLocation }: Props) => {
 
   if (inboundReferences) {
     const references = inboundReferences.map((ref) => {
-      const { slug } = ref.target.parent?.fields!
+      const { slug } = ref.referrer.parent?.fields!
       return (
         <LinkReference key={slug} reference={ref}></LinkReference>
       )

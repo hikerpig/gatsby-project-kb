@@ -43,7 +43,10 @@ export const onCreateNode = async (
 
   const content = await loadNodeContent(node)
 
-  const outboundReferences = getReferences(content)
+  const outboundReferences = getReferences(content, (ref) => {
+    ref.referrerNode = node
+    return ref
+  })
 
   const title = getTitle(node as MdxNode, content)
   const aliases = getAliases(node as MdxNode)

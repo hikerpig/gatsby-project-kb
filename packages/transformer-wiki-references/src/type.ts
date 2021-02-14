@@ -7,7 +7,11 @@ export interface MdxNode extends Node {
   }
 }
 
+/**
+ * Used in GraphQL
+ */
 export type NodeReference = {
-  node: MdxNode
+  target: MdxNode
+  referrer: MdxNode
   contextLine: string
 }

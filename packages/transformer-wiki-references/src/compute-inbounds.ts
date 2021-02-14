@@ -1,5 +1,4 @@
 import { basename, extname } from 'path'
-import { Node } from 'gatsby'
 import { nonNullable } from './util'
 import { getAllCachedNodes, setCachedNode, setInboundReferences, InboundReferences } from './cache'
 import { MdxNode, NodeReference } from './type'
@@ -67,19 +66,21 @@ export async function generateData(cache: any, getNode: Function) {
               if (!cachedNode) return null
               return {
                 contextLine: reference.contextLine,
-                node: cachedNode.node,
-              }
+                target: cachedNode.node,
+                referrer: reference.referrerNode,
+              } as NodeReference
             })
             .filter(nonNullable)
 
           mapped.forEach(item => {
-            const nodeId = item.node.id
+            const nodeId = item.target.id
             if (!inboundReferences[nodeId]) {
               inboundReferences[nodeId] = []
             }
             inboundReferences[nodeId].push({
               contextLine: item.contextLine,
-              node: item.node,
+              target: item.target,
+              referrer: node.node,
             })
           })
 
@@ -94,11 +95,11 @@ export async function generateData(cache: any, getNode: Function) {
     Object.keys(inboundReferences).forEach(nodeId => {
       inboundReferences[nodeId] = inboundReferences[nodeId].filter(
         reference =>
-          getNode(reference.node.parent) &&
+          getNode(reference.target.parent) &&
           !hasChildInArrayExcept(
-            getNode(reference.node.parent),
-            inboundReferences[nodeId].map(o => o.node),
-            reference.node.id,
+            getNode(reference.target.parent),
+            inboundReferences[nodeId].map(o => o.target),
+            reference.target.id,
             getNode as any
           )
       )

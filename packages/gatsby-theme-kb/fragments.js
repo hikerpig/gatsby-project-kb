@@ -21,9 +21,8 @@ export const references = graphql`
     }
     inboundReferences {
       contextLine
-      target {
+      referrer {
         ... on Mdx {
-          body
           parent {
             id
             ... on File {

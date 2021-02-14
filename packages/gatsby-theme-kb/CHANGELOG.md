@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.0...gatsby-theme-kb@0.4.1) (2021-02-14)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** misfunction in AnchorTag caused by v0.3.0 ([7739b49](https://github.com/hikerpig/gatsby-project-kb/commit/7739b496866eb6573dad0600fa252cd292aa1348))
+* backlink should show referrer title and link ([8e89b4d](https://github.com/hikerpig/gatsby-project-kb/commit/8e89b4d22f85a2dc3b0f4902f9530a4692e81161))
+
+
+
+
+
 # [0.4.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.3.0...gatsby-theme-kb@0.4.0) (2021-02-13)
 
 

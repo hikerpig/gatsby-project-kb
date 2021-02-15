@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.2...gatsby-theme-kb@0.4.3) (2021-02-15)
+
+
+### Bug Fixes
+
+* modify gatsby-plugin-purgecss to make it work in foam-template-gatsby-kb ([eea174a](https://github.com/hikerpig/gatsby-project-kb/commit/eea174afb86a8852e7e70bdfcfe09f0e52cfd700))
+* multiple note-graph ini in GraphView when toggling graphState ([51581b7](https://github.com/hikerpig/gatsby-project-kb/commit/51581b7396b2edc00b9cb01a506d726eecc03036))
+
+
+
+
+
 ## [0.4.2](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.1...gatsby-theme-kb@0.4.2) (2021-02-14)
 
 

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { NoteGraphView, NoteGraphModel } from 'note-graph/dist/note-graph.esm'
 import { navigate } from 'gatsby'
 import { createPortal } from 'react-dom'
@@ -8,15 +8,10 @@ import useHotkeys from '@reecelucas/react-use-hotkeys'
 
 import './graph-view.css'
 
-// const MINIMIZED_GRAPH = {
-//   width: 200,
-//   height: 177,
-// }
-
-type GraphState = 'show' | 'hidden'
+export type GraphState = 'show' | 'hidden'
 
 type Props = {
-  graphState: string
+  graphState: GraphState
   setGraphState: (state: GraphState) => void
   currentFileId: string
 }
@@ -30,16 +25,12 @@ export default function GraphView({
   const windowSize = useWindowSize()
   const graphContainer = useRef<HTMLDivElement>(null)
 
-  const [shouldShowGraph, setShouldShowGraph] = useState(false)
+  const shouldShowGraph = graphState !== 'hidden'
 
   const modalSize = {
-    width: Math.min(windowSize.width - 40, 1000),
+    width: Math.min(windowSize.width - 40, 1100),
     height: Math.min(windowSize.height - 40, 800),
   }
-
-  useEffect(() => {
-    setShouldShowGraph(graphState !== 'hidden')
-  }, [graphState])
 
   const navigateTo = (p: string) => {
     navigate(p)
@@ -77,7 +68,7 @@ export default function GraphView({
     return () => {
       noteGraphView.dispose()
     }
-  }, [notes, graphState, graphContainer])
+  }, [notes, graphState])
 
   useHotkeys('Escape Escape', () => {
     setGraphState('hidden')

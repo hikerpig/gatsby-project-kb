@@ -1,4 +1,5 @@
 import React, { useState, lazy, Suspense } from 'react'
+import type { GraphState } from '../GraphView'
 
 import './graph-button.css'
 
@@ -25,7 +26,7 @@ const svgIconContent = `
 
 const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
   const { currentFileId, showHint } = props
-  const [graphState, setGraphState] = useState('hidden')
+  const [graphState, setGraphState] = useState<GraphState>('hidden')
   const hint = 'Show Graph Visualisation'
 
   return (
@@ -34,7 +35,7 @@ const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
         title={hint}
         aria-label={hint}
         className="graph-button"
-        onClick={() => setGraphState('maximized')}
+        onClick={() => setGraphState('show')}
       >
         <span dangerouslySetInnerHTML={{ __html: svgIconContent }}></span>
         {showHint && <span className="graph-button__hint">{hint}</span>}

@@ -7,6 +7,8 @@ export default (query: string, opts: { searchOptions?: any } = {}) => {
   const [pathIndex, setPathIndex] = useState<any>(null)
   const [titleIndex, setTitleIndex] = useState<any>(null)
   const [bodyIndex, setBodyIndex] = useState<any>(null)
+  // has fetched search indices
+  const [hasFetched, setHasFetched] = useState(false)
 
   const searchOptions = opts.searchOptions || {}
 
@@ -27,6 +29,10 @@ export default (query: string, opts: { searchOptions?: any } = {}) => {
   // console.log('use-search data is', data)
 
   useEffect(() => {
+    if (hasFetched || !query) return
+
+    setHasFetched(true)
+
     fetch(data.localSearchPaths.publicIndexURL)
       .then((result) => result.text())
       .then((res) => {
@@ -56,7 +62,7 @@ export default (query: string, opts: { searchOptions?: any } = {}) => {
       .then((res) => {
         setStore(res)
       })
-  }, [setPathIndex, setTitleIndex, setBodyIndex, setStore, data])
+  }, [setPathIndex, setTitleIndex, setBodyIndex, setStore, data, query])
 
   return useMemo(() => {
     if (!query || !store || (!pathIndex && !bodyIndex && !titleIndex))

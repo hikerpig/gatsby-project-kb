@@ -5,4 +5,6 @@
 - [X] Add local search
 - [X] Responsive design
 - [X] Collapsable sidebar tree
-- [ ] Support nested folder without the chore of manually adding link definitions
+- [X] Support nested folder without the chore of manually adding link definitions
+- [ ] Better style for graph-view
+- [ ] Knobs to config the force graph in graph-view

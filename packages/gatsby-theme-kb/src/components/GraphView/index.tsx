@@ -1,14 +1,18 @@
 import React, { useRef, useEffect } from 'react'
-import { NoteGraphView, NoteGraphModel } from 'note-graph/dist/note-graph.esm'
+import useHotkeys from '@reecelucas/react-use-hotkeys'
+// import { NoteGraphView, NoteGraphModel } from 'note-graph/dist/note-graph.esm'
+import { NoteGraphView, NoteGraphModel } from 'note-graph'
 import { navigate } from 'gatsby'
 import { createPortal } from 'react-dom'
 import { useGraphData } from '../..//use-graph-data'
 import { useWindowSize } from '../../use-window-size'
-import useHotkeys from '@reecelucas/react-use-hotkeys'
+import Search, { SearchProps } from '../Search'
 
 import './graph-view.css'
 
 export type GraphState = 'show' | 'hidden'
+
+const RESULTS_WIDTH = 300
 
 type Props = {
   graphState: GraphState
@@ -28,7 +32,7 @@ export default function GraphView({
   const shouldShowGraph = graphState !== 'hidden'
 
   const modalSize = {
-    width: Math.min(windowSize.width - 40, 1100),
+    width: Math.min(windowSize.width - 40, 1400),
     height: Math.min(windowSize.height - 40, 800),
   }
 
@@ -49,7 +53,7 @@ export default function GraphView({
     noteGraphView = new NoteGraphView({
       container: graphContainer.current,
       graphModel,
-      width: modalSize.width,
+      width: modalSize.width - RESULTS_WIDTH,
       height: modalSize.height,
     })
 
@@ -73,6 +77,20 @@ export default function GraphView({
   useHotkeys('Escape Escape', () => {
     setGraphState('hidden')
   })
+
+  const onSearchResults: SearchProps['onResults'] = (results) => {
+    if (noteGraphView) {
+      const nodeIds = results.map(o => o.id).filter(s => s)
+      // console.debug('onSearchResults node ids', nodeIds)
+      // It's better to add another highlight style or specity styles in `setSelectedNodes`,
+      //   I will need to extend note-graph for this.
+      if (nodeIds.length) {
+        noteGraphView.setSelectedNodes(nodeIds)
+      } else {
+        noteGraphView.setSelectedNodes([currentFileId])
+      }
+    }
+  }
 
   return createPortal(
     <div>
@@ -110,8 +128,20 @@ export default function GraphView({
             </svg>
           </button>
           <div className="modal-body">
-            <div ref={graphContainer} id="graph-container"></div>
-            <div className="graph-view__modal-hint">Press Esc twice to close this modal.</div>
+            <div className="flex">
+              <div className="graph-view__search-wrap w-3/12">
+                <Search
+                  position="right"
+                  resultsClassName="graph-view__search-results"
+                  resultsWidth={RESULTS_WIDTH}
+                  onResults={onSearchResults}
+                ></Search>
+              </div>
+              <div>
+                <div ref={graphContainer} id="graph-container"></div>
+                <div className="graph-view__modal-hint">Press Esc twice to close this modal.</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,16 @@ import React, { useState, useEffect, useMemo } from 'react'
 import FlexSearch from 'flexsearch'
 import { graphql, useStaticQuery } from 'gatsby'
 
-export default (query: string, opts: { searchOptions?: any } = {}) => {
+export type SearchResult = {
+  id: string
+  path: string
+  title: string
+  excerpt?: any
+}
+
+export const LOADING_ID = 'loading'
+
+export default (query: string, opts: { searchOptions?: any } = {}): SearchResult[] => {
   const [store, setStore] = useState<any>(null)
   const [pathIndex, setPathIndex] = useState<any>(null)
   const [titleIndex, setTitleIndex] = useState<any>(null)
@@ -68,7 +77,7 @@ export default (query: string, opts: { searchOptions?: any } = {}) => {
     if (!query || !store || (!pathIndex && !bodyIndex && !titleIndex))
       return [
         {
-          id: 'loading',
+          id: LOADING_ID,
           title: '',
           excerpt: <div className="lds-dual-ring"></div>,
         },

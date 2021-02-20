@@ -26,7 +26,7 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-remark": "^2.12.0",
     "gatsby-transformer-sharp": "^2.6.0",
-    "note-graph": "^0.1.4",
+    "note-graph": "^0.1.5",
     "postcss": "^8.2.4",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

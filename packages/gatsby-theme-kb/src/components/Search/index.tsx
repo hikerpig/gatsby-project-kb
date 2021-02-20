@@ -1,19 +1,46 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
+// import useHotkeys from '@reecelucas/react-use-hotkeys'
 import { navigate } from 'gatsby'
 import Downshift from 'downshift'
-import useSearch from '../../use-search'
+import useSearch, { SearchResult, LOADING_ID } from '../../use-search'
 
 import './search.css'
 
-export default function Search(props: { isMobileMode?: boolean } = {}) {
-  const { isMobileMode } = props
+const RESULTS_WIDTH = 500
+
+export type SearchProps = {
+  isMobileMode?: boolean
+  searchActivateHotkey?: string
+  resultsClassName?: string
+  resultsWidth?: number
+  position?: 'right'
+  onResults?(results: SearchResult[]): void
+}
+
+export default function Search(props: SearchProps) {
+  const { isMobileMode, resultsClassName, resultsWidth, onResults, position } = props
   const [query, setQuery] = useState('')
   const searchBarRef = useRef<HTMLDivElement>(null)
+  const searchBarInputRef = useRef<HTMLInputElement>(null)
 
   const results = useSearch(query)
 
   const handleChange = useCallback((e) => setQuery(e.target.value), [setQuery])
+
+  // if (searchActivateHotkey) {
+  //   useHotkeys(searchActivateHotkey, () => {
+  //     setTimeout(() => {
+  //       if (searchBarInputRef.current) searchBarInputRef.current.focus()
+  //     })
+  //   })
+  // }
+
+  if (onResults) {
+    useEffect(() => {
+      onResults(results.filter((o) => o.id !== LOADING_ID))
+    }, [results])
+  }
 
   return (
     <Downshift
@@ -37,6 +64,7 @@ export default function Search(props: { isMobileMode?: boolean } = {}) {
               onChange={handleChange}
               getInputProps={getInputProps}
               ref={searchBarRef}
+              inputRef={searchBarInputRef}
             />
             {isOpen && (
               <Results
@@ -46,6 +74,9 @@ export default function Search(props: { isMobileMode?: boolean } = {}) {
                 highlightedIndex={highlightedIndex}
                 searchBarRef={searchBarRef}
                 isMobileMode={isMobileMode}
+                className={resultsClassName}
+                position={position}
+                width={resultsWidth}
               />
             )}
           </div>
@@ -56,8 +87,7 @@ export default function Search(props: { isMobileMode?: boolean } = {}) {
 }
 
 const SearchBar = React.forwardRef<any>((props, ref) => {
-  // const SearchBar = ((props, ref) => {
-  const { onChange, getInputProps } = props as any
+  const { onChange, getInputProps, inputRef } = props as any
   return (
     <div className="inputWrapper" ref={ref}>
       <svg
@@ -74,6 +104,7 @@ const SearchBar = React.forwardRef<any>((props, ref) => {
           placeholder: 'Search...',
           onChange: onChange,
         })}
+        ref={inputRef}
         type="text"
       />
     </div>
@@ -87,20 +118,34 @@ function Results({
   highlightedIndex,
   searchBarRef,
   isMobileMode = false,
+  className = '',
+  position,
+  width = 0,
 }) {
+  width = width || RESULTS_WIDTH
+
   const sRef: React.RefObject<HTMLDivElement> = searchBarRef
   const styles: React.CSSProperties = sRef.current
     ? (function () {
         const searchBarBox = sRef.current.getBoundingClientRect()
+        let left = isMobileMode ? 10 : searchBarBox.left
+        if (position === 'right') {
+          left = searchBarBox.right - width
+        }
         return {
           top: searchBarBox.top + searchBarBox.height + 10,
-          left: isMobileMode ? 10 : searchBarBox.left,
+          left,
+          width,
         }
       })()
     : {}
 
   return ReactDOM.createPortal(
-    <ul className="results z-20" {...getMenuProps()} style={styles}>
+    <ul
+      className={`results z-20 ${className}`}
+      {...getMenuProps()}
+      style={styles}
+    >
       {results.map((r, index) => (
         <li
           key={r.id}

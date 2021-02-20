@@ -23,6 +23,7 @@ export type SimpleFileNode = {
 }
 
 export type TopicFlie = {
+  id: string
   fields: {
     slug: string
     title: string

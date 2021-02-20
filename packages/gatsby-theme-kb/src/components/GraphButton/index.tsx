@@ -24,9 +24,10 @@ const svgIconContent = `
 </svg>
 `
 
-const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
+const GraphButton = (props: { currentFileId: string; showHint?: boolean }) => {
   const { currentFileId, showHint } = props
   const [graphState, setGraphState] = useState<GraphState>('hidden')
+  const [hasClicked, setHasClicked] = useState(false)
   const hint = 'Show Graph Visualisation'
 
   return (
@@ -35,12 +36,15 @@ const GraphButton = (props: { currentFileId: string, showHint?: boolean}) => {
         title={hint}
         aria-label={hint}
         className="graph-button"
-        onClick={() => setGraphState('show')}
+        onClick={() => {
+          setHasClicked(true)
+          setGraphState('show')
+        }}
       >
         <span dangerouslySetInnerHTML={{ __html: svgIconContent }}></span>
         {showHint && <span className="graph-button__hint">{hint}</span>}
       </div>
-      {typeof window !== 'undefined' ? (
+      {typeof window !== 'undefined' && hasClicked ? (
         <Suspense fallback={null}>
           <Graph
             graphState={graphState}

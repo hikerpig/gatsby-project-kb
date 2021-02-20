@@ -13491,10 +13491,10 @@ normalize-url@^4.1.0:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-note-graph@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/note-graph/-/note-graph-0.1.4.tgz#c7faf1e5c068071be695c599b96426eb03244180"
-  integrity sha512-uE/m90hHcp4fxXOo68wENstqlc5K7yd/P2EgL7I4vCw0t2SQOgv1T55PBoT3q02MRkfcrpMfyrAMYvquDLq/Hg==
+note-graph@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.npmjs.org/note-graph/-/note-graph-0.1.5.tgz#1a5b2d6cb5a25f1e73ceeb22f31cfb1e19c4bc1a"
+  integrity sha512-yodzbtZxuS+ivzKKtMxoFteEXLKZlwdQvOZl44UVjlrkuIio9UymJXAF64k447qzO0SbH5kmpDOsz+1vNePKmQ==
   dependencies:
     d3 "^6.2.0"
     d3-color "^2.0.0"

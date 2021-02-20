@@ -4,6 +4,7 @@ import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import Search from '../Search'
 import { PageContext } from '../../type'
 import { recursivelyCallNode } from '../../utils/index'
+import { SEARCH_HOTKEY } from '../../configs/hotkeys'
 import './site-sidebar.css'
 
 function getDirectoriesByPath(dir: string) {
@@ -176,7 +177,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
         {title}
       </div>
       <div className="site-sidebar__search">
-        <Search isMobileMode={isMobileMode} />
+        <Search isMobileMode={isMobileMode} searchActivateHotkey={SEARCH_HOTKEY} />
       </div>
       <div className="site-sidebar__files">
         <TreeView

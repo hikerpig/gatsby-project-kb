@@ -36,6 +36,18 @@
   justify-content: center;
 }
 
+.graph-view__search-wrap {
+  margin-right: 10px;
+}
+
+.graph-view__search-wrap input {
+  width: 300px;
+}
+
+.graph-view__search-results {
+  z-index: 200;
+}
+
 .graph-view__modal-hint {
   color: var(--kb-text-inverse-color);
   font-size: 1.5em;

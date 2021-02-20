@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.3...gatsby-theme-kb@0.5.0) (2021-02-20)
+
+
+### Features
+
+* add search in graph view and make it interactively highlighting result nodes ([0323db9](https://github.com/hikerpig/gatsby-project-kb/commit/0323db9ca8f8169d001b021724ca49714b5f10e4))
+
+
+
+
+
 ## [0.4.3](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.2...gatsby-theme-kb@0.4.3) (2021-02-15)
 
 

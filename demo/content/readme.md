@@ -18,6 +18,8 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 - Auto-generated table of contents.
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
 
+This demo site has some extra gatsby config apart from `gatsby-theme-kb` itself. You can find them on [github](https://github.com/hikerpig/gatsby-project-kb/blob/master/demo/gatsby-config.js).
+
 ## Working with knowledge management tools
 
 ### Foam

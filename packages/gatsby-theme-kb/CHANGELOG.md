@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.0...gatsby-theme-kb@0.5.1) (2021-02-26)
+
+
+### Bug Fixes
+
+* codeblock style ([a837db8](https://github.com/hikerpig/gatsby-project-kb/commit/a837db867f55af6ca4133e1eb1fb2235e543a553))
+* **gatsby-theme-kb:** graph view error due to lazy render ([fea20ff](https://github.com/hikerpig/gatsby-project-kb/commit/fea20ffbb4262e36d5adf707159f13c088d8842c))
+
+
+
+
+
 # [0.5.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.4.3...gatsby-theme-kb@0.5.0) (2021-02-20)
 
 

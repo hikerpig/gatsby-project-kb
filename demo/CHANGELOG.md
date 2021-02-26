@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/hikerpig/gatsby-project-kb/compare/demo@1.2.0...demo@1.2.1) (2021-02-26)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** graph view error due to lazy render ([fea20ff](https://github.com/hikerpig/gatsby-project-kb/commit/fea20ffbb4262e36d5adf707159f13c088d8842c))
+
+
+
+
+
 # [1.2.0](https://github.com/hikerpig/gatsby-project-kb/compare/demo@1.1.3...demo@1.2.0) (2021-02-20)
 
 

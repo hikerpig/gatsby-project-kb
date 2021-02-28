@@ -36,11 +36,9 @@ I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerp
 
 ### Obsidian
 
-Currently this theme is far less versatile than Obsidian's publishing system.
+Currently this theme is far less versatile than Obsidian's publishing system. e.g. lack of tagging system.
 
-And this doest not support nested folder very well (yet).
-
-But this is free and open, you can extend it as you wish.
+But this is free and open, you can always extend it as you wish.
 
 ## Extending it in your Gatsby site
 

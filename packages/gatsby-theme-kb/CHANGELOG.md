@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.1...gatsby-theme-kb@0.5.2) (2021-02-28)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** errors when rendering custom components in mdx mentioned in [#6](https://github.com/hikerpig/gatsby-project-kb/issues/6) ([006b87c](https://github.com/hikerpig/gatsby-project-kb/commit/006b87c3372908ae09f73bb9476171dfef279e05))
+
+
+
+
+
 ## [0.5.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.0...gatsby-theme-kb@0.5.1) (2021-02-26)
 
 

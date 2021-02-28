@@ -5,7 +5,7 @@ A Gatsby theme for publishing **K**nowledge **B**ase.
 
 See the demo and [documentation](https://gatsby-project-kb.vercel.app/).
 
-# Setup
+# Setup in your Gatsby project
 
 1. Install dependency
 
@@ -15,14 +15,21 @@ yarn add gatsby-theme-kb
 
 2. Add these to your gatsby-config.js file:
 
-```
+```js
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-garden`,
+      resolve: `gatsby-theme-kb`,
       options: {
         contentPath: path.resolve(__dirname, 'content'),
-        rootNote: 'readme'
+        rootNote: 'readme',
+        getPluginMdx(defaultPluginMdx) {
+          // customise pre-configured `gatsby-plugin-mdx`, for example:
+          // defaultPluginMdx.options.gatsbyRemarkPlugins.push({
+          //   resolve: 'gatsby-remark-prismjs',
+          // })
+          return defaultPluginMdx
+        },
       },
     },
   ],
@@ -39,10 +46,10 @@ module.exports = {
 
 |           Key          | Default value |                                  Description                                 |
 |:----------------------:|:-------------:|:----------------------------------------------------------------------------:|
-| rootNote               |  readme       | Root note's name (without exts)
+| rootNote               |  `/readme`    | Root note's name (without exts)
 | contentPath            |               | Location of local content                                                    |
 | extensions | ['.md', '.mdx']         | Valid content file exts |
 | ignore     | `['.git']`         | A list of file globs to ignore |
-| mdxOtherwiseConfigured | false         | Set it to true if gatsby-plugin-mdx is already configured for your site. |
+| getPluginMdx | (defaultPluginMdx) => PluginMdx | Customise pre-configured `gatsby-plugin-mdx`, please do always return a valid gatsby plugin object |
 
 <!-- ## How to override a Component -->

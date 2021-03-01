@@ -17,6 +17,7 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 - Auto-generated sidebar based on notes directory.
 - Auto-generated table of contents.
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
+- Easy page customization by [[using-frontmatter]].
 
 This demo site has some extra gatsby config apart from `gatsby-theme-kb` itself. You can find them on [github](https://github.com/hikerpig/gatsby-project-kb/blob/master/demo/gatsby-config.js).
 
@@ -51,3 +52,4 @@ Some Gatsby offical tutorials about extending a theme.
 Welcome to open issues and PRs on [github repo](https://github.com/hikerpig/gatsby-project-kb).
 
 [graph-view]: ./features/graph-view.md
+[using-frontmatter]: ./features/using-frontmatter.md

@@ -12,6 +12,7 @@
 
 .site-sidebar__link {
   color: var(--kb-text-color);
+  display: block;
 }
 
 .site-sidebar__link:hover {

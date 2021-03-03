@@ -3233,6 +3233,11 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-14.14.22.tgz#0d29f382472c4ccf3bd96ff0ce47daf5b7b84b18"
   integrity sha512-g+f/qj/cNcqKkc3tFqlXOYjrmZA+jNBiDzbP3kH+B+otKFqAdPgVTGP1IeKRdMml/aE69as5S4FqtxAbl+LaMw==
 
+"@types/node@^14.14.27":
+  version "14.14.31"
+  resolved "https://registry.npmjs.org/@types/node/-/node-14.14.31.tgz#72286bd33d137aa0d152d47ec7c1762563d34055"
+  integrity sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
+
 "@types/node@^8.5.7":
   version "8.10.66"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.10.66.tgz#dd035d409df322acc83dff62a602f12a5783bbb3"
@@ -8820,42 +8825,6 @@ gatsby-telemetry@^1.9.0:
     lodash "^4.17.20"
     node-fetch "^2.6.1"
     uuid "3.4.0"
-
-gatsby-theme-kb@./packages/gatsby-theme-kb:
-  version "0.5.0"
-  dependencies:
-    "@gatsby-project-kb/transformer-wiki-references" "^0.2.1"
-    "@mdx-js/mdx" "^1.6.22"
-    "@mdx-js/react" "^1.6.22"
-    "@reecelucas/react-use-hotkeys" "^1.3.1"
-    "@tippyjs/react" "^4.2.0"
-    autoprefixer "^10.2.1"
-    classnames "^2.2.6"
-    downshift "^6.1.0"
-    flexsearch "^0.6.32"
-    gatsby "^2.26.1"
-    gatsby-plugin-local-search "^2.0.0"
-    gatsby-plugin-manifest "^2.6.1"
-    gatsby-plugin-mdx "^1.6.0"
-    gatsby-plugin-postcss "^3.5.0"
-    gatsby-plugin-purgecss "^5.0.0"
-    gatsby-plugin-react-helmet "^3.4.0"
-    gatsby-plugin-tocbot "^0.1.0"
-    gatsby-react-router-scroll "^3.6.0"
-    gatsby-remark-double-parenthesis-link "^0.1.2"
-    gatsby-remark-wiki-link "^0.2.0"
-    gatsby-source-filesystem "^2.5.0"
-    gatsby-transformer-remark "^2.12.0"
-    gatsby-transformer-sharp "^2.6.0"
-    note-graph "^0.1.5"
-    postcss "^8.2.4"
-    prop-types "^15.7.2"
-    react "^16.12.0"
-    react-dom "^16.12.0"
-    react-helmet "^6.1.0"
-    tailwindcss "^2.0.2"
-    use-breakpoint "^1.1.5"
-    use-dark-mode "^2.3.1"
 
 gatsby-transformer-remark@^2.12.0:
   version "2.15.0"
@@ -15093,6 +15062,11 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
+prettier@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
+  integrity sha512-16c7K+x4qVlJg9rEbXl7HEGmQyZlG4R9AgP+oHKRMsMsuk8s+ATStlf1NpDqyBI1HpVyfjLOeMhH2LvuNvV5Vg==
+
 prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.npmjs.org/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -19109,10 +19083,8 @@ watchpack@^1.7.4:
   resolved "https://registry.npmjs.org/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.2...gatsby-theme-kb@0.5.3) (2021-03-03)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** the sidebar subdirectory should not collapse when clicking link ([3a97a55](https://github.com/hikerpig/gatsby-project-kb/commit/3a97a55b86df0f2934f311ee6b237dae3ea7b865))
+
+
+
+
+
 ## [0.5.2](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.1...gatsby-theme-kb@0.5.2) (2021-02-28)
 
 

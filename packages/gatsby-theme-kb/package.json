@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-kb",
   "description": "A Gatsby theme for publishing Knowledge Base.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "dependencies": {
     "@gatsby-project-kb/transformer-wiki-references": "^0.2.1",
     "@mdx-js/mdx": "^1.6.22",

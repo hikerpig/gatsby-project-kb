@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.2.3",
+  "version": "1.2.4-alpha.0",
   "name": "demo",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,7 @@
     "gatsby-remark-prismjs": "^3.13.0",
     "gatsby-remark-shiki": "^0.2.0",
     "gatsby-remark-shiki-twoslash": "^1.0.1",
-    "gatsby-theme-kb": "^0.5.3",
+    "gatsby-theme-kb": "^0.5.4-alpha.0",
     "prismjs": "^1.23.0",
     "react": "^17",
     "react-dom": "^17"

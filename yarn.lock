@@ -8614,10 +8614,10 @@ gatsby-plugin-page-creator@^3.0.0:
     globby "^11.0.2"
     lodash "^4.17.20"
 
-gatsby-plugin-postcss@^3.5.0:
-  version "3.6.0"
-  resolved "https://registry.npmjs.org/gatsby-plugin-postcss/-/gatsby-plugin-postcss-3.6.0.tgz#f6ae9a9f9a09ff2e67b53f954a44719eeeeca5b1"
-  integrity sha512-wcC2u70Q4MYAeXwwPCknQGJoLKwI9vNsDMKrtSjxGsvpedkEacRwk3xsomCS4idZKDOb/f9fxc2jwfWgiaDxQw==
+gatsby-plugin-postcss@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/gatsby-plugin-postcss/-/gatsby-plugin-postcss-4.0.0.tgz#1d8f41c06aac788bb380e0ae555df4aeee7d7ab8"
+  integrity sha512-jcyOccxIjnFp9955eJ382LS2ZeYCt0cDr7hQHlzErtKCfTCN/vGWau+CxRG1AN5S1TtyR/ikvDhuirl5lx2kAw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     postcss-loader "^4.1.0"
@@ -14242,7 +14242,7 @@ password-prompt@^1.0.4:
 
 path-browserify@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
+  resolved "https://registry.npmjs.org/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
   integrity sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==
 
 path-case@^2.1.0:

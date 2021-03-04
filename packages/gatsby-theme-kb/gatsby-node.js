@@ -125,10 +125,10 @@ exports.createPages = async ({ graphql, actions }, options) => {
     )
 
     const localFiles = result.data.allFile.nodes
-      .filter(node => shouldHandleFile(node, options))
-      .filter(x => x.childMdx.frontmatter.private !== true)
+      .filter((node) => shouldHandleFile(node, options))
+      .filter((x) => x.childMdx.frontmatter.private !== true)
 
-    localFiles.forEach(node => {
+    localFiles.forEach((node) => {
       createPage({
         path: node.fields.slug,
         component: TopicTemplate,
@@ -139,7 +139,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
     })
 
     if (rootNoteSlug) {
-      const root = localFiles.find(node => node.fields.slug === rootNoteSlug)
+      const root = localFiles.find((node) => node.fields.slug === rootNoteSlug)
       // console.log('root is', root, 'rootNoteSlug', rootNoteSlug)
       if (root) {
         createPage({
@@ -166,8 +166,11 @@ exports.createPages = async ({ graphql, actions }, options) => {
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      fallback: {
+      alias: {
         path: require.resolve('path-browserify'),
+      },
+      fallback: {
+        fs: false,
       },
     },
   })

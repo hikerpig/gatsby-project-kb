@@ -1,7 +1,22 @@
 # Change Log
 
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.6.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.4-alpha.0...gatsby-theme-kb@0.6.0) (2021-03-05)
+
+Hello Gatsby V3.
+
+# BREAKING
+
+Now works with gatsby@3
+
+# Improvements
+* upgrade gatsby-plugin-mdx@2
+* fix(gatsby-theme-kb): sidebar expand bug with file in nested folder
+* style: a warmer color for light mode default text
+
 
 ## [0.5.4-alpha.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.3...gatsby-theme-kb@0.5.4-alpha.0) (2021-03-04)
 

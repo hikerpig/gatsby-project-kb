@@ -41,7 +41,7 @@ function findReferenceWithPattern(md: string, pattern: RegExp): Reference[] {
 
 export const getReferences = (string: string, onReferrenceAdd?: (ref: Reference) => Reference) => {
   const md = cleanupMarkdown(string)
-  onReferrenceAdd = onReferrenceAdd || (() => null)
+  onReferrenceAdd = onReferrenceAdd || ((o) => o)
 
   const references: References = {
     blocks: findReferenceWithPattern(md, rxBlockLink()).map(o => onReferrenceAdd(o)),

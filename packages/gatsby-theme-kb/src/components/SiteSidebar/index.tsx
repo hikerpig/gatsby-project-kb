@@ -100,6 +100,9 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       makeDirectoryNodes(node.parent.relativeDirectory)
     }
   })
+
+  const expandedParents: TreeNodeRawData[] = []
+
   validNodes.forEach((node) => {
     if (!node.parent) return
     const file = node.parent
@@ -114,12 +117,20 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     if (isCurrent) {
       treeNode['className'] = 'site-sidebar__link--cur'
       if (parentNode) {
-        parentNode.isExpanded = true
+        expandedParents.push(parentNode)
       }
     }
     treeNodes.push(treeNode)
     treeDataMap[file.id] = treeNode
     nodeMap[file.id] = node
+  })
+
+  // expand parent node through the pah
+  const _getParentNode = (node: TreeNodeRawData) => node.parentId ? treeDataMap[node.parentId]: undefined
+  expandedParents.forEach((node) => {
+    recursivelyCallNode(node, _getParentNode, (_node) => {
+      _node.isExpanded = true
+    })
   })
 
   const onNodeSelect = (treeNode) => {

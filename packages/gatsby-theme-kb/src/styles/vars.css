@@ -28,7 +28,7 @@ body {
   --kb-tree-cur-color: #e7e5e4;
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
-  --kb-text-color: #000;
+  --kb-text-color: hsl(2deg 20% 15%);
   --kb-text-inverse-color: white;
   --kb-references-bg:  #fafafa;
   --kb-search-highlight-bg: #eaeaea;

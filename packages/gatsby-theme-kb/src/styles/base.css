@@ -6,7 +6,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: overlay;
 }
 body {
   margin: 0;

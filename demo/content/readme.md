@@ -8,7 +8,7 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 
 ## ✨ Features
 
-- Support bidirectional wiki-links in double brackets `[[]]`, will show backlink referrence context.
+- Support bidirectional [[wiki-links]] in double brackets `[[]]`, will show backlink referrence context.
 - Hover preview for wiki-links.
 - A nice interactive [[graph-view]] visualizing the relationships of your notes.
 - Mobile friendly responsive design.
@@ -51,5 +51,6 @@ Some Gatsby offical tutorials about extending a theme.
 
 Welcome to open issues and PRs on [github repo](https://github.com/hikerpig/gatsby-project-kb).
 
+[wiki-links]: ./features/wiki-links.md
 [graph-view]: ./features/graph-view.md
 [using-frontmatter]: ./features/using-frontmatter.md

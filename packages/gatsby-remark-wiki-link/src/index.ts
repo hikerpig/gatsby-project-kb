@@ -10,7 +10,12 @@ import * as path from 'path'
  */
 const defaultTitleToURLPath = (title: string) => {
   const segments = title.split('/')
-  const slugifiedTitle = slugify(segments.pop() as string)
+  let titleCandidate = segments.pop() as string
+  const hashIndex = titleCandidate.indexOf('#')
+  if (hashIndex > -1) {
+    titleCandidate = titleCandidate.substring(0, hashIndex)
+  }
+  const slugifiedTitle = slugify(titleCandidate)
   return `${segments.join('/')}/${slugifiedTitle}`
 }
 
@@ -54,6 +59,7 @@ const processWikiLinks = (
     if (node.referenceType !== 'shortcut') {
       return
     }
+    
     const definition = definitions[node.identifier]
     const linkInfo = definition ? getLinkInfo(definition): null
     const linkUrl = linkInfo ? linkInfo.linkUrl: definition?.url

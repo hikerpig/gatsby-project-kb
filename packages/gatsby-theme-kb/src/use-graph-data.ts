@@ -58,7 +58,7 @@ export const useGraphData = () => {
       notesMap.set(node.id, note)
 
       node.childMdx.inboundReferences.forEach((x: Reference) => {
-        note.referencedBy && note.referencedBy.push(x.referrer.parent.id)
+        note.referencedBy && x.referrer.parent?.id && note.referencedBy.push(x.referrer.parent.id)
       })
 
       node.childMdx.outboundReferences.forEach((x: Reference) => {

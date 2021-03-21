@@ -41,6 +41,7 @@ export async function generateData(cache: any, getNode: Function) {
 
     function getRefNode(ref: Reference) {
       const title = ref.target
+      // console.log('[cm] getRefNode for target', ref.target, ', nodes: ', nodes)
       return nodes.find(
         x =>
           x.title === title ||
@@ -60,7 +61,6 @@ export async function generateData(cache: any, getNode: Function) {
       nodes
         .map(node => {
           const mapped = node.outboundReferences.pages
-            .concat(node.outboundReferences.blocks)
             .map(reference => {
               const cachedNode = getRefNode(reference)
               if (!cachedNode) return null
@@ -68,6 +68,7 @@ export async function generateData(cache: any, getNode: Function) {
                 contextLine: reference.contextLine,
                 target: cachedNode.node,
                 referrer: reference.referrerNode,
+                targetAnchor: reference.targetAnchor,
               } as NodeReference
             })
             .filter(nonNullable)

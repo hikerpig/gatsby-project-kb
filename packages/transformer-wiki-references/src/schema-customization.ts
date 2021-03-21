@@ -20,6 +20,7 @@ export const createSchemaCustomization = (
     type NodeReference {
       target: ReferenceTarget
       referrer: ReferenceTarget
+      targetAnchor: String
       contextLine: String
     }
   `)
@@ -49,13 +50,14 @@ export const setFieldsOnGraphQLNodeType = (
 
         if (cachedNode && cachedNode.resolvedOutboundReferences) {
           return cachedNode.resolvedOutboundReferences
-            .map(({ target, contextLine, referrer }) => {
+            .map(({ target, contextLine, referrer, targetAnchor }) => {
               const targetNode = getNode(target.id)
               if (!targetNode) return null
               return {
                 target: targetNode,
                 contextLine,
                 referrer,
+                targetAnchor,
               } as NodeReference
             })
             .filter(nonNullable)

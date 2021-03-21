@@ -8,6 +8,7 @@ export type Reference = {
     body: string
     parent: SimpleFileNode
   }
+  targetAnchor?: string
   referrer: {
     parent: SimpleFileNode
   }

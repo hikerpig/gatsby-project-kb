@@ -40,4 +40,15 @@ describe('getReferences', () => {
       { target: 'link', contextLine: '[[link]] is a wiki-link' }
     ])
   })
+
+  it('parse link hash as anchor', () => {
+    const text = outdent.string(`
+    [[link#anchor]] is a wiki-link with anchor
+    `)
+
+    const result = getReferences(text)
+    expect(result.pages[0]).toMatchObject(
+      { target: 'link', targetAnchor: 'anchor' },
+    )
+  })
 })

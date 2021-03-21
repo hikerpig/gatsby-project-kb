@@ -39,12 +39,12 @@ const Topic = ({ file, currentLocation }: Props) => {
   }
 
   if (inboundReferences) {
-    const references = inboundReferences.map((ref) => {
+    const references = inboundReferences.reduce((acc, ref) => {
+      if (!ref.referrer.parent?.fields) return acc
       const { slug } = ref.referrer.parent?.fields!
-      return (
-        <LinkReference key={slug} reference={ref}></LinkReference>
-      )
-    })
+      acc.push(<LinkReference key={slug} reference={ref}></LinkReference>)
+      return acc
+    }, [] as JSX.Element[])
 
     if (references.length > 0) {
       referenceBlock = (

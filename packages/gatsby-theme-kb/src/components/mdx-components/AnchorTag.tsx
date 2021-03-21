@@ -2,6 +2,7 @@ import React from 'react'
 import { withPrefix, Link } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import * as path from 'path'
+import slugify from 'slugify'
 import MDXRenderer from './MDXRenderer'
 import Tippy from '@tippyjs/react'
 import { Reference } from '../../type'
@@ -40,6 +41,13 @@ function genHrefInfo(opts: { currentSlug: string; href: string }) {
     isExternalLink,
     isLocalHash,
   }
+}
+
+function padHrefWithAnchor(href: string, anchor?: string) {
+  if (anchor) {
+    return `${href}#${slugify(anchor)}`
+  }
+  return href
 }
 
 const AnchorTag = ({
@@ -96,7 +104,7 @@ const AnchorTag = ({
       </div>
     )
     child = (
-      <Link {...restProps} to={fileds.slug} title={title}>
+      <Link {...restProps} to={padHrefWithAnchor(fileds.slug, ref.targetAnchor)} title={title}>
         {content}
       </Link>
     )

@@ -2,13 +2,14 @@ import { cleanupMarkdown, findInMarkdownLines } from './markdown-utils'
 import { MdxNode } from './type'
 
 export type References = {
-  blocks: Reference[]
+  // blocks: Reference[]
   pages: Reference[]
 }
 
 export type Reference = {
   /** target page slug */
   target: string
+  targetAnchor?: string
   contextLine: string
   referrerNode?: MdxNode
 }
@@ -32,10 +33,21 @@ const getLinkDefinitionPattern = () => /^\[([\d\w-_]+)\]\s+(.*)/ig // [defintion
 
 function findReferenceWithPattern(md: string, pattern: RegExp): Reference[] {
   return findInMarkdownLines(md, pattern).map(({ lineContent, matchStr }) => {
-    return {
-      target: matchStr,
+    let target = matchStr
+    let targetAnchor: string
+    const hashIndex = matchStr.indexOf('#')
+    if (hashIndex > -1) {
+      target = matchStr.substring(0, hashIndex)
+      targetAnchor = matchStr.substring(hashIndex + 1)
+    }
+    const ref: Reference = {
+      target,
       contextLine: lineContent,
     }
+    if (targetAnchor !== undefined) {
+      ref.targetAnchor = targetAnchor
+    }
+    return ref
   })
 }
 
@@ -44,7 +56,6 @@ export const getReferences = (string: string, onReferrenceAdd?: (ref: Reference)
   onReferrenceAdd = onReferrenceAdd || ((o) => o)
 
   const references: References = {
-    blocks: findReferenceWithPattern(md, rxBlockLink()).map(o => onReferrenceAdd(o)),
     pages: [
       ...findReferenceWithPattern(md, rxHashtagLink()),
       ...findReferenceWithPattern(md, rxWikiLink()),

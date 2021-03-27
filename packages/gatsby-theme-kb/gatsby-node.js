@@ -153,14 +153,14 @@ exports.createPages = async ({ graphql, actions }, options) => {
     }
   }
 
-  try {
-    await fs.promises.unlink(
-      path.join(__dirname, './src/templates/roam-block.js')
-    )
-    await fs.promises.unlink(
-      path.join(__dirname, './src/templates/roam-page.js')
-    )
-  } catch (err) {}
+  // try {
+  //   await fs.promises.unlink(
+  //     path.join(__dirname, './src/templates/roam-block.js')
+  //   )
+  //   await fs.promises.unlink(
+  //     path.join(__dirname, './src/templates/roam-page.js')
+  //   )
+  // } catch (err) {}
 }
 
 exports.onCreateWebpackConfig = ({ actions }) => {

@@ -9,6 +9,7 @@ export type Reference = {
     parent: SimpleFileNode
   }
   targetAnchor?: string
+  refWord: string
   referrer: {
     parent: SimpleFileNode
   }

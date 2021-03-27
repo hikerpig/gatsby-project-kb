@@ -6,7 +6,7 @@ A wiki-link is a link text wrapped inside double brackets `[[]]`.
 
 ### Anchor reference
 
-> This is non-standard for wiki links, but I found it quite suit to my needs so I implement it in gatsby-project-kb, and Obsidian has this support, too.
+> NOTICE: This is non-standard for wiki links, but I found it quite suit to my needs so I implement it in gatsby-project-kb, and Obsidian has this support, too.
 
 You can refer to a topic's specific section by anchor text, which is after the hashtag `#`.
 

@@ -52,6 +52,10 @@ module.exports = function (options) {
       pluginMdx,
       {
         resolve: '@gatsby-project-kb/transformer-wiki-references',
+        options: {
+          contentPath: path.resolve(process.cwd, contentPath),
+          extensions,
+        },
       },
       'gatsby-plugin-postcss',
       {

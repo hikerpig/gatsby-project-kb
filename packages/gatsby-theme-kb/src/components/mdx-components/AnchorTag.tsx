@@ -21,7 +21,9 @@ type Props = React.PropsWithChildren<{
 
 /**
  * Infer the target's slug based on an intuitive method.
- * TODO: this should be done in the transformer-wiki-referrences, based on the directory
+ * But usually if `contentPath` is passed to config,
+ *   relative ref resolving should be done by the transformer-wiki-references, based on the directory.
+ *   The anchorSlug will not be used.
  */
 function genHrefInfo(opts: { currentSlug: string; href: string }) {
   const { href, currentSlug } = opts
@@ -64,9 +66,12 @@ const AnchorTag = ({
   const { anchorSlug } = genHrefInfo({ currentSlug, href })
 
   const ref = references.find((x) => {
-    return withPrefix(x.target.parent?.fields.slug || '') === withPrefix(anchorSlug)
+    return (
+      `/${x.refWord}` === href ||
+      withPrefix(x.target.parent?.fields.slug || '') === withPrefix(anchorSlug)
+    )
   })
-  // console.log('ref', ref, 'anchorSlug', anchorSlug, references)
+  // console.log('ref', ref, 'href', href, 'anchorSlug', anchorSlug, references)
 
   let content
   let popupContent
@@ -104,7 +109,11 @@ const AnchorTag = ({
       </div>
     )
     child = (
-      <Link {...restProps} to={padHrefWithAnchor(fileds.slug, ref.targetAnchor)} title={title}>
+      <Link
+        {...restProps}
+        to={padHrefWithAnchor(fileds.slug, ref.targetAnchor)}
+        title={title}
+      >
         {content}
       </Link>
     )

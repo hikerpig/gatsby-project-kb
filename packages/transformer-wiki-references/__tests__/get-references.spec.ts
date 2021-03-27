@@ -18,10 +18,10 @@ describe('getReferences', () => {
     ])
   })
 
-  it('can extract multiple referrences of same target', () => {
+  it('can extract multiple references of same target', () => {
     const text = outdent.string(`
     [[link]] is a wiki-link
-    [[link]] also referrenced in this line
+    [[link]] also referenced in this line
     `)
     const result = getReferences(text)
     expect(result.pages.map(o => o.target)).toEqual([

@@ -23,6 +23,7 @@ module.exports = {
     {
       resolve: `@gatsby-project-kb/transformer-wiki-references`,
       options: {
+        contentPath: '/home/hikerpig/Notes',
         types: ["Mdx"], // or ["MarkdownRemark"] (or both)
       },
     },
@@ -32,6 +33,10 @@ module.exports = {
 
 
 ### Configuration options
+
+**`contentPath`** [string][optional]
+
+The path to directory of your notes, if there are nested folders in your notes, it's recommended that this option is provided so the plugin can resolve the references correctly.
 
 **`types`** [Array<string>][optional]
 

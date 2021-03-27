@@ -12,6 +12,7 @@ export interface MdxNode extends Node {
  */
 export type NodeReference = {
   target: MdxNode
+  refWord: string
   targetAnchor?: string
   referrer: MdxNode
   contextLine: string

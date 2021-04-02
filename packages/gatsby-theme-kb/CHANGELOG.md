@@ -1,8 +1,19 @@
 # Change Log
 
-
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.7.0-alpha.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.6.0...gatsby-theme-kb@0.7.0-alpha.0) (2021-04-02)
+
+
+### Features
+
+* Add anchor reference support, related [#8](https://github.com/hikerpig/gatsby-project-kb/issues/8) ([3c0d13a](https://github.com/hikerpig/gatsby-project-kb/commit/3c0d13a78146dc9b6bf1215af367fbd1e3a999d4))
+* better wiki references resolving with `contentPath` option ([46b66a9](https://github.com/hikerpig/gatsby-project-kb/commit/46b66a973bbdd702dfadb523e9ab0ab91ed1d417))
+
+
+
+
 
 ## [0.6.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.5.4-alpha.0...gatsby-theme-kb@0.6.0) (2021-03-05)
 

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useCallback } from 'react'
 import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import Search from '../Search'
@@ -133,14 +133,14 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     })
   })
 
-  const onNodeSelect = (treeNode) => {
+  const onNodeSelect = useCallback((treeNode) => {
     const node = nodeMap[treeNode.id]
     if (node) {
       navigate(node.parent.fields.slug)
     }
-  }
+  }, [])
 
-  const renderLabel: TreeNodeProps['renderLabel'] = (nodeProps, { labelClassName }) => {
+  const renderLabel: TreeNodeProps['renderLabel'] = useCallback((nodeProps, { labelClassName }) => {
     const { data } = nodeProps
     const node = nodeMap[data.id]
     let slug = ''
@@ -159,9 +159,11 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
         <span className={`${labelClassName}`}>{ data.label }</span>
       )
     }
-  }
+  }, [onNodeSelect])
 
-  const onBranchNodeClick: TreeNodeProps['onBranchNodeClick'] = (nodeProps) => {
+  const [stateTreeNodes, setTreeNodes] = React.useState<TreeNodeRawData[]>(treeNodes)
+
+  const onBranchNodeClick: TreeNodeProps['onBranchNodeClick'] = useCallback((nodeProps) => {
     const dataNode = treeDataMap[nodeProps.id]
     const newDataNode = {...dataNode, isExpanded: !nodeProps.isExpanded}
     treeDataMap[nodeProps.id] = newDataNode
@@ -178,9 +180,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
 
     const newTreeNodes = Object.values(treeDataMap)
     setTreeNodes(newTreeNodes)
-  }
-
-  const [stateTreeNodes, setTreeNodes] = React.useState<TreeNodeRawData[]>(treeNodes)
+  }, [stateTreeNodes])
 
   return (
     <div className="site-sidebar py-5 px-2">

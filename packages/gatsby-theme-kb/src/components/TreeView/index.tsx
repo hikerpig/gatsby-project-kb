@@ -35,11 +35,11 @@ export default function TreeView(props: ITreeViewProps) {
     <ul className="tree-view">
       {tree.rootNode.children!.map((node) => {
         return (
-          <TreeNode
+          <MemorizedTreeNode
             {...props}
             key={node.id}
             data={node}
-          ></TreeNode>
+          ></MemorizedTreeNode>
         )
       })}
     </ul>
@@ -74,13 +74,13 @@ function TreeNode(props: TreeNodeProps) {
         <ul className="tree-view__sub-tree">
           {data.children!.map((childNode) => {
             return (
-              <TreeNode
+              <MemorizedTreeNode
                 key={childNode.id}
                 data={childNode}
                 onSelect={onSelect}
                 renderLabel={props.renderLabel}
                 onBranchNodeClick={onBranchNodeClick}
-              ></TreeNode>
+              ></MemorizedTreeNode>
             )
           })}
         </ul>
@@ -88,6 +88,8 @@ function TreeNode(props: TreeNodeProps) {
     </li>
   )
 }
+
+const MemorizedTreeNode = React.memo(TreeNode)
 
 const MAX_LOOP_COUNT = 200000
 

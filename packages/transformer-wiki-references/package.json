@@ -39,6 +39,7 @@
     "jest-environment-jsdom": "^26.0.1"
   },
   "dependencies": {
-    "@nodelib/fs.walk": "^1.2.6"
+    "@nodelib/fs.walk": "^1.2.6",
+    "anymatch": "^3.1.2"
   }
 }

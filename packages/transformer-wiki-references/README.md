@@ -25,6 +25,10 @@ module.exports = {
       options: {
         contentPath: '/home/hikerpig/Notes',
         types: ["Mdx"], // or ["MarkdownRemark"] (or both)
+        ignore: [
+          '**/.cache/**',
+          '**/.github/**',
+        ],
       },
     },
   ],
@@ -41,6 +45,11 @@ The path to directory of your notes, if there are nested folders in your notes, 
 **`types`** [Array<string>][optional]
 
 The types of the nodes to transform. Defaults to `['Mdx']`
+
+**`ignore`** [Array<string>][optional]
+
+Will be used along with `contentPath`, to filter out those files you want to ignore. Accepts globs or regexps, any format that's supported by [anymatch](https://www.npmjs.com/package/anymatch).
+
 
 ## How to query for references
 

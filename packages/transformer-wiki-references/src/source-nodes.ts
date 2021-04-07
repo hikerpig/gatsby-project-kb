@@ -3,13 +3,14 @@ import * as path from 'path'
 import * as fsWalk from '@nodelib/fs.walk'
 import { PluginOptions, resolveOptions } from './options'
 import { ContentTree, ContentNode, CONTEXT_TREE_CACHE_KEY } from './content-tree'
+import anymatch from 'anymatch'
 
 export const sourceNodes = async (
   { cache }: SourceNodesArgs,
   _options?: PluginOptions
 ) => {
   const options = resolveOptions(_options)
-  const { contentPath, extensions } = options
+  const { contentPath, extensions, ignore } = options
   if (!options.contentPath) return
 
   const tree = new ContentTree(
@@ -26,7 +27,12 @@ export const sourceNodes = async (
       deepFilter: (entry) => {
         return !/\/node_modules\//.test(entry.path)
       },
-
+      entryFilter: (entry) => {
+        if (ignore) {
+          return !anymatch(ignore, entry.path)
+        }
+        return true
+      }
     })
     .filter((entry) => {
       if (entry.dirent.isDirectory()) return false

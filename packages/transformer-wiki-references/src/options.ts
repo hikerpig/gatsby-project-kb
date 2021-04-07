@@ -2,6 +2,7 @@ export type PluginOptions = {
   types?: string[]
   extensions?: string[]
   contentPath?: string
+  ignore?: string[]
 }
 
 const defaultOptions = {

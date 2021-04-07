@@ -13,7 +13,7 @@ export const sourceNodes = async (
   if (!options.contentPath) return
 
   const tree = new ContentTree(
-    new ContentNode(true, {
+    new ContentNode({
       name: contentPath,
       path: contentPath,
       key: contentPath,
@@ -21,19 +21,24 @@ export const sourceNodes = async (
   )
 
   const entries: fsWalk.Entry[] = fsWalk
-    .walkSync(contentPath, { basePath: '' })
+    .walkSync(contentPath, {
+      basePath: '',
+      deepFilter: (entry) => {
+        return !/\/node_modules\//.test(entry.path)
+      },
+
+    })
     .filter((entry) => {
-      if (!entry.dirent.isDirectory()) {
-        if (!extensions.includes(path.extname(entry.name))) {
-          return false
-        }
+      if (entry.dirent.isDirectory()) return false
+      if (!extensions.includes(path.extname(entry.name))) {
+        return false
       }
       return true
     })
   // walk the contentPath and collect all possible files,
   //   then write the constructed file tree to gatsby cache for further usage in `setFieldsOnGraphQLNodeType` phase
   entries.forEach((entry) => {
-    const node = new ContentNode(entry.dirent.isDirectory(), {
+    const node = new ContentNode({
       name: entry.name,
       path: entry.path,
       key: path.basename(entry.name, path.extname(entry.name)),

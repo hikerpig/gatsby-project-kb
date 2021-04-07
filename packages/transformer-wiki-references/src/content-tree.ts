@@ -3,7 +3,7 @@ import * as path from 'path'
 export const CONTEXT_TREE_CACHE_KEY = 'content-tree-repr'
 
 export class ContentNode<T = { name: string; path: string; key: string }> {
-  constructor(public isDirectory: boolean, public data: T) {}
+  constructor(public data: T) {}
 }
 
 export class ContentTree {
@@ -17,7 +17,7 @@ export class ContentTree {
   static fromRepr(repr: string) {
     const { nodes, rootPath } = JSON.parse(repr)
     const tree = new ContentTree(
-      new ContentNode(true, {
+      new ContentNode({
         name: rootPath,
         path: rootPath,
         key: rootPath,

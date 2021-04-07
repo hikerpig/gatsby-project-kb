@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-alpha.1](https://github.com/hikerpig/gatsby-project-kb/compare/@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.0...@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.1) (2021-04-07)
+
+
+### Bug Fixes
+
+* should ignore directory in contentTree ([5d14716](https://github.com/hikerpig/gatsby-project-kb/commit/5d14716a9287ac1d12e52f43105535c851c582fb))
+
+
+### Features
+
+* will pass `ignore` option to @gatsby-project-kb/transformer-wiki-references ([547b98b](https://github.com/hikerpig/gatsby-project-kb/commit/547b98b1dfd03b8f3c3171ade9bc43d0b35db6d6))
+
+
+
+
+
 # [0.3.0-alpha.0](https://github.com/hikerpig/gatsby-project-kb/compare/@gatsby-project-kb/transformer-wiki-references@0.2.1...@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.0) (2021-04-02)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0-alpha.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.7.0-alpha.0...gatsby-theme-kb@0.7.0-alpha.1) (2021-04-07)
+
+
+### Bug Fixes
+
+* should ignore directory in contentTree ([5d14716](https://github.com/hikerpig/gatsby-project-kb/commit/5d14716a9287ac1d12e52f43105535c851c582fb))
+
+
+### Performance Improvements
+
+* optimize SiteSidebar and TreeView performance ([42c9102](https://github.com/hikerpig/gatsby-project-kb/commit/42c9102e7d7716545a26a4f5ae4dcb1855f5fbb9))
+
+
+
+
+
 # [0.7.0-alpha.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.6.0...gatsby-theme-kb@0.7.0-alpha.0) (2021-04-02)
 
 

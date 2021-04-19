@@ -2393,7 +2393,7 @@
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.4.tgz#a3f2dd61bab43b8db8fa108a121cfffe4c676655"
   integrity sha512-IYlHJA0clt2+Vg7bccq+TzRdJvv19c2INqBSsoOLp1je7xjtr7J26+WXR72MCdvU9q1qTzIWDfhMf+DRvQJK4Q==
 
-"@nodelib/fs.walk@^1.2.3", "@nodelib/fs.walk@^1.2.4":
+"@nodelib/fs.walk@^1.2.3", "@nodelib/fs.walk@^1.2.4", "@nodelib/fs.walk@^1.2.6":
   version "1.2.6"
   resolved "https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.6.tgz#cce9396b30aa5afe9e3756608f5831adcb53d063"
   integrity sha512-8Broas6vTtW4GIXTAHDoE32hnN2M5ykgCpWGbuXHQ15vEMqr23pB76e/GZcYsZCHALv50ktd24qhEyKr6wBtow==
@@ -3639,6 +3639,14 @@ anymatch@^3.0.3, anymatch@~3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/anymatch/-/anymatch-3.1.1.tgz#c55ecf02185e2469259399310c173ce31233b142"
   integrity sha512-mM8522psRCqzV+6LhomX5wgp25YVibjh8Wj23I5RPkPppSVSjyKD2A2mBJmWGa+KN7f2D6LNh9jkBCeyLktzjg==
+  dependencies:
+    normalize-path "^3.0.0"
+    picomatch "^2.0.4"
+
+anymatch@^3.1.2:
+  version "3.1.2"
+  resolved "http://bnpm.byted.org/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
+  integrity sha1-wFV8CWrzLxBhmPT04qODU343hxY=
   dependencies:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
@@ -7876,23 +7884,24 @@ gatsby-cli@^3.0.0:
     yoga-layout-prebuilt "^1.9.6"
     yurnalist "^2.1.0"
 
-gatsby-core-utils@^1.10.1:
-  version "1.10.1"
-  resolved "https://registry.npmjs.org/gatsby-core-utils/-/gatsby-core-utils-1.10.1.tgz#97bed40df3fa79800e7ce0c0491680f0aadd6ce7"
-  integrity sha512-4P3feGCJckg+DRWWl2beFk7N9c63zmCryEGPaU1OHCp+ZT2bO0ihCBuXywDWuuEp6SYP9PZ1fs0YJ/Rt6q6lag==
+gatsby-core-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/gatsby-core-utils/-/gatsby-core-utils-2.0.0.tgz#00fdc1f2efcaabe7426e63b020a7117ca613780c"
+  integrity sha512-+DrClKZ/ScTbzhIHZXuU3DoIhEJ95uJV+swR7VVqYVhEpV1CnjUGR/dB+tMd0VqlPdrXB38FuR8O5kuSvYm+/A==
   dependencies:
     ci-info "2.0.0"
     configstore "^5.0.1"
+    file-type "^16.2.0"
     fs-extra "^8.1.0"
     node-object-hash "^2.0.0"
     proper-lockfile "^4.1.1"
     tmp "^0.2.1"
     xdg-basedir "^4.0.0"
 
-gatsby-core-utils@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/gatsby-core-utils/-/gatsby-core-utils-2.0.0.tgz#00fdc1f2efcaabe7426e63b020a7117ca613780c"
-  integrity sha512-+DrClKZ/ScTbzhIHZXuU3DoIhEJ95uJV+swR7VVqYVhEpV1CnjUGR/dB+tMd0VqlPdrXB38FuR8O5kuSvYm+/A==
+gatsby-core-utils@^2.3.0:
+  version "2.3.0"
+  resolved "http://bnpm.byted.org/gatsby-core-utils/-/gatsby-core-utils-2.3.0.tgz#ea42960a9b384959a96d897d580237f84cadbbd8"
+  integrity sha1-6kKWCps4SVmpbYl9WAI3+Eytu9g=
   dependencies:
     ci-info "2.0.0"
     configstore "^5.0.1"
@@ -8028,10 +8037,10 @@ gatsby-plugin-purgecss@^5.0.0:
     loader-utils "^2.0.0"
     purgecss "^2.1.0"
 
-gatsby-plugin-react-helmet@^3.4.0:
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.10.0.tgz#421bbee87157c351d19031d62145c2ab6c00ef94"
-  integrity sha512-TktmUysb7wDwYOKowNcpXxLJfQiwQ7cSQ8ALH3pJrW63wBaCoBXvAHg3OhgHVR74CrqN2Tb89tr3GXa4JhO4Qw==
+gatsby-plugin-react-helmet@^4.3.0:
+  version "4.3.0"
+  resolved "http://bnpm.byted.org/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-4.3.0.tgz#2fd28c2605723670b2670839917b2d3f4754f39b"
+  integrity sha1-L9KMJgVyNnCyZwg5kXstP0dU85s=
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -8175,17 +8184,17 @@ gatsby-remark-shiki@^0.2.0:
     shiki "^0.2.2"
     unist-util-visit "^2.0.1"
 
-gatsby-source-filesystem@^2.5.0:
-  version "2.11.1"
-  resolved "https://registry.npmjs.org/gatsby-source-filesystem/-/gatsby-source-filesystem-2.11.1.tgz#c90f49c096c4bdafd8e68462966b3a6e21fd746b"
-  integrity sha512-Ao526Mmhm8KkF+0Tvf9Le5kKnqX7kgC1wecp82BW2KLQgdtG7UIgmHvG6PkjuFNiJ2ghXPC3vRK3J/vDPyLtkA==
+gatsby-source-filesystem@^3.3.0:
+  version "3.3.0"
+  resolved "http://bnpm.byted.org/gatsby-source-filesystem/-/gatsby-source-filesystem-3.3.0.tgz#80816422e3025ea523e7cf19a458d649f2798190"
+  integrity sha1-gIFkIuMCXqUj588ZpFjWSfJ5gZA=
   dependencies:
     "@babel/runtime" "^7.12.5"
     better-queue "^3.8.10"
     chokidar "^3.4.3"
     file-type "^16.0.0"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.10.1"
+    gatsby-core-utils "^2.3.0"
     got "^9.6.0"
     md5-file "^5.0.0"
     mime "^2.4.6"

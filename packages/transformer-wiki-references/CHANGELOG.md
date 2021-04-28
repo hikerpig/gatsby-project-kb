@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-alpha.2](https://github.com/hikerpig/gatsby-project-kb/compare/@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.1...@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.2) (2021-04-28)
+
+
+### Features
+
+* **transformer-wiki-references:** change lifecycle from 'source-nodes' to 'onPreBootstrap' ([4d35818](https://github.com/hikerpig/gatsby-project-kb/commit/4d35818598833e4741a9eec5eab13f4d21a92b59))
+
+
+
+
+
 # [0.3.0-alpha.1](https://github.com/hikerpig/gatsby-project-kb/compare/@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.0...@gatsby-project-kb/transformer-wiki-references@0.3.0-alpha.1) (2021-04-07)
 
 

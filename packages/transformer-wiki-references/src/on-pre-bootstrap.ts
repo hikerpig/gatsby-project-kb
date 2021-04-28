@@ -1,12 +1,12 @@
-import { SourceNodesArgs } from 'gatsby'
+import { ParentSpanPluginArgs } from 'gatsby'
 import * as path from 'path'
 import * as fsWalk from '@nodelib/fs.walk'
 import { PluginOptions, resolveOptions } from './options'
 import { ContentTree, ContentNode, CONTEXT_TREE_CACHE_KEY } from './content-tree'
 import anymatch from 'anymatch'
 
-export const sourceNodes = async (
-  { cache }: SourceNodesArgs,
+export const onPreBootstrap = async (
+  { cache }: ParentSpanPluginArgs,
   _options?: PluginOptions
 ) => {
   const options = resolveOptions(_options)

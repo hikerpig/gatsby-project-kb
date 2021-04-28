@@ -10,7 +10,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^3.0.0",
+    "gatsby": "3.1",
     "gatsby-plugin-no-sourcemaps": "^2.8.0",
     "gatsby-remark-prismjs": "^3.13.0",
     "gatsby-remark-shiki": "^0.2.0",

@@ -3209,7 +3209,7 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-12.20.11.tgz#980832cd56efafff8c18aa148c4085eb02a483f4"
   integrity sha512-gema+apZ6qLQK7k7F0dGkGCWQYsL0qqKORWOQO6tq46q+x+1C0vbOiOqOwRVlh4RAdbQwV/j/ryr3u5NOG1fPQ==
 
-"@types/node@^14.14.10":
+"@types/node@^14.14.10", "@types/node@^14.14.27":
   version "14.14.43"
   resolved "https://registry.npmjs.org/@types/node/-/node-14.14.43.tgz#26bcbb0595b305400e8ceaf9a127a7f905ae49c8"
   integrity sha512-3pwDJjp1PWacPTpH0LcfhgjvurQvrZFBrC6xxjaUEZ7ifUtT32jtjPxEMMblpqd2Mvx+k8haqQJLQxolyGN/cQ==
@@ -8613,39 +8613,6 @@ gatsby-telemetry@^2.1.0, gatsby-telemetry@^2.4.0:
     lodash "^4.17.21"
     node-fetch "^2.6.1"
     uuid "3.4.0"
-
-gatsby-theme-kb@./packages/gatsby-theme-kb:
-  version "0.7.0-alpha.3"
-  dependencies:
-    "@gatsby-project-kb/transformer-wiki-references" "^0.3.0-alpha.2"
-    "@mdx-js/mdx" "^1.6.22"
-    "@mdx-js/react" "^1.6.22"
-    "@reecelucas/react-use-hotkeys" "^1.3.1"
-    "@tippyjs/react" "^4.2.0"
-    autoprefixer "^10.2.1"
-    classnames "^2.2.6"
-    downshift "^6.1.0"
-    flexsearch "^0.6.32"
-    gatsby-plugin-local-search "^2.0.0"
-    gatsby-plugin-mdx "^2.0.0"
-    gatsby-plugin-postcss "^4.0.0"
-    gatsby-plugin-purgecss "^5.0.0"
-    gatsby-plugin-react-helmet "^4.3.0"
-    gatsby-plugin-tocbot "^0.1.0"
-    gatsby-react-router-scroll "^3.6.0"
-    gatsby-remark-double-parenthesis-link "^0.1.2"
-    gatsby-remark-wiki-link "^0.3.0-alpha.0"
-    gatsby-source-filesystem "^3.4.0"
-    note-graph "^0.1.5"
-    path-browserify "^1.0.1"
-    postcss "^8.2.4"
-    prop-types "^15.7.2"
-    react "^17.0.0"
-    react-dom "^17.0.0"
-    react-helmet "^6.1.0"
-    tailwindcss "^2.0.2"
-    use-breakpoint "^1.1.5"
-    use-dark-mode "^2.3.1"
 
 gatsby@3.1:
   version "3.1.3"
@@ -14719,6 +14686,11 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
+
+prettier@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
+  integrity sha512-16c7K+x4qVlJg9rEbXl7HEGmQyZlG4R9AgP+oHKRMsMsuk8s+ATStlf1NpDqyBI1HpVyfjLOeMhH2LvuNvV5Vg==
 
 prettier@^1.19.1:
   version "1.19.1"

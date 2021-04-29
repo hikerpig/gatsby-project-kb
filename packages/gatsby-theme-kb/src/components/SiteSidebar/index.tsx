@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect, useRef, useMemo } from 'react'
 import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import Search from '../Search'
@@ -68,131 +68,154 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     }
   `)
 
-  const nodes = data.allMdx!.nodes as RemarkNode[]
 
-  // console.log('data', data, pageContext)
-  const treeNodes: TreeNodeRawData[] = []
-  const treeDataMap: Record<string, TreeNodeRawData> = {}
-  const nodeMap: Record<string, RemarkNode> = {}
-  const validNodes = nodes.filter((node) => node.parent)
+  const [treeNodes, setTreeNodes] = useState<TreeNodeRawData[]>([])
+  const [treeDataMap, setTreeDataMap] = useState<Record<string, TreeNodeRawData>>({})
+  const [nodeMap, setNodeMap] = useState<Record<string, RemarkNode>>({})
 
-  function makeDirectoryNodes(inputPath: string) {
-    const directories = getDirectoriesByPath(inputPath)
-    let parentDirId
-    directories.forEach((dir) => {
-      if (!treeDataMap[dir]) {
-        const dirLabel = dir.split('/').pop() || dir
-        const dirNode: TreeNodeRawData = {
-          id: dir,
-          label: dirLabel,
-          parentId: parentDirId,
-          isLeaf: false,
+  // initialize
+  useEffect(() => {
+    const nodes = data.allMdx!.nodes as RemarkNode[]
+    const validNodes = nodes.filter((node) => node.parent)
+
+    function makeDirectoryNodes(inputPath: string) {
+      const directories = getDirectoriesByPath(inputPath)
+      let parentDirId
+      directories.forEach((dir) => {
+        if (!treeDataMap[dir]) {
+          const dirLabel = dir.split('/').pop() || dir
+          const dirNode: TreeNodeRawData = {
+            id: dir,
+            label: dirLabel,
+            parentId: parentDirId,
+            isLeaf: false,
+          }
+          treeDataMap[dir] = dirNode
+          treeNodes.push(dirNode)
         }
-        treeDataMap[dir] = dirNode
-        treeNodes.push(dirNode)
+        parentDirId = dir
+      })
+    }
+
+    validNodes.forEach((node) => {
+      if (node.parent.relativeDirectory) {
+        makeDirectoryNodes(node.parent.relativeDirectory)
       }
-      parentDirId = dir
     })
-  }
 
-  validNodes.forEach((node) => {
-    if (node.parent.relativeDirectory) {
-      makeDirectoryNodes(node.parent.relativeDirectory)
-    }
-  })
+    const expandedParents: TreeNodeRawData[] = []
 
-  const expandedParents: TreeNodeRawData[] = []
-
-  validNodes.forEach((node) => {
-    if (!node.parent) return
-    const file = node.parent
-    const parentNode = file.relativeDirectory ? treeDataMap[file.relativeDirectory]: null
-    const treeNode: TreeNodeRawData = {
-      id: file.id,
-      label: node.frontmatter?.title || file.fields.title,
-      parentId: parentNode ? parentNode.id: null,
-      isLeaf: true,
-    }
-    const isCurrent = file.id === pageContext.id
-    if (isCurrent) {
-      treeNode['className'] = 'site-sidebar__link--cur'
-      if (parentNode) {
-        expandedParents.push(parentNode)
+    validNodes.forEach((node) => {
+      if (!node.parent) return
+      const file = node.parent
+      const parentNode = file.relativeDirectory
+        ? treeDataMap[file.relativeDirectory]
+        : null
+      const treeNode: TreeNodeRawData = {
+        id: file.id,
+        label: node.frontmatter?.title || file.fields.title,
+        parentId: parentNode ? parentNode.id : null,
+        isLeaf: true,
       }
-    }
-    treeNodes.push(treeNode)
-    treeDataMap[file.id] = treeNode
-    nodeMap[file.id] = node
-  })
-
-  // expand parent node through the pah
-  const _getParentNode = (node: TreeNodeRawData) => node.parentId ? treeDataMap[node.parentId]: undefined
-  expandedParents.forEach((node) => {
-    recursivelyCallNode(node, _getParentNode, (_node) => {
-      _node.isExpanded = true
+      const isCurrent = file.id === pageContext.id
+      if (isCurrent) {
+        treeNode['className'] = 'site-sidebar__link--cur'
+        if (parentNode) {
+          expandedParents.push(parentNode)
+        }
+      }
+      treeNodes.push(treeNode)
+      treeDataMap[file.id] = treeNode
+      nodeMap[file.id] = node
     })
-  })
+
+    // expand parent node through the pah
+    const _getParentNode = (node: TreeNodeRawData) =>
+      node.parentId ? treeDataMap[node.parentId] : undefined
+    expandedParents.forEach((node) => {
+      recursivelyCallNode(node, _getParentNode, (_node) => {
+        _node.isExpanded = true
+      })
+    })
+
+    setTreeNodes(treeNodes)
+    setNodeMap(nodeMap)
+    setTreeDataMap(treeDataMap)
+
+    return () => {}
+  }, [])
 
   const onNodeSelect = useCallback((treeNode) => {
     const node = nodeMap[treeNode.id]
     if (node) {
       navigate(node.parent.fields.slug)
     }
-  }, [])
+  }, [nodeMap])
 
-  const renderLabel: TreeNodeProps['renderLabel'] = useCallback((nodeProps, { labelClassName }) => {
-    const { data } = nodeProps
-    const node = nodeMap[data.id]
-    let slug = ''
-    if (node) {
-      slug = node.parent.fields.slug
-    }
-    if (data.isLeaf) {
-      // console.log('slug is', slug, node.parent.fields)
-      return (
-        <Link className={`site-sidebar__link ${labelClassName}`} onClick={onNodeSelect} to={slug}>
-          {data.label}
-        </Link>
+  const renderLabel: TreeNodeProps['renderLabel'] = useCallback(
+    (nodeProps, { labelClassName }) => {
+      const { data } = nodeProps
+      const node = nodeMap[data.id]
+      let slug = ''
+      if (node) {
+        slug = node.parent.fields.slug
+      }
+      if (data.isLeaf) {
+        // console.log('slug is', slug, node.parent.fields)
+        return (
+          <Link
+            className={`site-sidebar__link ${labelClassName}`}
+            onClick={onNodeSelect}
+            to={slug}
+          >
+            {data.label}
+          </Link>
+        )
+      } else {
+        return <span className={`${labelClassName}`}>{data.label}</span>
+      }
+    },
+    [onNodeSelect, nodeMap]
+  )
+
+  const onBranchNodeClick: TreeNodeProps['onBranchNodeClick'] = useCallback(
+    (nodeProps) => {
+      const dataNode = treeDataMap[nodeProps.id]
+      const newDataNode = { ...dataNode, isExpanded: !nodeProps.isExpanded }
+      treeDataMap[nodeProps.id] = newDataNode
+
+      // make parent nodes expanded otherwise their state will be lost.
+      //  this logic should be in TreeView rather than here, need to separate it.
+      recursivelyCallNode(
+        newDataNode,
+        (_node) => {
+          const parentNode = _node.parentId ? treeDataMap[_node.parentId] : null
+          return parentNode as any
+        },
+        (_node) => {
+          if (_node === newDataNode) return
+          _node.isExpanded = true
+        }
       )
-    } else {
-      return (
-        <span className={`${labelClassName}`}>{ data.label }</span>
-      )
-    }
-  }, [onNodeSelect])
 
-  const [stateTreeNodes, setTreeNodes] = React.useState<TreeNodeRawData[]>(treeNodes)
-
-  const onBranchNodeClick: TreeNodeProps['onBranchNodeClick'] = useCallback((nodeProps) => {
-    const dataNode = treeDataMap[nodeProps.id]
-    const newDataNode = {...dataNode, isExpanded: !nodeProps.isExpanded}
-    treeDataMap[nodeProps.id] = newDataNode
-
-    // make parent nodes expanded otherwise their state will be lost.
-    //  this logic should be in TreeView rather than here, need to separate it.
-    recursivelyCallNode(newDataNode, (_node) => {
-      const parentNode = _node.parentId ? treeDataMap[_node.parentId]: null
-      return parentNode as any
-    }, (_node) => {
-      if (_node === newDataNode) return
-      _node.isExpanded = true
-    })
-
-    const newTreeNodes = Object.values(treeDataMap)
-    setTreeNodes(newTreeNodes)
-  }, [stateTreeNodes])
+      const newTreeNodes = Object.values(treeDataMap)
+      setTreeNodes(newTreeNodes)
+    },
+    [treeNodes]
+  )
 
   return (
     <div className="site-sidebar py-5 px-2">
-      <div className="site-sidebar__title">
-        {title}
-      </div>
+      <div className="site-sidebar__title">{title}</div>
       <div className="site-sidebar__search">
-        <Search isMobileMode={isMobileMode} searchActivateHotkey={SEARCH_HOTKEY} />
+        <Search
+          isMobileMode={isMobileMode}
+          searchActivateHotkey={SEARCH_HOTKEY}
+        />
       </div>
       <div className="site-sidebar__files">
         <TreeView
-          nodes={stateTreeNodes}
+          nodes={treeNodes}
           onSelect={onNodeSelect}
           onBranchNodeClick={onBranchNodeClick}
           renderLabel={renderLabel}

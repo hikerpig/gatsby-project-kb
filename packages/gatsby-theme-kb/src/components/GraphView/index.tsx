@@ -65,7 +65,7 @@ export default function GraphView({
     })
 
     if (currentFileId) {
-      noteGraphView.setSelectedNodes([currentFileId])
+      noteGraphView.setSelectedNodes([currentFileId], { shouldZoomToFit: true })
     }
 
     return () => {

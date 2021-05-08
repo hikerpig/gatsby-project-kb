@@ -1,7 +1,7 @@
 Using frontmatter
 ===
 
-## Some special fileds
+## Some special fields
 
 ### `title`
 

@@ -80,7 +80,7 @@ const AnchorTag = ({
   if (ref && ref.target.parent) {
     // console.log('reference is', ref, 'withoutLink', withoutLink)
     const targetFileNode = ref.target.parent
-    const fileds = ref.target.parent.fields
+    const fields = ref.target.parent.fields
     const mdxBody = ref.target.body
     const nestedComponents = {
       a(props) {
@@ -111,7 +111,7 @@ const AnchorTag = ({
     child = (
       <Link
         {...restProps}
-        to={padHrefWithAnchor(fileds.slug, ref.targetAnchor)}
+        to={padHrefWithAnchor(fields.slug, ref.targetAnchor)}
         title={title}
       >
         {content}

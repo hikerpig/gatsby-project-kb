@@ -65,7 +65,9 @@ export default function GraphView({
     })
 
     if (currentFileId) {
-      noteGraphView.setSelectedNodes([currentFileId], { shouldZoomToFit: true })
+      const currentNoteInfo = graphModel.getNodeInfoById(currentFileId)
+      const shouldZoomToFit = currentNoteInfo && Boolean(currentNoteInfo.neighbors?.length)
+      noteGraphView.setSelectedNodes([currentFileId], { shouldZoomToFit })
     }
 
     return () => {

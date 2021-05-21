@@ -23,6 +23,7 @@ module.exports = {
       options: {
         contentPath: path.resolve(__dirname, 'content'),
         rootNote: 'readme',
+        wikiLinkLabelTemplate: '[[{{ refWord }}]]',
         getPluginMdx(defaultPluginMdx) {
           // customise pre-configured `gatsby-plugin-mdx`, for example:
           // defaultPluginMdx.options.gatsbyRemarkPlugins.push({
@@ -50,6 +51,24 @@ module.exports = {
 | contentPath            |               | Location of local content                                                    |
 | extensions | ['.md', '.mdx']         | Valid content file exts |
 | ignore     | `['.git']`         | A list of file globs to ignore |
+| wikiLinkLabelTemplate     |          | A template string for specifying wiki link label, see [ options.wikiLinkLabelTemplate](# options.wikiLinkLabelTemplate) |
 | getPluginMdx | (defaultPluginMdx) => PluginMdx | Customise pre-configured `gatsby-plugin-mdx`, please do always return a valid gatsby plugin object |
+
+
+### options.wikiLinkLabelTemplate
+
+When a wikilink is resolved and rendered as an anchor element, the anchor label is by default `[[reference-word]]`. But some people may prefer some other forms, so here is one option for specifying the link label you want.
+
+The template string will be processed in a mustache alike manner, the variable inside `{{}}` will be replaced by real value. Currently there are some variabled available:
+
+- `refWord`, the reference word inside the double brackets, usually it's the filename (without exts).
+- `title`, the title of the page, may be the frontmatter `title` field value, or h1 of the markdown content. 
+
+For example there is page A, filename is `page-a.md`, page title is `Awesome Themes`.
+
+And in page B I write the reference as `[[page-a]]`.
+
+- config `wikiLinkLabelTemplate: '[[ {{refWord}} ]]'`, will generate `[[ page-a ]]` as link label.
+- config `wikiLinkLabelTemplate: '{{title}}'`, will generate `Awesome Themes` as link label.
 
 <!-- ## How to override a Component -->

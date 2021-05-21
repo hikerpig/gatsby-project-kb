@@ -5,7 +5,7 @@ import * as path from 'path'
 import slugify from 'slugify'
 import MDXRenderer from './MDXRenderer'
 import Tippy from '@tippyjs/react'
-import { Reference } from '../../type'
+import { Reference, WikiLinkLabelTemplateFn } from '../../type'
 
 import './anchor-tag.css'
 
@@ -17,6 +17,7 @@ type Props = React.PropsWithChildren<{
   references: Reference[]
   currentSlug: string
   currentLocation: Location
+  wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
 }>
 
 /**
@@ -60,6 +61,7 @@ const AnchorTag = ({
   withoutPopup,
   currentSlug,
   currentLocation,
+  wikiLinkLabelTemplateFn,
   ...restProps
 }: Props) => {
   // prettier-ignore
@@ -98,7 +100,8 @@ const AnchorTag = ({
         return <span {...props} />
       },
     }
-    content = restProps.children
+    content = wikiLinkLabelTemplateFn ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title }): restProps.children
+    // content = fields.title || restProps.children
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>

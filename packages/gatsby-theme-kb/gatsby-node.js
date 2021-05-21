@@ -14,6 +14,7 @@ let contentPath
 let rootNoteSlug
 let extensions
 let mediaTypes
+let wikiLinkLabelTemplate
 
 function padSlugLeading(str) {
   if (typeof str !== 'string') return str
@@ -26,6 +27,7 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
   rootNoteSlug = padSlugLeading(themeOptions.rootNote) || '/readme'
   extensions = themeOptions.extensions || ['.md', '.mdx']
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
+  wikiLinkLabelTemplate = themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
 }
 
 function getTitle(node, content) {
@@ -86,6 +88,13 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   }
 }
 
+function getContextByNode(n) {
+  return {
+    id: n.id,
+    wikiLinkLabelTemplate,
+  }
+}
+
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
 
@@ -128,13 +137,12 @@ exports.createPages = async ({ graphql, actions }, options) => {
       .filter((node) => shouldHandleFile(node, options))
       .filter((x) => x.childMdx.frontmatter.private !== true)
 
+
     localFiles.forEach((node) => {
       createPage({
         path: node.fields.slug,
         component: TopicTemplate,
-        context: {
-          id: node.id,
-        },
+        context: getContextByNode(node)
       })
     })
 
@@ -145,9 +153,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         createPage({
           path: '/',
           component: TopicTemplate,
-          context: {
-            id: root.id,
-          },
+          context: getContextByNode(root),
         })
       }
     }

@@ -14,6 +14,7 @@ module.exports = {
       resolve: 'gatsby-theme-kb',
       options: {
         contentPath: path.resolve(__dirname, 'content'),
+        wikiLinkLabelTemplate: '[[{{ title }}]]',
         getPluginMdx(defaultPluginMdx) {
           defaultPluginMdx.options.gatsbyRemarkPlugins.push({
             resolve: 'gatsby-remark-prismjs',

@@ -39,3 +39,5 @@ export type TopicFlie = {
     }
   }
 }
+
+export type WikiLinkLabelTemplateFn = (data: { refWord: string, title: string }) => string

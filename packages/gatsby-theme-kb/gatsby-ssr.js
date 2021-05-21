@@ -3,5 +3,3 @@
  *
  * See: https://www.gatsbyjs.com/docs/ssr-apis/
  */
-
-// You can delete this file if you're not using it

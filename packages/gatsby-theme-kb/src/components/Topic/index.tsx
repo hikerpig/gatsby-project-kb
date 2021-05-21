@@ -1,6 +1,6 @@
 import React from 'react'
 import MDXRenderer from '../mdx-components/MDXRenderer'
-import { TopicFlie } from '../../type'
+import { TopicFlie, WikiLinkLabelTemplateFn } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
 import LinkReference from '../LinkReference'
 import * as HEADER_COMPONENTS from '../mdx-components/header-components'
@@ -11,9 +11,10 @@ import './topic.css'
 type Props = {
   file: TopicFlie
   currentLocation: Location
+  wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
 }
 
-const Topic = ({ file, currentLocation }: Props) => {
+const Topic = ({ file, currentLocation, wikiLinkLabelTemplateFn }: Props) => {
   let referenceBlock
   const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
   const { title, slug } = file.fields
@@ -34,6 +35,7 @@ const Topic = ({ file, currentLocation }: Props) => {
         currentLocation={currentLocation}
         currentSlug={slug}
         references={outboundReferences}
+        wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}
       ></AnchorTag>
     )
   }

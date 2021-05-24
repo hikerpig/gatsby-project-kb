@@ -139,7 +139,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       })
     })
 
-    setTreeNodes(treeNodes)
+    setTreeNodes(treeNodes.slice())
     setNodeMap(nodeMap)
     setTreeDataMap(treeDataMap)
 

@@ -1,14 +1,14 @@
 /* ---------------- prism override ---------------------- */
-pre[class*="language-"] {
+pre[class*='language-'] {
   margin: 1em 0;
 }
 
-.dark-mode pre[class*="language-"] {
-  background-color: #252931;
+.dark-mode pre[class*='language-'] {
+  background-color: #121212;
 }
 
-.light-mode pre[class*="language-"] {
-  background-color: #2b2727;
+.light-mode pre[class*='language-'] {
+  background-color: #121212;
 }
 
 /* ----------------end prism override ------------------- */
@@ -16,4 +16,3 @@ pre[class*="language-"] {
 code {
   font-size: 0.9em;
 }
-

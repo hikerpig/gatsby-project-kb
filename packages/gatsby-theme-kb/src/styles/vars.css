@@ -1,44 +1,44 @@
 /* obsidian  */
 :scope {
-  --light-1: #F9FAFB;
-  --light-2: #F3F4F6;
-  --light-3: #E7E5E4;
+  --light-1: #f9fafb;
+  --light-2: #f3f4f6;
+  --light-3: #e7e5e4;
   --light-4: #ffffff;
 
-  --dark-1:  #2e3440;
-  --dark-2:  #3b4252;
-  --dark-3:  #434c5e;
-  --dark-4:  #4c566a;
+  --dark-1: #292929;
+  --dark-2: #121212;
+  --dark-3: #3a3b3c;
+  --dark-4: #404040;
 
   --frost1: #8fbcbb;
   --frost2: #88c0d0;
   --frost3: #a1c4e6;
   --frost4: #81a1c1;
 
-  --red:    #bf616a;
+  --red: #bf616a;
   --orange: #d08770;
   --yellow: #ebcb8b;
-  --green:  #a3be8c;
+  --green: #34c759;
   --purple: #b48ead;
 }
 
 /* default theme light */
 body {
-  --kb-link-color: #ff5449;
-  --kb-tree-cur-color: #e7e5e4;
+  --kb-link-color: #34c759;
+  --kb-tree-cur-color: #ddd;
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
   --kb-text-color: hsl(2deg 20% 15%);
   --kb-text-inverse-color: white;
-  --kb-references-bg:  #fafafa;
+  --kb-references-bg: #fafafa;
   --kb-search-highlight-bg: #eaeaea;
   --kb-note-bg: var(--bg-color-1);
   --kb-separator-color: #ddd;
   --kb-scrollbar-thumb: #ddd;
   --kb-blockquote-bg: #f6f6f6;
 
-  --bg-color-1: #F9FAFB;
-  --bg-color-2: #F3F4F6;
+  --bg-color-1: #f9fafb;
+  --bg-color-2: #f3f4f6;
   --code-bg-color: #f0f0f0;
   --code-color: #333;
 }

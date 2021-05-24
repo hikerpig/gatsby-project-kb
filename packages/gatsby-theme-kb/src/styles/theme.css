@@ -1,18 +1,18 @@
 .dark-mode {
-  --kb-link-color: var(--frost3);
-  --kb-tree-cur-color: var(--dark-3);
+  --kb-link-color: var(--green);
+  --kb-tree-cur-color: var(--dark-1);
   --kb-font-family: 'Avenir', -apple-system, sans-serif;
   --kb-shadow-bg: rgba(0, 0, 0, 0.2);
   --kb-text-color: #eceff4;
   --kb-text-inverse-color: white;
-  --kb-references-bg:  var(--dark-2);
+  --kb-references-bg: var(--dark-2);
   --kb-search-highlight-bg: var(--dark-3);
   --kb-separator-color: #666;
   --kb-scrollbar-thumb: var(--dark-4);
-  --kb-blockquote-bg: #353c48;
+  --kb-blockquote-bg: var(--dark-3);
 
   --bg-color-1: var(--dark-1);
   --bg-color-2: var(--dark-2);
   --code-bg-color: var(--dark-2);
-  --code-color: var(--purple);
+  --code-color: var(--red);
 }

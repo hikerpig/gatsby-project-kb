@@ -23,7 +23,7 @@
 }
 
 .inputWrapper input {
-  color: var(--kb-text-color);
+  color: var(--kb-link-color);
   border: 1px solid transparent;
   height: 26px;
   width: 100%;
@@ -35,6 +35,9 @@
 
 .inputWrapper input:focus {
   border-color: inherit;
+}
+.inputWrapper input::placeholder {
+  color: var(--kb-text-color);
 }
 
 .results {
@@ -75,7 +78,7 @@
 }
 
 .lds-dual-ring:after {
-  content: " ";
+  content: ' ';
   left: calc(50% - 32px);
   position: relative;
   display: block;
@@ -84,7 +87,8 @@
   margin: 8px;
   border-radius: 50%;
   border: 6px solid var(--kb-separator-color);
-  border-color: var(--kb-separator-color) transparent var(--kb-separator-color) transparent;
+  border-color: var(--kb-separator-color) transparent var(--kb-separator-color)
+    transparent;
   animation: lds-dual-ring 1.2s ease-in-out infinite;
 }
 @keyframes lds-dual-ring {

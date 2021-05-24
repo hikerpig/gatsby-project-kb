@@ -5,7 +5,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: var(--kb-references-bg);
-  max-height: 20rem;
+  max-height: 26rem;
   overflow: overlay;
 }
 
@@ -42,6 +42,12 @@
 
 .anchor-tag__popover li {
   margin-bottom: 0;
+}
+
+@media only screen and (max-height: 1200px) {
+  .anchor-tag__popover {
+    max-height: 19rem;
+  }
 }
 
 /* copied from tippy.js/animations/shift-away.css */

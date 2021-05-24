@@ -100,7 +100,9 @@ const AnchorTag = ({
         return <span {...props} />
       },
     }
-    content = wikiLinkLabelTemplateFn ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title }): restProps.children
+    content = wikiLinkLabelTemplateFn
+      ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
+      : restProps.children
     // content = fields.title || restProps.children
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
@@ -151,6 +153,7 @@ const AnchorTag = ({
       animation="shift-away"
       content={popupContent}
       maxWidth="none"
+      arrow={true}
       interactive
     >
       {child}

@@ -42,6 +42,11 @@
 
 .graph-view__search-wrap input {
   width: 300px;
+  color: var(--kb-link-color);
+}
+
+.graph-view__search-wrap input::placeholder {
+  color: var(--kb-text-color);
 }
 
 .graph-view__search-results {
@@ -53,15 +58,19 @@
   font-size: 1.5em;
 }
 
+.force-graph-container canvas {
+  background-color: var(--bg-color-1) !important;
+}
+
 .modal-close,
 .modal-scale {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
   padding: 5px;
   border: 0;
   background: none;
-  color: var(--kb-text-color);
+  color: var(--red);
   cursor: pointer;
 }
 

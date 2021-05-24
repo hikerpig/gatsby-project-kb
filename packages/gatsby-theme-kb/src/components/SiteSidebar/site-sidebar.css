@@ -10,6 +10,14 @@
   font-size: large;
 }
 
+.site-sidebar__title a {
+  color: var(--kb-text-color);
+}
+
+.site-sidebar__title a:hover {
+  color: var(--kb-link-color);
+}
+
 .site-sidebar__link {
   color: var(--kb-text-color);
   display: block;

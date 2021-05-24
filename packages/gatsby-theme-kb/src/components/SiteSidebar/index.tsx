@@ -68,9 +68,10 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     }
   `)
 
-
   const [treeNodes, setTreeNodes] = useState<TreeNodeRawData[]>([])
-  const [treeDataMap, setTreeDataMap] = useState<Record<string, TreeNodeRawData>>({})
+  const [treeDataMap, setTreeDataMap] = useState<
+    Record<string, TreeNodeRawData>
+  >({})
   const [nodeMap, setNodeMap] = useState<Record<string, RemarkNode>>({})
 
   // initialize
@@ -145,12 +146,15 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     return () => {}
   }, [])
 
-  const onNodeSelect = useCallback((treeNode) => {
-    const node = nodeMap[treeNode.id]
-    if (node) {
-      navigate(node.parent.fields.slug)
-    }
-  }, [nodeMap])
+  const onNodeSelect = useCallback(
+    (treeNode) => {
+      const node = nodeMap[treeNode.id]
+      if (node) {
+        navigate(node.parent.fields.slug)
+      }
+    },
+    [nodeMap]
+  )
 
   const renderLabel: TreeNodeProps['renderLabel'] = useCallback(
     (nodeProps, { labelClassName }) => {
@@ -206,7 +210,9 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
 
   return (
     <div className="site-sidebar py-5 px-2">
-      <div className="site-sidebar__title">{title}</div>
+      <div className="site-sidebar__title">
+        <Link to="/">{title}</Link>
+      </div>
       <div className="site-sidebar__search">
         <Search
           isMobileMode={isMobileMode}

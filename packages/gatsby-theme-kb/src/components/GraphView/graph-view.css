@@ -1,3 +1,16 @@
+.dark-mode .force-graph-container canvas {
+  background: #3b4352 !important;
+}
+
+.dark-mode .overlay {
+  background-color: rgba(100 , 100, 100, 0.3);
+}
+
+.dark-mode .modal-close {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
 .overlay {
   z-index: 98;
   position: fixed;
@@ -51,6 +64,7 @@
 .graph-view__modal-hint {
   color: var(--kb-text-inverse-color);
   font-size: 1.5em;
+  margin-top: 0.5em;
 }
 
 .modal-close,

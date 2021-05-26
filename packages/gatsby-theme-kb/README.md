@@ -59,7 +59,7 @@ module.exports = {
 
 When a wikilink is resolved and rendered as an anchor element, the anchor label is by default `[[reference-word]]`. But some people may prefer some other forms, so here is one option for specifying the link label you want.
 
-The template string will be processed in a mustache alike manner, the variable inside `{{}}` will be replaced by real value. Currently there are some variabled available:
+The template string will be processed in a mustache alike manner, the variable inside `{{}}` will be replaced by real value. Currently there are some variables available:
 
 - `refWord`, the reference word inside the double brackets, usually it's the filename (without exts).
 - `title`, the title of the page, may be the frontmatter `title` field value, or h1 of the markdown content. 

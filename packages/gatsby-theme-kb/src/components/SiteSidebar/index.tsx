@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef, useMemo } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import TreeView, { TreeNodeRawData, TreeNodeProps } from '../TreeView'
 import Search from '../Search'
@@ -139,7 +139,7 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
       })
     })
 
-    setTreeNodes(treeNodes)
+    setTreeNodes(treeNodes.slice())
     setNodeMap(nodeMap)
     setTreeDataMap(treeDataMap)
 

@@ -11,7 +11,6 @@ import SiteSidebar from '../SiteSidebar'
 import DarkModeToggle from '../DarkModeToggle'
 import { isServer } from '../../env'
 
-
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
 }>
@@ -53,7 +52,11 @@ export default function TopicLayout(props: Props) {
 
   const [menuOpened, setMenuOpened] = useState(false)
 
-  const defaultBreakPoint: BreakpointName = isServer ? 'md': (window.innerWidth > BREAKPOINTS.md ? 'md': 'sm')
+  const defaultBreakPoint: BreakpointName = isServer
+    ? 'md'
+    : window.innerWidth > BREAKPOINTS.md
+    ? 'md'
+    : 'sm'
   const { breakpoint } = useBreakpoint(BREAKPOINTS, defaultBreakPoint)
 
   const isMobileMode = useMemo(() => {
@@ -108,11 +111,17 @@ export default function TopicLayout(props: Props) {
   const leftClass = classnames(leftClassObject)
 
   const sideBar = useMemo(() => {
-    return <SiteSidebar pageContext={pageContext} title={title} isMobileMode={isMobileMode}></SiteSidebar>
+    return (
+      <SiteSidebar
+        pageContext={pageContext}
+        title={title}
+        isMobileMode={isMobileMode}
+      ></SiteSidebar>
+    )
   }, [isMobileMode, breakpoint])
 
   return (
-    <div className={`topic-layout flex flex-col min-h-screen`} >
+    <div className={`topic-layout flex flex-col min-h-screen`}>
       <div className="topic-layout__header w-screen py-3 px-5 flex justify-between text-lg font-semibold shadow-md md:hidden">
         <div className="flex items-center">
           {expandIcon}

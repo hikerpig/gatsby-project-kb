@@ -1,5 +1,4 @@
-Add syntax highlight
-===
+# Add syntax highlight
 
 The `gatsby-theme-kb` does not cover syntax highlighting, it's up to your options to choose your syntax highlighter. Luckily, the Gatsby ecosystem has some pretty good plugins, [gatsby-remark-prismjs](https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/) can be a good start.
 
@@ -7,7 +6,7 @@ Here is an example of add a remark plugin to `gatsby-theme-kb`. Since in this th
 
 ```js
 // a fragment of gatsby-config.js
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   // ...
@@ -29,7 +28,7 @@ module.exports = {
     },
     //  ...
   ],
-};
+}
 ```
 
 Choose one PrismJS theme from it's official site, or [prism-themes](https://github.com/PrismJS/prism-themes).

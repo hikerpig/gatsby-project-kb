@@ -4,6 +4,7 @@
 }
 
 .topic-layout__content {
+  position: relative;
   max-width: min(960px, 100vw);
   background-color: var(--kb-note-bg);
 }

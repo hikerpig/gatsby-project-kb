@@ -4,6 +4,7 @@ import { TopicFlie, WikiLinkLabelTemplateFn } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
 import LinkReference from '../LinkReference'
 import * as HEADER_COMPONENTS from '../mdx-components/header-components'
+import * as ROUGH_COMPONENTS from '../mdx-components/Rough'
 import { MDXProvider } from '@mdx-js/react'
 import slugify from 'slugify'
 import './topic.css'
@@ -64,7 +65,13 @@ const Topic = ({ file, currentLocation, wikiLinkLabelTemplateFn }: Props) => {
   return (
     <div className="topic">
       {shouldRenderTitle ? <h1 id={slugify(realTitle)}>{realTitle}</h1> : null}
-      <MDXProvider components={{ a: ProvidedAnchorTag, ...HEADER_COMPONENTS }}>
+      <MDXProvider
+        components={{
+          a: ProvidedAnchorTag,
+          ...HEADER_COMPONENTS,
+          ...ROUGH_COMPONENTS,
+        }}
+      >
         <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
       </MDXProvider>
       {referenceBlock}

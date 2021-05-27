@@ -3,13 +3,20 @@ import slugify from 'slugify'
 
 function makeHeaderComponent(tag) {
   return (props) => {
-    const slugified = typeof props.children === 'string' ? slugify(props.children): props.children
-    const id = slugified ? slugified: props.children
+    const slugified =
+      typeof props.children === 'string'
+        ? slugify(props.children)
+        : props.children
+    const id = slugified ? slugified : props.children
     // console.log(`${tag} props`, props, id)
-    return React.createElement(tag, {
-      id,
-      ...props,
-    }, props.children)
+    return React.createElement(
+      tag,
+      {
+        id,
+        ...props,
+      },
+      props.children
+    )
   }
 }
 

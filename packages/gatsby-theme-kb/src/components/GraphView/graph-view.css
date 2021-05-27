@@ -1,13 +1,13 @@
 .dark-mode .force-graph-container canvas {
-  background: #3b4352 !important;
+  background: var(--bg-color-1) !important;
 }
 
 .dark-mode .overlay {
-  background-color: rgba(100 , 100, 100, 0.3);
+  background-color: rgba(100, 100, 100, 0.3);
 }
 
 .dark-mode .modal-close {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(var(--bg-color-2), 0.4);
   border-radius: 50%;
 }
 
@@ -86,6 +86,7 @@
   background: none;
   color: var(--red);
   cursor: pointer;
+  z-index: 2;
 }
 
 .modal-close svg,

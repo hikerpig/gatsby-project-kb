@@ -16,3 +16,15 @@ pre[class*='language-'] {
 code {
   font-size: 0.9em;
 }
+
+.copied {
+  color: #fff;
+  background: #000;
+  padding: 8px 5px;
+  border-radius: 5px;
+  display: flex;
+  width: fit-content;
+  align-items: flex-start;
+  text-align: center;
+  transition: all 0.5s;
+}

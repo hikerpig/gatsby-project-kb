@@ -9,6 +9,22 @@
   background-color: var(--kb-note-bg);
 }
 
+.topic-layout__content a::after {
+  position: relative;
+  top: -0.5em;
+  font-size: 1rem;
+  content: '↗';
+  color: var(--kb-fill-inverse-color);
+}
+
+.topic-layout__content a[title]::after {
+  position: relative;
+  top: -0.5em;
+  font-size: 1rem;
+  content: '↩';
+  color: var(--kb-fill-inverse-color);
+}
+
 .topic-layout__left {
   width: 280px;
   position: relative;

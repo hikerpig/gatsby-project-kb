@@ -18,6 +18,7 @@
     "gatsby-theme-kb": "^0.7.3",
     "prismjs": "^1.23.0",
     "react": "^17",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17",
     "react-rough-notation": "^1.0.1"
   }

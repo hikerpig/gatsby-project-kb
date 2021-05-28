@@ -1,10 +1,7 @@
 # Todo
 
-- [X] Setup the theme
-- [X] Complete the graph view
-- [X] Add local search
-- [X] Responsive design
-- [X] Collapsable sidebar tree
-- [X] Support nested folder without the chore of manually adding link definitions
-- [ ] Better style for graph-view
-- [ ] Knobs to config the force graph in graph-view
+:rocket:
+
+- [ ] Organize and theme this Digital Garden
+- [ ] Undertanding how to atomize ideas
+- [ ] Learn how to separate or integrate normal "notes" from notes that are supposed to be part of digital garden

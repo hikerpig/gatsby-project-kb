@@ -15,7 +15,7 @@ module.exports = function (options) {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions,
-        remarkPlugins: [],
+        remarkPlugins: [require(`remark-emoji`)],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-wiki-link',

@@ -5,16 +5,23 @@ const pathPrefix = process.env.KB_BASE_PATH || '/'
 module.exports = {
   pathPrefix,
   siteMetadata: {
-    title: `gatsby-theme-kb`,
-    description: `Your personal knowledge base`,
-    author: `@hikerpig`,
+    title: `Vidyāmaṇḍala`,
+    description: `Working notes aka a digital garden a place for collecting ideas and ideating.`,
+    author: `Zubayr Ali`,
   },
   plugins: [
     {
       resolve: 'gatsby-theme-kb',
       options: {
         contentPath: path.resolve(__dirname, 'content'),
-        wikiLinkLabelTemplate: '[[{{ title }}]]',
+        wikiLinkLabelTemplate: '{{ title }}',
+        ignore: [
+          '**/.git/**',
+          '**/.github/**',
+          '**/.vscode/**',
+          '**/.obsidian/**',
+          '**/.cache/**',
+        ],
         getPluginMdx(defaultPluginMdx) {
           defaultPluginMdx.options.gatsbyRemarkPlugins.push({
             resolve: 'gatsby-remark-prismjs',

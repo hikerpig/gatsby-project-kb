@@ -1,3 +1,11 @@
 .link-refernce__context {
   padding-left: 1em;
 }
+
+.link-reference a::after {
+  position: relative;
+  top: -0.5em;
+  font-size: 1rem;
+  content: '↩' !important;
+  color: var(--kb-fill-inverse-color);
+}

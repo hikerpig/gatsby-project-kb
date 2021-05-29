@@ -1,2 +1,3 @@
-# math-tricks
+# Math Tricks
 
+- ## [[double-and-halving]]

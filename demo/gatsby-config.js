@@ -14,7 +14,7 @@ module.exports = {
       resolve: 'gatsby-theme-kb',
       options: {
         contentPath: path.resolve(__dirname, 'content'),
-        wikiLinkLabelTemplate: '{{ title }}',
+        wikiLinkLabelTemplate: '[[{{ title }}]]',
         ignore: [
           '**/.git/**',
           '**/.github/**',

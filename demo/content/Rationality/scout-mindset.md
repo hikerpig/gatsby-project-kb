@@ -457,7 +457,7 @@ When a negative emotion strikes, it’s as if we hurriedly reach into the bucket
 
 there is an abundance of different coping strategies, and you don’t need to be so quick to go with the first thing you happen to pull out of the bucket. You can almost always find something comforting that doesn’t require self-deception if you rummage around in there just a bit longer.
 
-![Bucket of coping strategies](./Notes/images/bucket-of-coping-strategies.png)
+![Bucket of coping strategies](https://user-images.githubusercontent.com/31969517/120054182-1195a780-c04c-11eb-8093-b887d039c5c6.png)
 
 ## Make a plan
 
@@ -583,7 +583,7 @@ In reality, you almost never get to repeat the exact same bet many times. But yo
 
 Almost everyone, when asked to explain their success, gives a causal explanation like, “My extra practice is finally starting to pay off” or “It’s because I believed in myself.” How often do you hear someone chalk their own success up to “random variation”?
 
-![The psychological effect of expecting variance](Notes/images/effect-of-expecting-variance.png)
+![The psychological effect of expecting variance](https://user-images.githubusercontent.com/31969517/120054198-2c681c00-c04c-11eb-9dce-15a9e936cda3.png)
 
 The emotional toll of variance is actually worse than this graph suggests. We’re loss averse, meaning that the pain of a loss is greater than the pleasure of a similarly sized gain. Therefore, if you don’t build variance into your expectations, the low points on the spiky line graph will feel even lower than they are.
 
@@ -635,7 +635,7 @@ One is epistemic confidence, or certainty—how sure you are about what’s true
 
 Separately, there’s social confidence, or self-assurance: Are you at ease in social situations? Do you act like you deserve to be there, like you’re secure in yourself and your role in the group? Do you speak as if you’re worth listening to?
 
-![Two types of confidence](./Notes/images/two-types-of-confidence.png)
+![Two types of confidence](https://user-images.githubusercontent.com/31969517/120054214-3853de00-c04c-11eb-931c-636ba27e8b02.png)
 
 We tend to conflate epistemic confidence and social confidence, treating them as if they’re a package deal. It’s easy to picture someone with both types of confidence, such as a leader pumping up his team with an inspiring pep talk about how there’s no doubt in his mind that they’re going to succeed. It’s also easy to picture someone lacking in both types of confidence, stammering nervously, “Uh, I’m really not sure what we should do here . . .”
 
@@ -661,7 +661,7 @@ If a doctor says, “I’m not sure what’s causing this,” it’s reasonable 
 
 However, if the doctors sound like experts even while they’re giving an uncertain diagnosis. They’re offering useful context and they’re giving informative estimates rather than simply saying they don’t know.
 
-![Two kinds of uncertainty](Notes/images/two-kinds-of-uncertainity.png)
+![Two kinds of uncertainty](https://user-images.githubusercontent.com/31969517/120054222-473a9080-c04c-11eb-8786-35e20a432ee3.png)
 
 When people claim that “admitting uncertainty” makes you look bad, they’re invariably conflating these two very different kinds of uncertainty: uncertainty “in you,” caused by your own ignorance or lack of experience, and uncertainty “in the world,” caused by the fact that reality is messy and unpredictable. The former is often taken as a bad sign about someone’s expertise, and justifiably so. But the latter is not—especially if you follow three rules for communicating uncertainty:
 

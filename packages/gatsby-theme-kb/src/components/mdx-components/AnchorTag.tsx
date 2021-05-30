@@ -113,10 +113,6 @@ const AnchorTag = ({
     content = wikiLinkLabelTemplateFn
       ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
       : restProps.children
-<<<<<<< HEAD
-    // content = fields.title || restProps.children
-=======
->>>>>>> 863758b8ee9b87494e64c62b7cb636d5b0913750
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>

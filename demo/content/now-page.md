@@ -6,6 +6,7 @@ This is a [/now](https://nownownow.com/about) page, a place where you show where
 
 Except, in this now page of my [[digital-garden]], I will link to what I am currently writing and learning about.
 
-- [[fixed-mindset]] vs [[growth-mindset]]
+- [[fixed-mindset-vs-growth-mindset]]
+- [[CS50x]]
 - [[i-am-learning-maths]]
 - [[scout-mindset]]

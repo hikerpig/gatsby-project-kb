@@ -34,22 +34,6 @@
   margin-bottom: 0;
   padding: 0;
 }
-.anchor-tag__popover a::after {
-  position: relative;
-  top: -0.5em;
-  font-size: 1rem;
-  /* content: '↗'; */
-  content: '' !important;
-  color: var(--kb-fill-inverse-color);
-}
-
-.anchor-tag__popover a[title]::after {
-  position: relative;
-  top: -0.5em;
-  font-size: 1rem;
-  content: '↩' !important;
-  color: var(--kb-fill-inverse-color);
-}
 
 .anchor-tag__popover ul {
   padding-left: 1rem;

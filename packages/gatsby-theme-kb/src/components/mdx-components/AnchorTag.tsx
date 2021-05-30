@@ -161,6 +161,7 @@ const AnchorTag = ({
       animation="shift-away"
       content={popupContent}
       maxWidth="none"
+      arrow={true}
       interactive
     >
       {child}

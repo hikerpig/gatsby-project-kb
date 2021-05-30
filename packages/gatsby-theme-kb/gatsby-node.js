@@ -1,3 +1,5 @@
+// const { createFilePath } = require(`gatsby-source-filesystem`)
+
 const fs = require(`fs`)
 const path = require(`path`)
 const { urlResolve } = require(`gatsby-core-utils`)
@@ -25,8 +27,7 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
   rootNoteSlug = padSlugLeading(themeOptions.rootNote) || '/readme'
   extensions = themeOptions.extensions || ['.md', '.mdx']
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
-  wikiLinkLabelTemplate =
-    themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
+  wikiLinkLabelTemplate = themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
 }
 
 function getTitle(node, content) {
@@ -87,6 +88,13 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   }
 }
 
+function getContextByNode(n) {
+  return {
+    id: n.id,
+    wikiLinkLabelTemplate,
+  }
+}
+
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions
 
@@ -106,38 +114,8 @@ exports.createPages = async ({ graphql, actions }, options) => {
                 slug
               }
               childMdx {
-                id
                 frontmatter {
                   private
-                }
-                outboundReferences {
-                  refWord
-                  target {
-                    ... on Mdx {
-                      id
-                      slug
-                    }
-                  }
-                }
-              }
-            }
-          }
-          allMdx {
-            nodes {
-              id
-              slug
-              outboundReferences {
-                refWord
-                target {
-                  ... on Mdx {
-                    id
-                    slug
-                  }
-                }
-              }
-              parent {
-                ... on File {
-                  id
                 }
               }
             }
@@ -155,50 +133,16 @@ exports.createPages = async ({ graphql, actions }, options) => {
       options.topicTemplate || `./src/templates/Topic`
     )
 
-    const mdxNodeMap = new Map()
-    result.data.allMdx.nodes.forEach((mdxNode) => {
-      mdxNodeMap.set(mdxNode.id, mdxNode)
-    })
-
-    const getContextByNode = (n) => {
-      const refWordMdxSlugDict = {}
-
-      const enrichRefDetails = (mdxNode) => {
-        if (mdxNode && mdxNode.outboundReferences) {
-          mdxNode.outboundReferences.forEach((ref) => {
-            const refMdxNode = mdxNodeMap.get(ref.target.id)
-            // console.log(
-            //   'refMdxNode exists: ',
-            //   Boolean(refMdxNode),
-            //   ref.target.id
-            // )
-            if (refMdxNode) {
-              console.log(`${ref.refWord}: ${refMdxNode.slug}`)
-              refWordMdxSlugDict[ref.refWord] = refMdxNode.slug
-              enrichRefDetails(refMdxNode)
-            }
-          })
-        }
-      }
-
-      enrichRefDetails(n.childMdx)
-
-      return {
-        id: n.id,
-        wikiLinkLabelTemplate,
-        refWordMdxSlugDict,
-      }
-    }
-
     const localFiles = result.data.allFile.nodes
       .filter((node) => shouldHandleFile(node, options))
       .filter((x) => x.childMdx.frontmatter.private !== true)
+
 
     localFiles.forEach((node) => {
       createPage({
         path: node.fields.slug,
         component: TopicTemplate,
-        context: getContextByNode(node),
+        context: getContextByNode(node)
       })
     })
 
@@ -214,6 +158,15 @@ exports.createPages = async ({ graphql, actions }, options) => {
       }
     }
   }
+
+  // try {
+  //   await fs.promises.unlink(
+  //     path.join(__dirname, './src/templates/roam-block.js')
+  //   )
+  //   await fs.promises.unlink(
+  //     path.join(__dirname, './src/templates/roam-page.js')
+  //   )
+  // } catch (err) {}
 }
 
 exports.onCreateWebpackConfig = ({ actions }) => {

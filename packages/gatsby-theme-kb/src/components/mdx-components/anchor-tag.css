@@ -5,8 +5,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: var(--kb-references-bg);
-  max-height: 20rem;
-  overflow: auto; /* for browser that doesn't support overlay */
+  max-height: 26rem;
   overflow: overlay;
 }
 
@@ -16,6 +15,14 @@
 
 .anchor-tag__popover.with-markdown {
   font-size: 0.875rem;
+}
+
+.anchor-tag__popover a::after {
+  position: relative;
+  top: -0.5em;
+  font-size: 1rem;
+  content: '' !important;
+  color: var(--kb-fill-inverse-color);
 }
 
 .anchor-tag__popover h1,

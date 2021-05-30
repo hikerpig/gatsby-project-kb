@@ -37,12 +37,7 @@ export default (props) => {
   return (
     <TopicLayout pageContext={props.pageContext}>
       <Seo title={file.fields.title}></Seo>
-      <Topic
-        file={file}
-        currentLocation={props.location}
-        wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}
-        refWordMdxSlugDict={props.pageContext.refWordMdxSlugDict}
-      ></Topic>
+      <Topic file={file} currentLocation={props.location} wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}></Topic>
     </TopicLayout>
   )
 }

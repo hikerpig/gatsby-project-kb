@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie, WikiLinkLabelTemplateFn } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
@@ -13,11 +12,10 @@ import './topic.css'
 type Props = {
   file: TopicFlie
   currentLocation: Location
-  refWordMdxSlugDict: {[key: string]: string}
   wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
 }
 
-const Topic = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn }: Props) => {
+const Topic = ({ file, currentLocation, wikiLinkLabelTemplateFn }: Props) => {
   let referenceBlock
   const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
   const { title, slug } = file.fields
@@ -39,7 +37,6 @@ const Topic = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplat
         currentSlug={slug}
         references={outboundReferences}
         wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}
-        refWordMdxSlugDict={refWordMdxSlugDict}
       ></AnchorTag>
     )
   }
@@ -55,7 +52,7 @@ const Topic = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplat
     if (references.length > 0) {
       referenceBlock = (
         <div className="topic__references">
-          <h2 id="Backlinks">Backlinks</h2>
+          <h2>Backlinks</h2>
           <div>{references}</div>
         </div>
       )

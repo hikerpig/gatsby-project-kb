@@ -17,7 +17,6 @@ type Props = React.PropsWithChildren<{
   references: Reference[]
   currentSlug: string
   currentLocation: Location
-  refWordMdxSlugDict: { [key: string]: string }
   wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
 }>
 
@@ -62,7 +61,6 @@ const AnchorTag = ({
   withoutPopup,
   currentSlug,
   currentLocation,
-  refWordMdxSlugDict,
   wikiLinkLabelTemplateFn,
   ...restProps
 }: Props) => {
@@ -92,19 +90,11 @@ const AnchorTag = ({
           anchorSlug: nestedAnchorSlug,
           isExternalLink: nestedIsExternalLink,
         } = genHrefInfo({ currentSlug, href: props.href })
-        if (nestedIsExternalLink) {
-          return <a href={props.href}>{props.children}</a>
-        } else {
-          let toSlug = nestedAnchorSlug
-          if (refWordMdxSlugDict) {
-            // nested content's anchor label will not be replaced with topic title,
-            // so it can be used to form slug
-            if (props.title in refWordMdxSlugDict) {
-              toSlug = `/${refWordMdxSlugDict[props.title]}`
-            }
-          }
-          return <Link to={toSlug}>{props.children}</Link>
-        }
+        return nestedIsExternalLink ? (
+          <a href={props.href}>{props.children}</a>
+        ) : (
+          <Link to={nestedAnchorSlug}>{props.children}</Link>
+        )
       },
       p(props) {
         return <span {...props} />
@@ -113,6 +103,7 @@ const AnchorTag = ({
     content = wikiLinkLabelTemplateFn
       ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
       : restProps.children
+    // content = fields.title || restProps.children
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>
@@ -134,6 +125,7 @@ const AnchorTag = ({
   } else {
     content = restProps.children
     popupContent = <div className="popover no-max-width">{href}</div>
+    // console.log('no ref', anchorSlug)
     child = (
       <a
         {...restProps}

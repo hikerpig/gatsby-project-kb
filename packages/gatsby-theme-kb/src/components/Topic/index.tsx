@@ -51,7 +51,7 @@ const Topic = ({ file, currentLocation, wikiLinkLabelTemplateFn }: Props) => {
     if (references.length > 0) {
       referenceBlock = (
         <div className="topic__references">
-          <h2>Backlinks</h2>
+          <h2 id="Backlinks">Backlinks</h2>
           <div>{references}</div>
         </div>
       )

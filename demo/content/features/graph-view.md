@@ -1,7 +1,7 @@
 Graph View
 ===
 
-Click the 'Show Graph Visualisation' button on top-right to show a graph visualising the relationships of your notes. You can even searc your notes and get result nodes highlighted as you search.
+Click the 'Show Graph Visualisation' button on top-right to show a graph visualising the relationships  - which are established by [[wiki-links]] - of your notes. You can even searc your notes and get result nodes highlighted as you search.
 
 The graph is rendered by [note-graph].
 

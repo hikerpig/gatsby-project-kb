@@ -771,4 +771,64 @@ Discovering you were wrong is an update, not a failure, and your worldview is a 
 
 ## How not to learn from disagreement
 
-Learning from disagreement isn't hopeless—it’s that we’re going about it all wrong.
+Learning from disagreement isn't hopeless—it’s just we’re going about it all wrong.
+
+Our mistake lies in how we select the sources we listen to. By default, we end up listening to people who initiate disagreements with us, as well as the public figures and media outlets who are the most popular representatives of the other side. Those are not very promising selection criteria.Second, what kind of people or media are likely to become popular representatives of an ideology? The ones who do things like cheering for their side and mocking or caricaturing the other side—i.e., you.
+
+To give yourself the best chance of learning from disagreement, you should be listening to people who make it _easier_ to be open to their arguments, not harder. People you like or respect, even if you don’t agree with them. People with whom you have some common ground—intellectual premises, or a core value that you share—even though you disagree with them on other issues. People whom you consider reasonable, who acknowledge nuance and areas of uncertainty, and who argue in good faith.
+
+## Listen to people you find reasonable
+
+Rashid had considered himself an “antifeminist” when he first joined  r/FeMRADebates, but he has since dropped that label. What changed his mind? Talking with feminists who were arguing in good faith.
+
+On the other side of the aisle, one of the group’s feminist founders began to see some flaws in concepts from feminist theory, such as “patriarchy.” She also came to care much more about some problems MRAs emphasize.
+
+## Liste to people you share intellecual common ground with
+
+Knowing that you have intellectual common ground with someone makes you more receptive to their arguments right off the bat. It also makes it possible for them to explain their side in your “language.”
+
+## Listen to people who share your goals
+
+Kelsey is  an atheist. And one of her good friends Jen is a practicing Catholic. That’s a large difference in beliefs, one that often makes disagreements intractable, When one person’s moral positions stem from religious premises that another person doesn’t share, it’s hard to know how to make progress.
+
+But one thing Kelsey and Jen do share is a desire to make the world a better place as effectively as possible. They’re both part of the effective altruism movement, which is devoted to finding high-impact, evidence-based ways of doing good. That shared goal creates a sense of camaraderie and trust between them, making Kelsey more willing to listen open-mindedly to Jen’s perspective than she might otherwise have been.
+
+At first, Kelsey had been unconflictedly pro-choice. Now, after many conversations with Jen, Kelsey is somewhat more sympathetic to the pro-life position. Kelsey is still strongly in favor of legal abortion. But she now takes more seriously the possibility that abortions are a bad outcome, one that we should be trying harder to prevent.
+
+That shift wouldn’t have happened if Kelsey hadn’t made a genuine effort to understand Jen’s perspective—and that wouldn’t have happened if Kelsey hadn’t felt like Jen was her ally in a fight to make the world better, someone who cares about many of the same things as Kelsey does. Feeling like you’re on the same team in some important way can make it possible to learn from each other, even when your worldviews are otherwise very different.
+
+## The problem with a "Team of rivals"
+
+Dissent isn’t all that useful from people you don’t respect or from people who don’t even share enough common ground with you to agree that you’re supposed to be on the same team.
+
+## It's harder than you think
+
+We need to lower our expectations, by a lot. Even under ideal conditions in which everyone is well-informed, reasonable, and making a good-faith effort to explain their views and understand the other side, learning from disagreements is still hard (and conditions are almost never ideal). Here are three reasons why:
+
+### 1. We misunderstand each other’s views
+
+While on a trip to Cairo, blogger Scott Alexander got into a pleasant conversation with a Muslim girl in a café. When she mentioned something about crazy people who believe in evolution, Alexander admitted that he was one of those “crazy people.”
+
+The girl was shocked. She replied, “But . . . monkeys don’t change into humans. What on Earth makes you think monkeys can change into humans?”Alexander tried to explain that the change from ape to human was a very gradual one, which occurred over many generations, and he recommended some books that might do a better job explaining the process than he could. But it was clear that she was still not buying it.
+
+If you’re already familiar with the theory of evolution, it’s obvious to you that the girl in the café was misunderstanding it. But are you sure that none of the absurd-sounding ideas you’ve dismissed in the past aren’t also misunderstandings of the real thing? Even correct ideas often sound wrong when you first hear them. The thirty-second version of an explanation is inevitably simplistic, leaving out important clarifications and nuance. There’s background context you’re missing, words being used in different ways than you’re used to, and more.
+
+### 2. Bad arguments inoculate us against good arguments
+
+When we do encounter a good argument that’s new to us, we often mistake it for a bad argument we’re already familiar with.
+
+Gary Klein’s work has been very helpful to me in understanding how real-world decision-making works, and in recognizing some of the shortcomings in academic studies of decision-making.
+
+Yet I ignored Klein’s work for years after I first heard of him. That’s because he talks about the “power of intuition,” which made me associate him with the kind of people who exalt intuition as a pseudo-mystical sixth sense that deserves precedence over all other forms of evidence, including science. That’s not Klein’s view. By “intuition” he’s simply referring to our brains’ built-in pattern-matching abilities. But because I had encountered so many people saying things like “I don’t care what science says—my intuition tells me ghosts are real,” I automatically lumped Klein in with them.
+
+### 3. Our beliefs are interdependent—changing one requires changing others
+
+Suppose that Alice believes that climate change is a serious problem, and she’s talking to Kevin, who disagrees. Alice could show Kevin an article saying that climate science models have made accurate predictions, but that’s not likely to change Kevin’s mind—even if Kevin is in scout mindset.
+
+That’s because our beliefs are all interconnected, like a web. The belief “climate change isn’t real” is supported by other beliefs Kevin holds about how the world works and which sources are trustworthy. For Kevin to significantly update the belief “climate change isn’t real,” he’ll have to also update a few of his associated beliefs, such as “Climate change skeptic media outlets are more trustworthy than the mainstream media,” or “Smart people don’t buy the climate science consensus.” That can happen, but it will take a lot more evidence than a single article from a news source Kevin doesn’t currently trust.
+
+---
+
+People expect it to be easy to understand disagreements and are unpleasantly surprised when they fail. But the reality is that it’s hard even under the best conditions, and you should be pleasantly surprised when you actually succeed. Listening to views you disagree with, and taking them seriously enough to have a shot at changing your mind, requires mental effort, emotional effort, and, above all, patience. You have to be willing to say to yourself, “It _seems_ like this person is wrong, but maybe I’m misunderstanding him—let me check,” or “I still don’t agree, but maybe over time I’ll start to see examples of what she’s talking about.”
+
+Why make a difficult task even more difficult by hearing those views from people who are unreasonable, who mock your views, and with whom you don’t share any common ground? Why not give yourself the best possible shot of changing your mind, or at least being able to appreciate how a reasonable person could disagree with you? As Kelsey (the atheist journalist with the Catholic friend) put it: “If reading someone does not make me feel more compassion towards their perspective, then I keep looking.”

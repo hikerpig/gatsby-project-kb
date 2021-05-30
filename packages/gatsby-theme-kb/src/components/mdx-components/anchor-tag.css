@@ -6,6 +6,7 @@
   border-radius: 0.5rem;
   background-color: var(--kb-references-bg);
   max-height: 26rem;
+  overflow: auto; /* for browser that doesn't support overlay */
   overflow: overlay;
 }
 

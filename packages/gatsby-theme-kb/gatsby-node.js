@@ -173,7 +173,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
             //   ref.target.id
             // )
             if (refMdxNode) {
-              console.log(`${ref.refWord}: ${refMdxNode.slug}`)
+              // console.log(`${ref.refWord}: ${refMdxNode.slug}`)
               refWordMdxSlugDict[ref.refWord] = refMdxNode.slug
               enrichRefDetails(refMdxNode)
             }

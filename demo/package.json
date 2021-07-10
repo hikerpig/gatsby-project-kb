@@ -1,6 +1,10 @@
 {
   "private": true,
+<<<<<<< HEAD
   "version": "1.3.3",
+=======
+  "version": "1.3.5",
+>>>>>>> ee87343a77645e3e815f557bcd7bfb99e25d9c8b
   "name": "demo",
   "license": "MIT",
   "scripts": {
@@ -10,12 +14,16 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "3.1",
+    "gatsby": "3.5.0",
     "gatsby-plugin-no-sourcemaps": "^2.8.0",
     "gatsby-remark-prismjs": "^3.13.0",
     "gatsby-remark-shiki": "^0.2.0",
     "gatsby-remark-shiki-twoslash": "^1.0.1",
+<<<<<<< HEAD
     "gatsby-theme-kb": "^0.7.3",
+=======
+    "gatsby-theme-kb": "^0.7.5",
+>>>>>>> ee87343a77645e3e815f557bcd7bfb99e25d9c8b
     "prismjs": "^1.23.0",
     "react": "^17",
     "react-copy-to-clipboard": "^5.0.3",

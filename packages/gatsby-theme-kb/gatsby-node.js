@@ -133,6 +133,47 @@ exports.createPages = async ({ graphql, actions }, options) => {
       options.topicTemplate || `./src/templates/Topic`
     )
 
+<<<<<<< HEAD
+=======
+    const mdxNodeMap = new Map()
+    result.data.allMdx.nodes.forEach((mdxNode) => {
+      mdxNodeMap.set(mdxNode.id, mdxNode)
+    })
+
+    const getContextByNode = (n) => {
+      const refWordMdxSlugDict = {}
+
+      const enrichRefDetails = (mdxNode) => {
+        if (mdxNode && mdxNode.outboundReferences) {
+          mdxNode.outboundReferences.forEach((ref) => {
+            const refMdxNode = mdxNodeMap.get(ref.target.id)
+            // console.log(
+            //   'refMdxNode exists: ',
+            //   Boolean(refMdxNode),
+            //   ref.target.id
+            // )
+            if (refMdxNode) {
+              // console.log(`${ref.refWord}: ${refMdxNode.slug}`)
+              if (refWordMdxSlugDict[ref.refWord]) {
+                return // prevent cycles
+              }
+              refWordMdxSlugDict[ref.refWord] = refMdxNode.slug
+              enrichRefDetails(refMdxNode)
+            }
+          })
+        }
+      }
+
+      enrichRefDetails(n.childMdx)
+
+      return {
+        id: n.id,
+        wikiLinkLabelTemplate,
+        refWordMdxSlugDict,
+      }
+    }
+
+>>>>>>> ee87343a77645e3e815f557bcd7bfb99e25d9c8b
     const localFiles = result.data.allFile.nodes
       .filter((node) => shouldHandleFile(node, options))
       .filter((x) => x.childMdx.frontmatter.private !== true)

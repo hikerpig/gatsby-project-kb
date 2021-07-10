@@ -1,0 +1,1 @@
+According to biographer Claire Tomalin, Dickens crafted much of the tale in his head while engaged in nighttime walks that covered 15 to 20 miles. As a result of this ambulatory cogitation, the entire story took only six weeks to complete in the late fall of 1843.

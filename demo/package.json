@@ -10,11 +10,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "3.10.0",
+    "gatsby": "^3.12.0",
     "gatsby-plugin-no-sourcemaps": "^2.8.0",
     "gatsby-remark-prismjs": "^3.13.0",
-    "gatsby-remark-shiki": "^0.2.0",
-    "gatsby-remark-shiki-twoslash": "^1.0.1",
     "gatsby-theme-kb": "^0.7.5",
     "prismjs": "^1.23.0",
     "react": "^17",

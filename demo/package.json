@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.3.5",
+  "version": "1.3.6",
   "name": "demo",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
     "gatsby": "^3.12.0",
     "gatsby-plugin-no-sourcemaps": "^2.8.0",
     "gatsby-remark-prismjs": "^3.13.0",
-    "gatsby-theme-kb": "^0.7.5",
+    "gatsby-theme-kb": "^0.7.6",
     "prismjs": "^1.23.0",
     "react": "^17",
     "react-dom": "^17"

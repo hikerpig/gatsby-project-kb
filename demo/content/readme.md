@@ -31,13 +31,15 @@ But it doesn't bundled with an offical publishing system (yet).
 
 And `gatsby-theme-kb` is one of the few Foam publishing solutions that supports note graph rendering.
 
-With the help of [Foam for VSCode](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) plugin auto-creating link definitions, you knowledge base can have nested folders. 
+With the help of [Foam for VSCode](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) plugin auto-creating link definitions, you knowledge base can have nested folders.
 
-I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb/) to help you start. There are some detailed instructions in it's readme.
+I've created a Foam template [foam-template-gatsby-kb](https://github.com/hikerpig/foam-template-gatsby-kb/) to help you start. It can also be used to publish a Obsidian. There are some detailed instructions in it's readme.
 
 ### Obsidian
 
-Currently this theme is far less versatile than Obsidian's publishing system. e.g. lack of tagging system.
+This theme can be used to publish a Obsidian project.
+
+Though currently this is far less versatile than Obsidian's publishing system. e.g. lack of tagging system.
 
 But this is free and open, you can always extend it as you wish.
 

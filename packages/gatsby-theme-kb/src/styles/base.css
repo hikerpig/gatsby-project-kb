@@ -432,12 +432,9 @@ table {
   width: 100%;
 }
 blockquote {
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
   padding: 1.45rem;
   margin-bottom: 1.45rem;
+  margin-inline: 0;
   background-color: var(--kb-blockquote-bg);
   border-left: 2px solid var(--kb-text-color);
 }

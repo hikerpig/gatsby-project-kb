@@ -48,6 +48,7 @@ But this is free and open, you can always extend it as you wish.
 Some Gatsby offical tutorials about extending a theme.
 
 - [Shadowing in Gatsby Themes](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/shadowing/)
+- Extend `gatsby-theme-kb` to [[comment-system]]
 
 ## Any Thoughts to make this better?
 
@@ -56,3 +57,4 @@ Welcome to open issues and PRs on [github repo](https://github.com/hikerpig/gats
 [wiki-links]: ./features/wiki-links.md
 [graph-view]: ./features/graph-view.md
 [using-frontmatter]: ./features/using-frontmatter.md
+[comment-system]: ./examples/comment-system

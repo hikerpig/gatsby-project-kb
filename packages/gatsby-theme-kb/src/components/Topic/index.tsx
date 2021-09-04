@@ -1,5 +1,4 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie, WikiLinkLabelTemplateFn } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
@@ -9,14 +8,14 @@ import { MDXProvider } from '@mdx-js/react'
 import slugify from 'slugify'
 import './topic.css'
 
-type Props = {
+export type Props = {
   file: TopicFlie
   currentLocation: Location
   refWordMdxSlugDict: {[key: string]: string}
   wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
 }
 
-const Topic = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn }: Props) => {
+const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn }: Props) => {
   let referenceBlock
   const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
   const { title, slug } = file.fields

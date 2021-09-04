@@ -64,7 +64,9 @@ module.exports = function (options) {
           printRejected: true,
           tailwind: true,
           purgeOnly: ['src/styles/global.css'],
-          content: [path.join(__dirname, 'src/**/*.{ts,js,jsx,tsx}')],
+          purgeCSSOptions: {
+            content: [path.join(__dirname, 'src/**/*.{ts,js,jsx,tsx}')],
+          }
         },
       },
       {

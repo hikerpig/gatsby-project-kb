@@ -29,6 +29,7 @@ const Comment: React.FC<Props> = memo(({ issueTerm }) => {
     script.setAttribute('repo', REPO_NAME)
     script.setAttribute('issue-term', issueTerm)
     script.setAttribute('theme', theme)
+    script.setAttribute('label', 'comment')
     anchor.appendChild(script)
     return () => {
       anchor.innerHTML = ''

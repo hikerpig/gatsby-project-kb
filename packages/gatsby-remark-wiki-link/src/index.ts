@@ -1,8 +1,13 @@
 import visit from 'unist-util-visit'
 import { Node } from 'unist'
-import { LinkReference, Definition } from 'mdast'
+import { LinkReference, Definition, Link, Text, StaticPhrasingContent } from 'mdast'
 import slugify from 'slugify'
 import * as path from 'path'
+
+interface LinkReferenceNode extends LinkReference {
+  url?: string;
+  title?: string;
+}
 
 /**
  * if title is something like `folder1/folder2/name`,
@@ -54,8 +59,7 @@ const processWikiLinks = (
     }
     definitions[node.identifier] = node
   })
-
-  visit(markdownAST, `linkReference`, (node: LinkReference, index, parent) => {
+  visit(markdownAST, `linkReference`, (node: LinkReferenceNode, index, parent) => {
     if (node.referenceType !== 'shortcut') {
       return
     }
@@ -72,10 +76,14 @@ const processWikiLinks = (
     if (!siblings || !Array.isArray(siblings)) {
       return
     }
-    const previous = siblings[index - 1]
-    const next = siblings[index + 1]
+    const previous: StaticPhrasingContent = siblings[index - 1] as any
+    const next: StaticPhrasingContent = siblings[index + 1] as any
 
     if (!(previous && next)) {
+      return
+    }
+
+    if (!('value' in previous && 'value' in next)) {
       return
     }
 
@@ -102,7 +110,10 @@ const processWikiLinks = (
     }
     node.title = node.label
     if (!options?.stripBrackets && Array.isArray(node.children)) {
-      node.children[0].value = `[[${node.children[0].value}]]`
+      const firstChild = node.children[0];
+      if (firstChild && 'value' in firstChild) {
+        firstChild.value = `[[${firstChild.value}]]`
+      }
     }
     delete node.label
     delete node.referenceType

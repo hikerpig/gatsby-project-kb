@@ -49,10 +49,11 @@ module.exports = {
 |:----------------------:|:-------------:|:----------------------------------------------------------------------------:|
 | rootNote               |  `/readme`    | Root note's name (without exts)
 | contentPath            |               | Location of local content                                                    |
-| extensions | ['.md', '.mdx']         | Valid content file exts |
+| extensions | `['.md', '.mdx']`         | Valid content file exts |
 | ignore     | `['.git']`         | A list of file globs to ignore |
 | wikiLinkLabelTemplate     |          | A template string for specifying wiki link label, see [ options.wikiLinkLabelTemplate](# options.wikiLinkLabelTemplate) |
 | getPluginMdx | (defaultPluginMdx) => PluginMdx | Customise pre-configured `gatsby-plugin-mdx`, please do always return a valid gatsby plugin object |
+| tocTypes | `['sidebar']` | Customise the toc location, type is `false \| Array<'inline' | 'sidebar'>` |
 
 
 ### options.wikiLinkLabelTemplate

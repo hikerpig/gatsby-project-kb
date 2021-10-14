@@ -1,0 +1,24 @@
+.inline-toc {
+  margin-bottom: 1em;
+}
+
+.inline-toc ol {
+  margin-top: 0;
+}
+
+.inline-toc__header {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.inline-toc__top-node {
+  margin-left: 0;
+}
+
+.inline-toc li {
+  list-style: disc;
+}
+
+.inline-toc__top-node > li {
+  list-style: none;
+}

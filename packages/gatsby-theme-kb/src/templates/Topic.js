@@ -22,9 +22,10 @@ export default (props) => {
     console.debug('Topic props', props)
   }
 
+  const { pageContext } = props
   const file = props.data.file
   let wikiLinkLabelTemplateFn = null
-  if (props.pageContext.wikiLinkLabelTemplate) {
+  if (pageContext.wikiLinkLabelTemplate) {
     wikiLinkLabelTemplateFn = function (data) {
       try {
         return evaluateTemplate(props.pageContext.wikiLinkLabelTemplate, data)
@@ -34,14 +35,19 @@ export default (props) => {
     }
   }
 
+  const tocTypes = ('tocTypes' in pageContext ? pageContext.tocTypes: null) || []
+  const showInlineTOC = tocTypes && tocTypes.includes('inline')
+  const showSidebarTOC = tocTypes && tocTypes.includes('sidebar')
+
   return (
-    <TopicLayout pageContext={props.pageContext}>
+    <TopicLayout pageContext={props.pageContext} showSidebarTOC={showSidebarTOC}>
       <Seo title={file.fields.title}></Seo>
       <Topic
         file={file}
         currentLocation={props.location}
         wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}
         refWordMdxSlugDict={props.pageContext.refWordMdxSlugDict}
+        showInlineTOC={showInlineTOC}
       ></Topic>
     </TopicLayout>
   )
@@ -56,6 +62,7 @@ export const pageQuery = graphql`
           title
           private
         }
+        tableOfContents
         ...GatsbyGardenReferences
       }
       fields {

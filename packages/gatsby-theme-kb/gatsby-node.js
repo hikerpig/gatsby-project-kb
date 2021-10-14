@@ -13,6 +13,7 @@ let rootNoteSlug
 let extensions
 let mediaTypes
 let wikiLinkLabelTemplate
+let tocTypes = ['sidebar'];
 
 function padSlugLeading(str) {
   if (typeof str !== 'string') return str
@@ -27,6 +28,10 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
   mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
   wikiLinkLabelTemplate =
     themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
+
+  if ('tocTypes' in themeOptions) {
+    tocTypes = themeOptions.tocTypes
+  }
 }
 
 function getTitle(node, content) {
@@ -190,6 +195,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         id: n.id,
         wikiLinkLabelTemplate,
         refWordMdxSlugDict,
+        tocTypes,
       }
     }
 

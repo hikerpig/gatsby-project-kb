@@ -38,6 +38,18 @@
   overflow-y: auto;
 }
 
+.topic-layout__right--drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: var(--bg-color-2);
+  display: none;
+}
+
+.topic-layout__right--drawer-show {
+  display: block;
+}
+
 .topic-layout .tocbot {
   margin-top: 20px;
 }
@@ -54,4 +66,14 @@
 
 .topic-layout__mask {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.top-layout__header-item {
+  margin-right: .5em;
+}
+
+.toc-layout__toc-icon {
+  padding-right: .3em;
+  transform-origin: top center;
+  transform: scale(1.2);
 }

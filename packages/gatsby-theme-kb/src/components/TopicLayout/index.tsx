@@ -1,4 +1,10 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from 'react'
+import React, {
+  useState,
+  useMemo,
+  useRef,
+  useLayoutEffect,
+  useCallback,
+} from 'react'
 import { useScrollRestoration } from 'gatsby-react-router-scroll'
 import useBreakpoint from 'use-breakpoint'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -10,7 +16,6 @@ import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
 import DarkModeToggle from '../DarkModeToggle'
 import { isServer } from '../../env'
-
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
@@ -52,8 +57,13 @@ export default function TopicLayout(props: Props) {
   `)
 
   const [menuOpened, setMenuOpened] = useState(false)
+  const [rightMenuOpened, setRightMenuOpened] = useState(false)
 
-  const defaultBreakPoint: BreakpointName = isServer ? 'md': (window.innerWidth > BREAKPOINTS.md ? 'md': 'sm')
+  const defaultBreakPoint: BreakpointName = isServer
+    ? 'md'
+    : window.innerWidth > BREAKPOINTS.md
+    ? 'md'
+    : 'sm'
   const { breakpoint } = useBreakpoint(BREAKPOINTS, defaultBreakPoint)
 
   const isMobileMode = useMemo(() => {
@@ -62,9 +72,9 @@ export default function TopicLayout(props: Props) {
 
   const title = data.site.siteMetadata!.title
 
-  const handleMenuClick = () => {
+  const handleMenuClick = useCallback(() => {
     setMenuOpened(!menuOpened)
-  }
+  }, [menuOpened])
   const expandIcon = (
     <div className="topic-layout__menu-icon mr-2" onClick={handleMenuClick}>
       <svg
@@ -83,6 +93,10 @@ export default function TopicLayout(props: Props) {
       </svg>
     </div>
   )
+
+  const handleTocClick = useCallback(() => {
+    setRightMenuOpened(!rightMenuOpened)
+  }, [rightMenuOpened])
 
   // this ref and useLayoutEffect are kind of hack, but I don't know if
   //   there is a better solution to tweak the hydration of '.topic-layout__left'
@@ -107,18 +121,52 @@ export default function TopicLayout(props: Props) {
   })
   const leftClass = classnames(leftClassObject)
 
+  const rightEleRef = useRef<HTMLDivElement>(null)
+  const rightClassObject = {
+    'topic-layout__right': true,
+    'topic-layout__right--drawer': isMobileMode,
+    'topic-layout__right--drawer-show': isMobileMode && rightMenuOpened,
+    'shadow-md': isMobileMode,
+    'transition-all': isMobileMode,
+    'z-10': isMobileMode,
+    'flex-shrink-0': true,
+    'p-5': true,
+    'hover:shadow-md': true,
+  }
+  useLayoutEffect(() => {
+    if (!rightEleRef.current) return
+    for (const [key, value] of Object.entries(rightClassObject)) {
+      if (value) {
+        rightEleRef.current.classList.add(key)
+      } else {
+        rightEleRef.current.classList.remove(key)
+      }
+    }
+  })
+  const rightClass = classnames(rightClassObject)
+// "topic-layout__right flex-shrink-0 p-5 hover:shadow-md"
+
   const sideBar = useMemo(() => {
-    return <SiteSidebar pageContext={pageContext} title={title} isMobileMode={isMobileMode}></SiteSidebar>
+    return (
+      <SiteSidebar
+        pageContext={pageContext}
+        title={title}
+        isMobileMode={isMobileMode}
+      ></SiteSidebar>
+    )
   }, [isMobileMode, breakpoint])
 
   return (
-    <div className={`topic-layout flex flex-col min-h-screen`} >
+    <div className={`topic-layout flex flex-col min-h-screen`}>
       <div className="topic-layout__header w-screen py-3 px-5 flex justify-between text-lg font-semibold shadow-md md:hidden">
         <div className="flex items-center">
           {expandIcon}
           <div className="topic-layout__header-title">{title}</div>
         </div>
         <div className="flex items-center">
+          <div className="top-layout__header-item toc-layout__toc-icon" onClick={handleTocClick}>
+            T
+          </div>
           <DarkModeToggle></DarkModeToggle>
         </div>
       </div>
@@ -132,19 +180,27 @@ export default function TopicLayout(props: Props) {
         <main className="topic-layout__content flex-grow py-5 px-7 md:h-screen md:overflow-y-auto">
           {children}
         </main>
-        <div className="topic-layout__right flex-shrink-0 p-5 hidden lg:block hover:shadow-md">
-          <GraphButton currentFileId={pageContext.id} showHint></GraphButton>
-          <DarkModeToggle showHint />
+        <div className={rightClass} ref={rightEleRef}>
+          {isMobileMode ? null: (
+            <>
+              <GraphButton currentFileId={pageContext.id} showHint></GraphButton>
+              <DarkModeToggle showHint />
+            </>
+          )}
 
           <div {...tocRestoration}>
+            {isMobileMode && <header><b>Table Of Contents</b></header>}
             <div id="toc" className="toc tocbot js-toc" />
           </div>
         </div>
       </div>
-      {isMobileMode && menuOpened ? (
+      {isMobileMode && (menuOpened || rightMenuOpened) ? (
         <div
           className="topic-layout__mask fixed w-screen h-screen"
-          onClick={() => setMenuOpened(false)}
+          onClick={() => {
+            setMenuOpened(false)
+            setRightMenuOpened(false)
+          }}
         ></div>
       ) : null}
     </div>

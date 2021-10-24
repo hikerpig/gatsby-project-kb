@@ -3,7 +3,9 @@ gatsby-theme-kb
 
 A Gatsby theme for publishing **K**nowledge **B**ase.
 
-See the demo and [documentation](https://gatsby-project-kb.vercel.app/).
+See the [demo and documentation](https://gatsby-project-kb.vercel.app/).
+
+[![preview](https://i.loli.net/2021/01/28/cD6QRIZqUoum4Tf.png)](https://gatsby-project-kb.vercel.app/)
 
 # Setup in your Gatsby project
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-remark-wiki-link@0.3.0...gatsby-remark-wiki-link@0.3.1) (2021-10-24)
+
+**Note:** Version bump only for package gatsby-remark-wiki-link
+
+
+
+
+
 # [0.3.0-alpha.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-remark-wiki-link@0.2.0...gatsby-remark-wiki-link@0.3.0-alpha.0) (2021-04-02)
 
 

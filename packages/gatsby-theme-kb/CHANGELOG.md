@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.7.8...gatsby-theme-kb@0.8.0) (2021-10-24)
+
+
+### Features
+
+* **demo:** an example of shadowing by adding a comment, close [#24](https://github.com/hikerpig/gatsby-project-kb/issues/24) ([5628ccf](https://github.com/hikerpig/gatsby-project-kb/commit/5628ccf2c0f57b2621398b0e82b7efefba05e065))
+* **gatsby-theme-kb:** Add toc menu in mobile mode ([a82e9b4](https://github.com/hikerpig/gatsby-project-kb/commit/a82e9b48f78c2ed5fbb42227cd08c40cadb9502c))
+* **gatsby-theme-kb:** adjust blockquote style a little ([e125ce4](https://github.com/hikerpig/gatsby-project-kb/commit/e125ce40c0c104e1d0e0a2941f933b11bc0c0c9d))
+* **gatsby-theme-kb:** configurable toc, both `inline` and `sidebar` ([e3be6cc](https://github.com/hikerpig/gatsby-project-kb/commit/e3be6cc9fef3e2f94a0971106a5c838c8257cf78))
+* **gatsby-theme-kb:** upgrade `gatsby-plugin-purgecss` ([35936a6](https://github.com/hikerpig/gatsby-project-kb/commit/35936a66b74c8421f603c0ed8d8a7d6d24a9427a))
+
+
+
+
+
 # [0.7.0-alpha.3](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.7.0-alpha.2...gatsby-theme-kb@0.7.0-alpha.3) (2021-04-28)
 
 **Note:** Version bump only for package gatsby-theme-kb

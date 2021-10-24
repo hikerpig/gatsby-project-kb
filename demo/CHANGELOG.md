@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/hikerpig/gatsby-project-kb/compare/demo@1.3.8...demo@1.4.0) (2021-10-24)
+
+
+### Features
+
+* **demo:** an example of shadowing by adding a comment, close [#24](https://github.com/hikerpig/gatsby-project-kb/issues/24) ([5628ccf](https://github.com/hikerpig/gatsby-project-kb/commit/5628ccf2c0f57b2621398b0e82b7efefba05e065))
+
+
+
+
+
 # [1.3.0-alpha.3](https://github.com/hikerpig/gatsby-project-kb/compare/demo@1.3.0-alpha.2...demo@1.3.0-alpha.3) (2021-04-28)
 
 **Note:** Version bump only for package demo

@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-wiki-link",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A gatsby remark plugin for parsing wiki-link in markdown",
   "author": "hikerpig <hikerpigwinnie@gmail.com>",
   "homepage": "https://github.com/hikerpig/gatsby-project-kb#readme",

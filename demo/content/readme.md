@@ -15,7 +15,7 @@ Heavily inspired by [gatsby-digital-garden](https://github.com/mathieudutour/gat
 - Local search.
 - Light and dark mode.
 - Auto-generated sidebar based on notes directory.
-- Auto-generated table of contents.
+- Auto-generated [[table-of-contents]].
 - Configurable `mdx` processing system, with the power of `gatsby-plugin-mdx`.
 - Easy page customization by [[using-frontmatter]].
 

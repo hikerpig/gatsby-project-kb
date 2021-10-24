@@ -6,6 +6,7 @@ import LinkReference from '../LinkReference'
 import * as HEADER_COMPONENTS from '../mdx-components/header-components'
 import { MDXProvider } from '@mdx-js/react'
 import slugify from 'slugify'
+import InlineTOC from '../InlineTOC'
 import './topic.css'
 
 export type Props = {
@@ -13,11 +14,12 @@ export type Props = {
   currentLocation: Location
   refWordMdxSlugDict: {[key: string]: string}
   wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
+  showInlineTOC?: boolean
 }
 
-const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn }: Props) => {
+const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn, showInlineTOC }: Props) => {
   let referenceBlock
-  const { frontmatter, inboundReferences, outboundReferences } = file.childMdx
+  const { frontmatter, inboundReferences, outboundReferences, tableOfContents } = file.childMdx
   const { title, slug } = file.fields
 
   // console.log(
@@ -66,6 +68,7 @@ const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wik
   return (
     <div className="topic">
       {shouldRenderTitle ? <h1 id={slugify(realTitle)}>{realTitle}</h1> : null}
+      {showInlineTOC && <InlineTOC tableOfContents={tableOfContents} />}
       <MDXProvider components={{ a: ProvidedAnchorTag, ...HEADER_COMPONENTS }}>
         <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
       </MDXProvider>

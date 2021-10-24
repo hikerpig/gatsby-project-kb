@@ -3,7 +3,9 @@ gatsby-theme-kb
 
 A Gatsby theme for publishing **K**nowledge **B**ase.
 
-See the demo and [documentation](https://gatsby-project-kb.vercel.app/).
+See the [demo and documentation](https://gatsby-project-kb.vercel.app/).
+
+[![preview](https://i.loli.net/2021/01/28/cD6QRIZqUoum4Tf.png)](https://gatsby-project-kb.vercel.app/)
 
 # Setup in your Gatsby project
 
@@ -49,10 +51,11 @@ module.exports = {
 |:----------------------:|:-------------:|:----------------------------------------------------------------------------:|
 | rootNote               |  `/readme`    | Root note's name (without exts)
 | contentPath            |               | Location of local content                                                    |
-| extensions | ['.md', '.mdx']         | Valid content file exts |
+| extensions | `['.md', '.mdx']`         | Valid content file exts |
 | ignore     | `['.git']`         | A list of file globs to ignore |
 | wikiLinkLabelTemplate     |          | A template string for specifying wiki link label, see [ options.wikiLinkLabelTemplate](# options.wikiLinkLabelTemplate) |
 | getPluginMdx | (defaultPluginMdx) => PluginMdx | Customise pre-configured `gatsby-plugin-mdx`, please do always return a valid gatsby plugin object |
+| tocTypes | `['sidebar']` | Customise the toc location, type is `false \| Array<'inline' | 'sidebar'>` |
 
 
 ### options.wikiLinkLabelTemplate

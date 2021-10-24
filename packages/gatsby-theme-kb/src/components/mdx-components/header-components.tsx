@@ -1,9 +1,9 @@
 import React from 'react'
-import slugify from 'slugify'
+import { slugifyTitle } from '../../utils/toc'
 
 function makeHeaderComponent(tag) {
   return (props) => {
-    const slugified = typeof props.children === 'string' ? slugify(props.children): props.children
+    const slugified = typeof props.children === 'string' ? slugifyTitle(props.children): props.children
     const id = slugified ? slugified: props.children
     // console.log(`${tag} props`, props, id)
     return React.createElement(tag, {

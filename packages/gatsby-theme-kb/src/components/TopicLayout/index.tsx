@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useMemo,
-  useRef,
-  useLayoutEffect,
-  useCallback,
-} from 'react'
+import React, { useState, useMemo, useRef, useLayoutEffect, useCallback } from 'react'
 import { useScrollRestoration } from 'gatsby-react-router-scroll'
 import useBreakpoint from 'use-breakpoint'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -19,6 +13,7 @@ import { isServer } from '../../env'
 
 export type Props = React.PropsWithChildren<{
   pageContext: PageContext
+  showSidebarTOC?: boolean
 }>
 
 const BREAKPOINTS = {
@@ -44,7 +39,7 @@ function cmpBreakpoint(p1: BreakpointName, p2: BreakpointName) {
 }
 
 export default function TopicLayout(props: Props) {
-  const { children, pageContext } = props
+  const { children, pageContext, showSidebarTOC } = props
   const tocRestoration = useScrollRestoration('toc')
   const data = useStaticQuery(graphql`
     query TopicLayoutQuery {
@@ -144,7 +139,6 @@ export default function TopicLayout(props: Props) {
     }
   })
   const rightClass = classnames(rightClassObject)
-// "topic-layout__right flex-shrink-0 p-5 hover:shadow-md"
 
   const sideBar = useMemo(() => {
     return (
@@ -163,12 +157,14 @@ export default function TopicLayout(props: Props) {
           {expandIcon}
           <div className="topic-layout__header-title">{title}</div>
         </div>
-        <div className="flex items-center">
-          <div className="top-layout__header-item toc-layout__toc-icon" onClick={handleTocClick}>
-            T
+        {showSidebarTOC && (
+          <div className="flex items-center">
+            <div className="top-layout__header-item toc-layout__toc-icon" onClick={handleTocClick}>
+              T
+            </div>
+            <DarkModeToggle></DarkModeToggle>
           </div>
-          <DarkModeToggle></DarkModeToggle>
-        </div>
+        )}
       </div>
       <div className="topic-layout__main md:m-auto flex min-h-screen">
         <div
@@ -181,17 +177,23 @@ export default function TopicLayout(props: Props) {
           {children}
         </main>
         <div className={rightClass} ref={rightEleRef}>
-          {isMobileMode ? null: (
+          {isMobileMode ? null : (
             <>
               <GraphButton currentFileId={pageContext.id} showHint></GraphButton>
               <DarkModeToggle showHint />
             </>
           )}
 
-          <div {...tocRestoration}>
-            {isMobileMode && <header><b>Table Of Contents</b></header>}
-            <div id="toc" className="toc tocbot js-toc" />
-          </div>
+          {showSidebarTOC && (
+            <div {...tocRestoration}>
+              {isMobileMode && (
+                <header>
+                  <b>Table Of Contents</b>
+                </header>
+              )}
+              <div id="toc" className="toc tocbot js-toc" />
+            </div>
+          )}
         </div>
       </div>
       {isMobileMode && (menuOpened || rightMenuOpened) ? (

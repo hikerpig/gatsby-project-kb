@@ -22,7 +22,7 @@
     "gatsby-remark-double-parenthesis-link": "^0.1.5",
     "gatsby-remark-wiki-link": "^0.3.1",
     "gatsby-source-filesystem": "^3.13.0",
-    "note-graph": "^0.2.0",
+    "note-graph": "^0.3.0",
     "path-browserify": "^1.0.1",
     "postcss": "^8.3.6",
     "prop-types": "^15.7.2",

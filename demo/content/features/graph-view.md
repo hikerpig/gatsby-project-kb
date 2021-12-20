@@ -5,6 +5,8 @@ Click the 'Show Graph Visualisation' button on top-right to show a graph visuali
 
 The graph is rendered by [note-graph].
 
+If you want to customize the colors of the graph, please check [[override-styles]] for instruction.
+
 
 ![](https://i.loli.net/2020/12/07/e9iKhFIvqcDOdCz.png)
 

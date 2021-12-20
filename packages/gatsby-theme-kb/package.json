@@ -18,6 +18,7 @@
     "gatsby-plugin-purgecss": "^6.0.2",
     "gatsby-plugin-react-helmet": "^4.13.0",
     "gatsby-plugin-tocbot": "^0.1.0",
+    "gatsby-plugin-typescript": "^4.4.0",
     "gatsby-react-router-scroll": "^4.13.0",
     "gatsby-remark-double-parenthesis-link": "^0.1.5",
     "gatsby-remark-wiki-link": "^0.3.1",

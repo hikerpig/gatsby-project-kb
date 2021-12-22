@@ -1,4 +1,4 @@
-import visit from 'unist-util-visit'
+import * as visit from 'unist-util-visit'
 import { Node } from 'unist'
 import { LinkReference, Definition, Link, Text, StaticPhrasingContent } from 'mdast'
 import slugify from 'slugify'
@@ -63,7 +63,7 @@ const processWikiLinks = (
     if (node.referenceType !== 'shortcut') {
       return
     }
-    
+
     const definition = definitions[node.identifier]
     const linkInfo = definition ? getLinkInfo(definition): null
     const linkUrl = linkInfo ? linkInfo.linkUrl: definition?.url
@@ -121,4 +121,8 @@ const processWikiLinks = (
   })
 }
 
-export default processWikiLinks
+// default export may have issue being loaded by gatsby-plugin-mdx
+// see https://github.com/gatsbyjs/gatsby/issues/34015
+// export default processWikiLinks
+
+export = processWikiLinks

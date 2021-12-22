@@ -7,7 +7,6 @@
     "module": "commonjs",
     "declaration": true,
     "inlineSourceMap": false,
-    "esModuleInterop": true,
     "lib": ["es5", "dom"],
     "types": ["jest", "node"],
     "typeRoots": ["node_modules/@types"],

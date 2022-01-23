@@ -32,10 +32,11 @@ export default function GraphView({
   const graphContainer = useRef<HTMLDivElement>(null)
   const shouldShowGraph = graphState !== 'hidden'
 
-  const modalShrinkSize = isMobileMode ? 20: 40
+  const modalShrinkSizeX = isMobileMode ? 20: 40
+  const modalShrinkSizeY = isMobileMode ? 80: 40
   const modalSize = {
-    width: Math.min(windowSize.width - modalShrinkSize, 1400),
-    height: Math.min(windowSize.height - modalShrinkSize, 800),
+    width: Math.min(windowSize.width - modalShrinkSizeX, 1400),
+    height: Math.min(windowSize.height - modalShrinkSizeY, 800),
   }
 
   const navigateTo = (p: string) => {

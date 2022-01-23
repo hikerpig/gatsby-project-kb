@@ -18,21 +18,24 @@ type Props = {
   graphState: GraphState
   setGraphState: (state: GraphState) => void
   currentFileId: string
+  isMobileMode?: boolean
 }
 
 export default function GraphView({
   setGraphState,
   graphState,
   currentFileId,
+  isMobileMode,
 }: Props) {
   const { notesMap, fileNodesMap } = useGraphData()
   const windowSize = useWindowSize()
   const graphContainer = useRef<HTMLDivElement>(null)
   const shouldShowGraph = graphState !== 'hidden'
 
+  const modalShrinkSize = isMobileMode ? 20: 40
   const modalSize = {
-    width: Math.min(windowSize.width - 40, 1400),
-    height: Math.min(windowSize.height - 40, 800),
+    width: Math.min(windowSize.width - modalShrinkSize, 1400),
+    height: Math.min(windowSize.height - modalShrinkSize, 800),
   }
 
   const navigateTo = (p: string) => {
@@ -52,7 +55,7 @@ export default function GraphView({
     noteGraphView = new NoteGraphView({
       container: graphContainer.current,
       graphModel,
-      width: modalSize.width - RESULTS_WIDTH,
+      width: isMobileMode ? modalSize.width : modalSize.width - RESULTS_WIDTH,
       height: modalSize.height,
     })
 
@@ -81,7 +84,7 @@ export default function GraphView({
 
   const onSearchResults: SearchProps['onResults'] = (results) => {
     if (noteGraphView) {
-      const nodeIds = results.map(o => o.id).filter(s => s)
+      const nodeIds = results.map((o) => o.id).filter((s) => s)
       // console.debug('onSearchResults node ids', nodeIds)
       // It's better to add another highlight style or specity styles in `setSelectedNodes`,
       //   I will need to extend note-graph for this.
@@ -130,17 +133,29 @@ export default function GraphView({
           </button>
           <div className="modal-body">
             <div className="flex">
-              <div className="graph-view__search-wrap w-3/12">
-                <Search
-                  position="right"
-                  resultsClassName="graph-view__search-results"
-                  resultsWidth={RESULTS_WIDTH}
-                  onResults={onSearchResults}
-                ></Search>
-              </div>
+              {!isMobileMode && (
+                <div className="graph-view__search-wrap w-3/12">
+                  <Search
+                    position="right"
+                    resultsClassName="graph-view__search-results"
+                    resultsWidth={RESULTS_WIDTH}
+                    onResults={onSearchResults}
+                  ></Search>
+                </div>
+              )}
               <div>
                 <div ref={graphContainer} id="graph-container"></div>
-                <div className="graph-view__modal-hint">Press Esc twice to close this modal.</div>
+                <div className="graph-view__modal-hint">Press Esc twice to
+                  <button
+                    type="button"
+                    className="graph-view__btn--link"
+                    onClick={() => {
+                      setGraphState('hidden')
+                    }}
+                    aria-label="Close Graph"
+                  >close</button>
+                 this modal.
+                 </div>
               </div>
             </div>
           </div>

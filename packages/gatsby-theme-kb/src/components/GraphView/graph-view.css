@@ -113,3 +113,13 @@
 .modal-body .text {
   cursor: pointer;
 }
+
+.graph-view__btn--link {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: underline;
+}
+
+.graph-view__btn--link:hover {
+  color: var(--kb-text-color);
+}

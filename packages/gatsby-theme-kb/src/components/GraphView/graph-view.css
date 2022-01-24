@@ -67,41 +67,35 @@
   margin-top: 0.5em;
 }
 
-.modal-close,
-.modal-scale {
+.modal-close {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px;
   border: 0;
-  background: none;
+  background: var(--kb-text-inverse-color);
+  opacity: 0.8;
   color: var(--kb-text-color);
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.modal-close svg,
-.modal-scale svg {
-  width: 20px;
-  height: 20px;
+.modal-close:hover {
+  opacity: 1;
 }
 
-.modal-close path,
-.modal-scale path {
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-close path {
   fill: currentColor;
 }
 
-.modal-scale {
-  right: 30px;
-}
-
-.modal-minimized .modal-scale svg,
 .modal-minimized .modal-close svg {
   width: 15px;
   height: 15px;
-}
-
-.modal-minimized .modal-scale {
-  right: 25px;
 }
 
 .modal-body {
@@ -112,4 +106,14 @@
 .modal-body .node,
 .modal-body .text {
   cursor: pointer;
+}
+
+.graph-view__btn--link {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  text-decoration: underline;
+}
+
+.graph-view__btn--link:hover {
+  color: var(--kb-text-color);
 }

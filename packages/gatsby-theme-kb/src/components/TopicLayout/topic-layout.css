@@ -75,5 +75,5 @@
 .toc-layout__toc-icon {
   padding-right: .3em;
   transform-origin: top center;
-  transform: scale(1.2);
+  transform: scale(1.2) translateY(-1px);
 }

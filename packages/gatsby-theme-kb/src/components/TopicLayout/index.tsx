@@ -162,6 +162,7 @@ export default function TopicLayout(props: Props) {
             <div className="top-layout__header-item toc-layout__toc-icon" onClick={handleTocClick}>
               T
             </div>
+            <GraphButton className="top-layout__header-item" currentFileId={pageContext.id} isMobileMode={isMobileMode}/>
             <DarkModeToggle></DarkModeToggle>
           </div>
         )}
@@ -179,7 +180,7 @@ export default function TopicLayout(props: Props) {
         <div className={rightClass} ref={rightEleRef}>
           {isMobileMode ? null : (
             <>
-              <GraphButton currentFileId={pageContext.id} showHint></GraphButton>
+              <GraphButton currentFileId={pageContext.id} showHint isMobileMode={isMobileMode}/>
               <DarkModeToggle showHint />
             </>
           )}

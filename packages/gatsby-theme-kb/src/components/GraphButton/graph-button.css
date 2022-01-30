@@ -17,4 +17,6 @@
 
 .graph-button svg {
   fill: var(--kb-text-color);
+  transform-origin: top center;
+  transform: scale(1.1);
 }

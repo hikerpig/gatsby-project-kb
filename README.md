@@ -28,3 +28,13 @@ This is a common structure for developing Gatsby theme using yarn workspace. You
 yarn # install dependencies
 yarn dev # start devlopment
 ```
+
+# Support
+
+Feel free to open issues if you have any problems or suggestions for this project, I will do my best to solve them in my spare time.
+
+If you find it useful and find yourself in a mood of sunshine, you may support me a little pack of coffee beans.
+
+I like [Geisha](https://www.wikiwand.com/en/Geisha_\(coffee\)), you will like it, too.
+
+<a href="https://www.buymeacoffee.com/hikerpig" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>

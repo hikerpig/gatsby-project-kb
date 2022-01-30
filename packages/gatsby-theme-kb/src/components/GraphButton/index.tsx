@@ -1,5 +1,6 @@
 import React, { useState, lazy, Suspense } from 'react'
 import type { GraphState } from '../GraphView'
+import classNames from 'classnames'
 
 import './graph-button.css'
 
@@ -24,8 +25,13 @@ const svgIconContent = `
 </svg>
 `
 
-const GraphButton = (props: { currentFileId: string; showHint?: boolean }) => {
-  const { currentFileId, showHint } = props
+const GraphButton = (props: {
+  currentFileId: string
+  showHint?: boolean
+  className?: string
+  isMobileMode?: boolean
+}) => {
+  const { currentFileId, showHint, isMobileMode, className } = props
   const [graphState, setGraphState] = useState<GraphState>('hidden')
   const hint = 'Show Graph Visualisation'
 
@@ -34,7 +40,7 @@ const GraphButton = (props: { currentFileId: string; showHint?: boolean }) => {
       <div
         title={hint}
         aria-label={hint}
-        className="graph-button"
+        className={classNames('graph-button', className)}
         onClick={() => {
           setGraphState('show')
         }}
@@ -48,6 +54,7 @@ const GraphButton = (props: { currentFileId: string; showHint?: boolean }) => {
             graphState={graphState}
             setGraphState={setGraphState}
             currentFileId={currentFileId}
+            isMobileMode={isMobileMode}
           />
         </Suspense>
       ) : null}

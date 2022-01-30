@@ -11,7 +11,7 @@
     "autoprefixer": "^10.4.0",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7",
-    "flexsearch": "^0.7.21",
+    "flexsearch": "^0.6.32",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-mdx": "^3.4.0",
     "gatsby-plugin-postcss": "^5.4.0",

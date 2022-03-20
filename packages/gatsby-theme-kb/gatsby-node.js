@@ -2,7 +2,7 @@ const fs = require(`fs`)
 const path = require(`path`)
 const { urlResolve } = require(`gatsby-core-utils`)
 const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
-// const slugify = require(`slugify`)
+const slugify = require(`slugify`)
 const {
   findTopLevelHeading,
 } = require(`@gatsby-project-kb/transformer-wiki-references`)
@@ -77,8 +77,9 @@ exports.createResolvers = ({ createResolvers }) => {
 exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   const { createNodeField } = actions
   if (node.internal.type === `File` && shouldHandleFile(node, options)) {
-    const slug = '/' + urlResolve(path.parse(node.relativePath).dir, node.name)
-    // console.log('slug is', slug)
+    const slugifiedName = slugify(node.name)
+    const slug = '/' + urlResolve(path.parse(node.relativePath).dir, slugifiedName)
+    // console.log('slug is', slug, node.relativePath)
     createNodeField({
       node,
       name: `slug`,

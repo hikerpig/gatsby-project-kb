@@ -10,10 +10,11 @@ const {
 // These are customizable theme options we only need to check once
 let contentPath
 let rootNoteSlug
-let extensions
-let mediaTypes
+// let extensions
+// let mediaTypes
 let wikiLinkLabelTemplate
 let tocTypes = ['sidebar'];
+let slugifyFn = defaultSlugifyFn
 
 function padSlugLeading(str) {
   if (typeof str !== 'string') return str
@@ -24,10 +25,14 @@ function padSlugLeading(str) {
 exports.onPreBootstrap = async ({ store }, themeOptions) => {
   contentPath = themeOptions.contentPath
   rootNoteSlug = padSlugLeading(themeOptions.rootNote) || '/readme'
-  extensions = themeOptions.extensions || ['.md', '.mdx']
-  mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
+  // extensions = themeOptions.extensions || ['.md', '.mdx']
+  // mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
   wikiLinkLabelTemplate =
     themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
+
+  if (themeOptions.slugifyFn && typeof themeOptions.slugifyFn === 'function') {
+    slugifyFn = themeOptions.slugifyFn
+  }
 
   if ('tocTypes' in themeOptions) {
     tocTypes = themeOptions.tocTypes
@@ -56,6 +61,10 @@ function getTitle(node, content) {
   )
 }
 
+function defaultSlugifyFn(str) {
+  return slugify(str)
+}
+
 exports.createResolvers = ({ createResolvers }) => {
   const resolvers = {
     MdxFrontmatter: {
@@ -77,7 +86,7 @@ exports.createResolvers = ({ createResolvers }) => {
 exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   const { createNodeField } = actions
   if (node.internal.type === `File` && shouldHandleFile(node, options)) {
-    const slugifiedName = slugify(node.name)
+    const slugifiedName = slugifyFn(node.name)
     const slug = '/' + urlResolve(path.parse(node.relativePath).dir, slugifiedName)
     // console.log('slug is', slug, node.relativePath)
     createNodeField({

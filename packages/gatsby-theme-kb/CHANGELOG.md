@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.9.0...gatsby-theme-kb@0.9.1) (2022-03-20)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** page name should be slugified during createPage ([#45](https://github.com/hikerpig/gatsby-project-kb/issues/45)) ([06e2741](https://github.com/hikerpig/gatsby-project-kb/commit/06e2741f748d8fd1dee3f04c37da8b902e9d3f29))
+
+
+
+
+
 # [0.9.0](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.9.0-alpha.4...gatsby-theme-kb@0.9.0) (2022-02-06)
 
 **Note:** Version bump only for package gatsby-theme-kb

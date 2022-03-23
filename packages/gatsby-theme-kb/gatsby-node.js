@@ -1,3 +1,4 @@
+//@ts-check
 const fs = require(`fs`)
 const path = require(`path`)
 const { urlResolve } = require(`gatsby-core-utils`)
@@ -13,7 +14,7 @@ let rootNoteSlug
 // let extensions
 // let mediaTypes
 let wikiLinkLabelTemplate
-let tocTypes = ['sidebar'];
+let tocTypes = ['sidebar']
 let slugifyFn = defaultSlugifyFn
 
 function padSlugLeading(str) {
@@ -62,7 +63,7 @@ function getTitle(node, content) {
 }
 
 function defaultSlugifyFn(str) {
-  return slugify(str)
+  return slugify.default(str)
 }
 
 exports.createResolvers = ({ createResolvers }) => {

@@ -62,6 +62,7 @@ module.exports = function (options) {
         resolve: '@gatsby-project-kb/transformer-wiki-references',
         options: {
           contentPath: path.resolve(process.cwd(), contentPath),
+          ignore,
           extensions,
         },
       },

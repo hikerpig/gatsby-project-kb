@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.9.2...gatsby-theme-kb@0.9.3) (2022-03-26)
+
+
+### Bug Fixes
+
+* **gatsby-theme-kb:** apply options.ignore to transformer-wiki-references plugin ([9190eee](https://github.com/hikerpig/gatsby-project-kb/commit/9190eee3ec23484cabdf368793cadb8b0a3458ec))
+* **gatsby-theme-kb:** fix reference resolving bug when they are in nested folder ([0e99099](https://github.com/hikerpig/gatsby-project-kb/commit/0e9909994b9c33c1567e52e7d0eb0720cb937d83))
+
+
+
+
+
 ## [0.9.1](https://github.com/hikerpig/gatsby-project-kb/compare/gatsby-theme-kb@0.9.0...gatsby-theme-kb@0.9.1) (2022-03-20)
 
 

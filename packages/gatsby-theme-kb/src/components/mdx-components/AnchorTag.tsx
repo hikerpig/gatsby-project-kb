@@ -69,10 +69,19 @@ const AnchorTag = ({
   // prettier-ignore
   const { anchorSlug } = genHrefInfo({ currentSlug, href })
 
-  const ref = references.find((x) => {
+  function getSlugByRefWord(title: string) {
+    if (!refWordMdxSlugDict) return;
+    if (title in refWordMdxSlugDict) return `/${refWordMdxSlugDict[title]}`
+  }
+
+  let ref: Reference | undefined
+
+  ref = references.find((x) => {
+    const refSlug = x.target.parent?.fields.slug || ''
     return (
       `/${x.refWord}` === href ||
-      withPrefix(x.target.parent?.fields.slug || '') === withPrefix(anchorSlug)
+      getSlugByRefWord(title) === refSlug ||
+      withPrefix(refSlug) === withPrefix(anchorSlug)
     )
   })
   // console.log('ref', ref, 'href', href, 'anchorSlug', anchorSlug, references)
@@ -99,9 +108,8 @@ const AnchorTag = ({
           if (refWordMdxSlugDict) {
             // nested content's anchor label will not be replaced with topic title,
             // so it can be used to form slug
-            if (props.title in refWordMdxSlugDict) {
-              toSlug = `/${refWordMdxSlugDict[props.title]}`
-            }
+            const maybeSlug = getSlugByRefWord(props.title)
+            if (maybeSlug) toSlug = maybeSlug
           }
           return <Link to={toSlug}>{props.children}</Link>
         }

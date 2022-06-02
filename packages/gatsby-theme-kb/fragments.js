@@ -6,6 +6,7 @@ export const references = graphql`
       contextLine
       targetAnchor
       refWord
+      label
       target {
         ... on Mdx {
           body

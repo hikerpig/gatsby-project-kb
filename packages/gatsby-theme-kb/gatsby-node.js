@@ -128,6 +128,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
                 }
                 outboundReferences {
                   refWord
+                  label
                   target {
                     ... on Mdx {
                       id
@@ -144,6 +145,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
               slug
               outboundReferences {
                 refWord
+                label
                 target {
                   ... on Mdx {
                     id

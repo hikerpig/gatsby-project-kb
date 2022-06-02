@@ -14,6 +14,7 @@ export type Reference = {
     parent: SimpleFileNode
   }
   contextLine: string
+  label?: string
 }
 
 export type SimpleFileNode = {

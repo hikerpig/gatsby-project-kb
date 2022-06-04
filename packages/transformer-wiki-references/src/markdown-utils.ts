@@ -61,7 +61,12 @@ export function findInMarkdown(markdown: string, regex: RegExp): string[] {
 
 export function findInMarkdownLines(markdown: string, regex: RegExp) {
   const lines = markdown.split('\n')
-  const result: { matchStr: string, lineContent: string }[] = []
+  const result: {
+    matchStr: string
+    lineContent: string
+    match: RegExpMatchArray | undefined
+    lineNum: number
+  }[] = []
 
   lines.forEach((lineContent, lineNum) => {
     let match
@@ -69,7 +74,7 @@ export function findInMarkdownLines(markdown: string, regex: RegExp) {
     while ((match = regex.exec(lineContent))) {
       const [, name] = match
       if (name) {
-        result.push({ matchStr: name, lineContent })
+        result.push({ matchStr: name, match, lineContent, lineNum })
       }
     }
   })

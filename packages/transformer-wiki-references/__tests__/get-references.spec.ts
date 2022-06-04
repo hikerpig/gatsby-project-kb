@@ -51,4 +51,15 @@ describe('getReferences', () => {
       { target: 'link', targetAnchor: 'anchor' },
     )
   })
+
+  it('can extract markdown link', () => {
+    const text = outdent.string(`
+    [label](target) is a markdown link
+    `)
+
+    const result = getReferences(text)
+    expect(result.pages[0]).toMatchObject(
+      { target: 'target', label: 'label', contextLine: '[label](target) is a markdown link' },
+    )
+  })
 })

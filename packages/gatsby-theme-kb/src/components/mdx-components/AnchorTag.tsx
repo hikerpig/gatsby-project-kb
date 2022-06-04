@@ -72,6 +72,7 @@ const AnchorTag = ({
   function getSlugByRefWord(title: string) {
     if (!refWordMdxSlugDict) return;
     if (title in refWordMdxSlugDict) return `/${refWordMdxSlugDict[title]}`
+    return;
   }
 
   let ref: Reference | undefined
@@ -118,9 +119,14 @@ const AnchorTag = ({
         return <span {...props} />
       },
     }
-    content = wikiLinkLabelTemplateFn
-      ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
-      : restProps.children
+    if (ref.label) {
+      // markdown link
+      content = ref.label
+    } else {
+      content = wikiLinkLabelTemplateFn
+        ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
+        : restProps.children
+    }
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>

@@ -16,4 +16,8 @@ export type NodeReference = {
   targetAnchor?: string
   referrer: MdxNode
   contextLine: string
+  /**
+   * Markdown relative link has this
+   */
+  label?: string
 }

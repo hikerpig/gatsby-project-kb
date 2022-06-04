@@ -11,6 +11,7 @@ export type Reference = {
   targetAnchor?: string
   contextLine: string
   referrerNode?: MdxNode
+  label?: string
 }
 
 export function rxWikiLink(): RegExp {
@@ -29,6 +30,12 @@ export function rxHashtagLink(): RegExp {
 }
 
 const getLinkDefinitionPattern = () => /^\[([\d\w-_]+)\]\s+(.*)/ig // [defintion]: target
+
+export function rxMarkdownLink(): RegExp {
+  // const pattern = '\\[\\[([^\\]]+)\\]\\]' // [](markdown-link)
+  const pattern = /\[(.*)\]\((.*)\)/ig // [](markdown-link)
+  return pattern
+}
 
 function findReferenceWithPattern(md: string, pattern: RegExp): Reference[] {
   return findInMarkdownLines(md, pattern).map(({ lineContent, matchStr }) => {
@@ -50,6 +57,19 @@ function findReferenceWithPattern(md: string, pattern: RegExp): Reference[] {
   })
 }
 
+function findMarkdownLinkReference(md: string) {
+  const pattern = rxMarkdownLink()
+  return findInMarkdownLines(md, pattern).map(({ lineContent, match }) => {
+    let [_, label, target] = match
+    const ref: Reference = {
+      target,
+      contextLine: lineContent,
+      label,
+    }
+    return ref
+  })
+}
+
 export const getReferences = (string: string, onReferenceAdd?: (ref: Reference) => Reference) => {
   const md = cleanupMarkdown(string)
   onReferenceAdd = onReferenceAdd || ((o) => o)
@@ -59,6 +79,7 @@ export const getReferences = (string: string, onReferenceAdd?: (ref: Reference) 
       ...findReferenceWithPattern(md, rxHashtagLink()),
       ...findReferenceWithPattern(md, rxWikiLink()),
       ...findReferenceWithPattern(md, getLinkDefinitionPattern()),
+      ...findMarkdownLinkReference(md),
     ].map(o => onReferenceAdd(o)),
   }
 

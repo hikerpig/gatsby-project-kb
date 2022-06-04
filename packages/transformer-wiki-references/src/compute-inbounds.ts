@@ -110,7 +110,8 @@ export async function generateData(cache: GatsbyCache, getNode: Function) {
                 contextLine: reference.contextLine,
                 target: cachedNode.node,
                 referrer: reference.referrerNode,
-                refWord: reference.target,
+                refWord: reference.label || reference.target,
+                label: reference.label,
                 targetAnchor: reference.targetAnchor,
               } as NodeReference
             })

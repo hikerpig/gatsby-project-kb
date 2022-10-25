@@ -40,7 +40,13 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
   }
 }
 
-function getTitle(node, content) {
+/**
+ *
+ * @param {*} node
+ * @param {() => Promise<string>} getContent
+ * @returns
+ */
+async function getTitle(node, getContent) {
   if (
     typeof node.frontmatter === 'object' &&
     node.frontmatter &&
@@ -48,6 +54,7 @@ function getTitle(node, content) {
   ) {
     return node.frontmatter['title']
   }
+  const content = await getContent()
   return (
     findTopLevelHeading(content) ||
     (typeof node.fileAbsolutePath === 'string'
@@ -98,7 +105,7 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
     createNodeField({
       node,
       name: `title`,
-      value: getTitle(node, await loadNodeContent(node)),
+      value: await getTitle(node, () =>  loadNodeContent(node)),
     })
   }
 }
@@ -166,7 +173,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
     if (result.errors) {
       console.log(result.errors)
-      throw new Error(`Could not query notes`, result.errors)
+      throw new Error(`Could not query notes ${result.errors}`)
     }
 
     const TopicTemplate = require.resolve(

@@ -1,5 +1,11 @@
 export type PageContext = {
   id: string
+  wikiLinkLabelTemplate: string | null
+  refWordMdxSlugDict: Record<string, string>
+  tocTypes: string
+  sort: {
+    by: 'title' | 'path'
+  }
 }
 
 export type Reference = {

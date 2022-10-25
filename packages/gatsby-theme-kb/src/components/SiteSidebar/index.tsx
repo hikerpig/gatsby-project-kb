@@ -74,13 +74,18 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
   >({})
   const [nodeMap, setNodeMap] = useState<Record<string, RemarkNode>>({})
 
+  let sortFieldGetter = (data: RemarkNode) => data.parent?.fields.title
+  // let sortFieldGetter = (data: RemarkNode) => data.parent?.relativePath
+
   // initialize
   useEffect(() => {
     const nodes = data.allMdx!.nodes as RemarkNode[]
+    // sort nodes
     const validNodes = nodes.filter((node) => node.parent).sort((a,b) => {
-      if (a.parent.relativePath > b.parent.relativePath) return 1
-      if (a.parent.relativePath < b.parent.relativePath) return -1
-      return 0
+      const valueA = sortFieldGetter(a)
+      const valueB = sortFieldGetter(b)
+      if (valueA === valueB) return 0
+      return valueA > valueB ? 1 : -1
     })
 
     function makeDirectoryNodes(inputPath: string) {

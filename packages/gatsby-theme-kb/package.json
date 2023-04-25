@@ -14,7 +14,7 @@
     "flexsearch": "^0.6.32",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-mdx": "^3.4.0",
-    "gatsby-plugin-postcss": "^5.4.0",
+    "gatsby-plugin-postcss": "^6.0.0",
     "gatsby-plugin-purgecss": "^6.1.0",
     "gatsby-plugin-react-helmet": "^5.4.0",
     "gatsby-plugin-tocbot": "^0.1.0",
@@ -30,7 +30,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "tailwindcss": "^2.2.9",
+    "tailwindcss": "^3.1.5",
     "use-breakpoint": "^3.0.0",
     "use-dark-mode": "^2.3.1"
   },

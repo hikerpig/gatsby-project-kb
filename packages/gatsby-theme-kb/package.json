@@ -4,7 +4,7 @@
   "version": "0.9.4",
   "dependencies": {
     "@gatsby-project-kb/transformer-wiki-references": "^0.3.1",
-    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/mdx": "^2.0.0",
     "@mdx-js/react": "^1.6.22",
     "@reecelucas/react-use-hotkeys": "^1.3.1",
     "@tippyjs/react": "^4.2.6",

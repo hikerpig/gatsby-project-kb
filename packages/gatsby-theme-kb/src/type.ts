@@ -35,7 +35,7 @@ export type TopicFlie = {
     body: string
     inboundReferences: Reference[]
     outboundReferences: Reference[]
-    frontmatter: {
+    frontmatter?: {
       title: string
     }
     tableOfContents: TableOfContents

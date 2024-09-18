@@ -1,5 +1,4 @@
 import React from 'react'
-import MDXRenderer from '../mdx-components/MDXRenderer'
 import { TopicFlie, WikiLinkLabelTemplateFn } from '../../type'
 import AnchorTag from '../mdx-components/AnchorTag'
 import LinkReference from '../LinkReference'
@@ -15,9 +14,10 @@ export type Props = {
   refWordMdxSlugDict: {[key: string]: string}
   wikiLinkLabelTemplateFn?: WikiLinkLabelTemplateFn | null
   showInlineTOC?: boolean
+  children: React.ReactNode | undefined
 }
 
-const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn, showInlineTOC }: Props) => {
+const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wikiLinkLabelTemplateFn, showInlineTOC, children }: Props) => {
   let referenceBlock
   const { frontmatter, inboundReferences, outboundReferences, tableOfContents } = file.childMdx
   const { title, slug } = file.fields
@@ -31,7 +31,7 @@ const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wik
   // )
 
   const ProvidedAnchorTag = (anchorProps) => {
-    // console.log("ProviµdedAnchorTag", anchorProps)
+    // console.log("ProvidedAnchorTag", anchorProps)
     return (
       <AnchorTag
         {...anchorProps}
@@ -62,15 +62,15 @@ const Topic: React.FC<Props> = ({ file, currentLocation, refWordMdxSlugDict, wik
     }
   }
 
-  const shouldRenderTitle = !!frontmatter.title
-  const realTitle = frontmatter.title || title
+  const shouldRenderTitle = !!frontmatter?.title
+  const realTitle = frontmatter?.title || title
 
   return (
     <div className="topic">
       {shouldRenderTitle ? <h1 id={slugify(realTitle)}>{realTitle}</h1> : null}
       {showInlineTOC && <InlineTOC tableOfContents={tableOfContents} />}
       <MDXProvider components={{ a: ProvidedAnchorTag, ...HEADER_COMPONENTS }}>
-        <MDXRenderer scope="">{file.childMdx.body}</MDXRenderer>
+        {children}
       </MDXProvider>
       {referenceBlock}
     </div>

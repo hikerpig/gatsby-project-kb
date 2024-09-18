@@ -20,7 +20,7 @@ module.exports = function makeSearchPlugins (options) {
         }
         childMdx {
           excerpt
-          rawBody
+          body
         }
         internal {
           mediaType
@@ -112,7 +112,7 @@ module.exports = function makeSearchPlugins (options) {
                 .filter((node) => shouldHandleFile(node, options))
                 .map((node) => ({
                   id: node.id,
-                  body: node.childMdx.rawBody,
+                  body: node.childMdx.body,
                 }))
             );
           }

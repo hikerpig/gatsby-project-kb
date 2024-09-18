@@ -4,9 +4,7 @@ const path = require(`path`)
 const { urlResolve } = require(`gatsby-core-utils`)
 const shouldHandleFile = require('./gatsby-node-utils/shouldHandleFile')
 const slugify = require(`slugify`)
-const {
-  findTopLevelHeading,
-} = require(`@gatsby-project-kb/transformer-wiki-references`)
+const { findTopLevelHeading } = require(`@gatsby-project-kb/transformer-wiki-references`)
 
 // These are customizable theme options we only need to check once
 let contentPath
@@ -28,8 +26,7 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
   rootNoteSlug = padSlugLeading(themeOptions.rootNote) || '/readme'
   // extensions = themeOptions.extensions || ['.md', '.mdx']
   // mediaTypes = themeOptions.mediaTypes || ['text/markdown', 'text/x-markdown']
-  wikiLinkLabelTemplate =
-    themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
+  wikiLinkLabelTemplate = themeOptions.wikiLinkLabelTemplate || wikiLinkLabelTemplate
 
   if (themeOptions.slugifyFn && typeof themeOptions.slugifyFn === 'function') {
     slugifyFn = themeOptions.slugifyFn
@@ -41,20 +38,13 @@ exports.onPreBootstrap = async ({ store }, themeOptions) => {
 }
 
 function getTitle(node, content) {
-  if (
-    typeof node.frontmatter === 'object' &&
-    node.frontmatter &&
-    node.frontmatter['title']
-  ) {
+  if (typeof node.frontmatter === 'object' && node.frontmatter && node.frontmatter['title']) {
     return node.frontmatter['title']
   }
   return (
     findTopLevelHeading(content) ||
     (typeof node.fileAbsolutePath === 'string'
-      ? path.basename(
-          node.fileAbsolutePath,
-          path.extname(node.fileAbsolutePath)
-        )
+      ? path.basename(node.fileAbsolutePath, path.extname(node.fileAbsolutePath))
       : '') ||
     (typeof node.absolutePath === 'string'
       ? path.basename(node.absolutePath, path.extname(node.absolutePath))
@@ -86,7 +76,7 @@ exports.createResolvers = ({ createResolvers }) => {
 
 exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   const { createNodeField } = actions
-  if (node.internal.type === `File` && shouldHandleFile(node, options)) {
+  if ((node.internal.type === `File`) && shouldHandleFile(node, options)) {
     const slugifiedName = slugifyFn(node.name)
     const slug = '/' + urlResolve(path.parse(node.relativePath).dir, slugifiedName)
     // console.log('slug is', slug, node.relativePath)
@@ -103,7 +93,7 @@ exports.onCreateNode = async ({ node, actions, loadNodeContent }, options) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions }, options) => {
+exports.createPages = async ({ graphql, actions, getNode }, options) => {
   const { createPage } = actions
 
   if (contentPath) {
@@ -123,8 +113,8 @@ exports.createPages = async ({ graphql, actions }, options) => {
               }
               childMdx {
                 id
-                frontmatter {
-                  private
+                internal {
+                  contentFilePath
                 }
                 outboundReferences {
                   refWord
@@ -132,7 +122,6 @@ exports.createPages = async ({ graphql, actions }, options) => {
                   target {
                     ... on Mdx {
                       id
-                      slug
                     }
                   }
                 }
@@ -142,14 +131,15 @@ exports.createPages = async ({ graphql, actions }, options) => {
           allMdx {
             nodes {
               id
-              slug
+              internal {
+                contentFilePath
+              }
               outboundReferences {
                 refWord
                 label
                 target {
                   ... on Mdx {
                     id
-                    slug
                   }
                 }
               }
@@ -169,9 +159,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
       throw new Error(`Could not query notes`, result.errors)
     }
 
-    const TopicTemplate = require.resolve(
-      options.topicTemplate || `./src/templates/Topic`
-    )
+    const TopicTemplate = require.resolve(options.topicTemplate || `./src/templates/Topic`)
 
     const mdxNodeMap = new Map()
     result.data.allMdx.nodes.forEach((mdxNode) => {
@@ -185,17 +173,15 @@ exports.createPages = async ({ graphql, actions }, options) => {
         if (mdxNode && mdxNode.outboundReferences) {
           mdxNode.outboundReferences.forEach((ref) => {
             const refMdxNode = mdxNodeMap.get(ref.target.id)
-            // console.log(
-            //   'refMdxNode exists: ',
-            //   Boolean(refMdxNode),
-            //   ref.target.id
-            // )
+            // console.log('refMdxNode exists: ', Boolean(refMdxNode), ref.target.id)
             if (refMdxNode) {
-              // console.log(`${ref.refWord}: ${refMdxNode.slug}`)
-              if (refWordMdxSlugDict[ref.refWord]) {
+              const parentFile = getNode(refMdxNode.parent.id)
+              // console.log('ref mdx node', refMdxNode)
+              // console.log(`${ref.refWord}: ${parentFile.fields.slug}`)
+              if (ref.refWord && refWordMdxSlugDict[ref.refWord]) {
                 return // prevent cycles
               }
-              refWordMdxSlugDict[ref.refWord] = refMdxNode.slug
+              refWordMdxSlugDict[ref.refWord] = parentFile.fields.slug
               enrichRefDetails(refMdxNode)
             }
           })
@@ -214,12 +200,13 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
     const localFiles = result.data.allFile.nodes
       .filter((node) => shouldHandleFile(node, options))
-      .filter((x) => x.childMdx.frontmatter.private !== true)
+      .filter((x) => x.childMdx.frontmatter?.private !== true)
 
     localFiles.forEach((node) => {
+      // console.log('component is', `${TopicTemplate}?__contentFilePath=${node.childMdx.internal.contentFilePath}`)
       createPage({
         path: node.fields.slug,
-        component: TopicTemplate,
+        component: `${TopicTemplate}?__contentFilePath=${node.childMdx.internal.contentFilePath}`,
         context: getContextByNode(node),
       })
     })
@@ -230,7 +217,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
       if (root) {
         createPage({
           path: '/',
-          component: TopicTemplate,
+          component: `${TopicTemplate}?__contentFilePath=${root.childMdx.internal.contentFilePath}`,
           context: getContextByNode(root),
         })
       }

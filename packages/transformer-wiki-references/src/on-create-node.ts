@@ -41,7 +41,8 @@ export const onCreateNode = async (
     return
   }
 
-  const content = await loadNodeContent(node)
+  // console.log('[cm] should load node', node)
+  const content = node.body as string || '';
 
   const outboundReferences = getReferences(content, (ref) => {
     ref.referrerNode = node

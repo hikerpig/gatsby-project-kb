@@ -47,9 +47,6 @@ export default function SiteSidebar(props: ISiteSidebarProps) {
     query SiteSidebarQuery {
       allMdx {
         nodes {
-          frontmatter {
-            title
-          }
           parent {
             id
             ... on File {

@@ -40,7 +40,9 @@ let currentGeneration: Promise<boolean> | undefined
 
 function getFilePathFromCachedNode(x: CachedNode) {
   let filePath: string
-  if (typeof x.node.fileAbsolutePath === 'string') {
+  if (typeof x.node.internal.contentFilePath === 'string') {
+    filePath = x.node.internal.contentFilePath
+  } else if (typeof x.node.fileAbsolutePath === 'string') {
     filePath = x.node.fileAbsolutePath
   } else if (typeof x.node.absolutePath === 'string') {
     filePath = x.node.absolutePath

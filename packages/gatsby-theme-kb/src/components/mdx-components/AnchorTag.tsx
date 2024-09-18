@@ -3,8 +3,9 @@ import { withPrefix, Link } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
 import * as path from 'path'
 import slugify from 'slugify'
-import MDXRenderer from './MDXRenderer'
 import Tippy from '@tippyjs/react'
+import { compileSync } from '@mdx-js/mdx'
+import * as JSX_RUNTIME from 'react/jsx-runtime'
 import { Reference, WikiLinkLabelTemplateFn } from '../../type'
 
 import './anchor-tag.css'
@@ -70,9 +71,9 @@ const AnchorTag = ({
   const { anchorSlug } = genHrefInfo({ currentSlug, href })
 
   function getSlugByRefWord(title: string) {
-    if (!refWordMdxSlugDict) return;
+    if (!refWordMdxSlugDict) return
     if (title in refWordMdxSlugDict) return `/${refWordMdxSlugDict[title]}`
-    return;
+    return
   }
 
   let ref: Reference | undefined
@@ -98,10 +99,10 @@ const AnchorTag = ({
     const mdxBody = ref.target.body
     const nestedComponents = {
       a(props) {
-        const {
-          anchorSlug: nestedAnchorSlug,
-          isExternalLink: nestedIsExternalLink,
-        } = genHrefInfo({ currentSlug, href: props.href })
+        const { anchorSlug: nestedAnchorSlug, isExternalLink: nestedIsExternalLink } = genHrefInfo({
+          currentSlug,
+          href: props.href,
+        })
         if (nestedIsExternalLink) {
           return <a href={props.href}>{props.children}</a>
         } else {
@@ -118,6 +119,10 @@ const AnchorTag = ({
       p(props) {
         return <span {...props} />
       },
+      pre(props) {
+        if (!props.children) return undefined
+        return <pre className={props.children.props.className}>{props.children}</pre>
+      }
     }
     if (ref.label) {
       // markdown link
@@ -127,21 +132,21 @@ const AnchorTag = ({
         ? wikiLinkLabelTemplateFn({ refWord: ref.refWord, title: fields.title })
         : restProps.children
     }
+    const renderedContent = compileSync(mdxBody, { jsx: false, outputFormat: 'function-body' })
+    const fnComponent = new Function(renderedContent.value as string)
+    // console.log('compiled', renderedContent.value)
+    const ReactComp = fnComponent(JSX_RUNTIME).default as any
+    // console.log('popup should get content', ReactComp)
+
     popupContent = (
       <div id={targetFileNode.id} className="anchor-tag__popover with-markdown">
         <React.Fragment>
-          <MDXProvider components={nestedComponents}>
-            <MDXRenderer>{mdxBody}</MDXRenderer>
-          </MDXProvider>
+          <MDXProvider components={nestedComponents}><ReactComp components={nestedComponents} /></MDXProvider>
         </React.Fragment>
       </div>
     )
     child = (
-      <Link
-        {...restProps}
-        to={padHrefWithAnchor(fields.slug, ref.targetAnchor)}
-        title={title}
-      >
+      <Link {...restProps} to={padHrefWithAnchor(fields.slug, ref.targetAnchor)} title={title}>
         {content}
       </Link>
     )
@@ -151,11 +156,7 @@ const AnchorTag = ({
     child = (
       <a
         {...restProps}
-        href={
-          !href || (href.indexOf && href.indexOf('#') === 0)
-            ? href
-            : withPrefix(href)
-        }
+        href={!href || (href.indexOf && href.indexOf('#') === 0) ? href : withPrefix(href)}
         title={title}
       />
     )
@@ -171,12 +172,7 @@ const AnchorTag = ({
   }
 
   return (
-    <Tippy
-      animation="shift-away"
-      content={popupContent}
-      maxWidth="none"
-      interactive
-    >
+    <Tippy animation="shift-away" content={popupContent} maxWidth="none" interactive>
       {child}
     </Tippy>
   )

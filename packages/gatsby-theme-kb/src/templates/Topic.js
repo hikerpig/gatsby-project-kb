@@ -17,7 +17,7 @@ function evaluateTemplate(tpl, data) {
   return tpl
 }
 
-export default (props) => {
+export const TopicTemplate = (props) => {
   if (!isServer) {
     console.debug('Topic props', props)
   }
@@ -35,7 +35,7 @@ export default (props) => {
     }
   }
 
-  const tocTypes = ('tocTypes' in pageContext ? pageContext.tocTypes: null) || []
+  const tocTypes = ('tocTypes' in pageContext ? pageContext.tocTypes : null) || []
   const showInlineTOC = tocTypes && tocTypes.includes('inline')
   const showSidebarTOC = tocTypes && tocTypes.includes('sidebar')
 
@@ -48,20 +48,18 @@ export default (props) => {
         wikiLinkLabelTemplateFn={wikiLinkLabelTemplateFn}
         refWordMdxSlugDict={props.pageContext.refWordMdxSlugDict}
         showInlineTOC={showInlineTOC}
-      ></Topic>
+      >
+        {props.children}
+      </Topic>
     </TopicLayout>
   )
 }
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     file(id: { eq: $id }) {
       childMdx {
         body
-        frontmatter {
-          title
-          private
-        }
         tableOfContents
         ...GatsbyGardenReferences
       }
@@ -72,3 +70,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default TopicTemplate

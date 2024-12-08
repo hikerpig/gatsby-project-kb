@@ -8,7 +8,7 @@ import './topic-layout.css'
 import { PageContext } from '../../type'
 import GraphButton from '../GraphButton'
 import SiteSidebar from '../SiteSidebar'
-import DarkModeToggle from '../DarkModeToggle'
+// import DarkModeToggle from '../DarkModeToggle'
 import { isServer } from '../../env'
 
 export type Props = React.PropsWithChildren<{
@@ -163,7 +163,7 @@ export default function TopicLayout(props: Props) {
               T
             </div>
             <GraphButton className="top-layout__header-item" currentFileId={pageContext.id} isMobileMode={isMobileMode}/>
-            <DarkModeToggle></DarkModeToggle>
+            {/* <DarkModeToggle></DarkModeToggle> */}
           </div>
         )}
       </div>
@@ -181,7 +181,7 @@ export default function TopicLayout(props: Props) {
           {isMobileMode ? null : (
             <>
               <GraphButton currentFileId={pageContext.id} showHint isMobileMode={isMobileMode}/>
-              <DarkModeToggle showHint />
+              {/* <DarkModeToggle showHint /> */}
             </>
           )}
 
